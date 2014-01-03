@@ -21,8 +21,8 @@
 // ---------------------------------------------------------------------------------------
 $limit_width					: 1100px;
 $dot_size						: 14px;
-$flicker_class					: 'webplate-flicker';
-$images_path					: 'images';
+$flicker_class					: 'flickerplate';
+$images_path					: '../images';
 
 
 // Mixins
@@ -39,6 +39,7 @@ $images_path					: 'images';
 @mixin single-background-image($image, $position: center) {
 	background-image: url($image);
 	background-repeat: no-repeat;
+	background-position: $position;
 }
 @mixin rounded-corners($radius: 2px) {
 	border-radius: $radius;
@@ -61,6 +62,8 @@ $images_path					: 'images';
 @mixin fp-flicks($width: 10000%) {
 	width: $width;
 	height: 100%;
+	padding: 0px;
+	margin: 0px;
 	list-style: none;
 }
 @mixin fp-flick($width: 1%) {
@@ -131,7 +134,7 @@ $images_path					: 'images';
 		.arrow {
 			opacity: 0;
 			margin: 0px 0px 0px 50%;
-			@include single-background-image(#{$images_path}'/arrow-left-light.png', left);
+			@include single-background-image('#{$images_path}/arrow-left-light.png', left);
 		}
 	}
 	.arrow-navigation.right {
@@ -140,7 +143,7 @@ $images_path					: 'images';
 		.arrow {
 			opacity: 0;
 			margin: 0px 0px 0px -50%;
-			@include single-background-image(#{$images_path}'/arrow-right-light.png', right);
+			@include single-background-image('#{$images_path}/arrow-right-light.png', right);
 		}
 	}
 	.arrow-navigation.left.hover .arrow {
