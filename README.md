@@ -38,10 +38,10 @@ Documentation
 For a more detailed explanation read the online documentation at http://getwebplate.com/plugins/flickerplate.
 
 
-Copyright and license
+Copyright and License
 =========
 
-Copyright 2013 Webplate Project
+Copyright 2014 Savedge Project
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
