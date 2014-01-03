@@ -9,7 +9,7 @@ Getting Started
 
 Requires jQuery and Modernizr (touch check)
 
-Compile "sass/flickerplate.scss" as part of your prject or just include "css/flickerplate.css" in your head tag. You will also need to include "js/flickerplate.js".
+Compile "sass/flickerplate.scss" as part of your project or just include "css/flickerplate.css" in your head tag. You will also need to include "js/flickerplate.js" with a minified version supplied in the "js/min" directory.
 
 Below is an example:
 
@@ -19,6 +19,23 @@ Below is an example:
     <script src="js/min/flickerplate.min.js" type="text/javascript"></script>
 </head>
 ```
+
+Once included you can call Flickerplate simply by referencing a class in your javascript file.
+
+For example:
+
+```
+$(document).ready(function(){
+		
+	$('.flicker-example').flicker();
+});
+```
+
+
+Documentation
+=========
+
+For a more detailed explanation read the online documentation at http://getwebplate.com/plugins/flickerplate.
 
 
 Copyright and license
