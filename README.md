@@ -3,12 +3,23 @@ Flickerplate
 
 A cool jQuery plugin that lets you flick through content.
 
+
 Getting Started
 =========
 
 Requires jQuery and Modernizr (touch check)
 
-Compile "sass/flickerplate.scss" as part of your porject or just include "css/flickerplate.css" in your head tag.
+Compile "sass/flickerplate.scss" as part of your prject or just include "css/flickerplate.css" in your head tag. You will also need to include "js/flickerplate.js".
+
+Below is an example:
+
+```
+<head>
+    <link href="css/flickerplate.css"  type="text/css" rel="stylesheet">
+    <script src="js/min/flickerplate.min.js" type="text/javascript"></script>
+</head>
+```
+
 
 Copyright and license
 =========
