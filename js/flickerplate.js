@@ -176,7 +176,7 @@
 			block_text						: true,
 			inner_width						: false,
 			theme							: 'light',
-			flick_animation					: 'transform-slide',
+			flick_animation					: 'transition-slide',
 			auto_flick						: true,
 			delay							: 10,
 			dot_navigation					: true,
@@ -551,7 +551,7 @@
 		}
 		
 		// ----- Reset auto flicker
-		$object.auto_flick_reset			= function(){
+		$object.auto_flick_reset				= function(){
 				
 			// First stop the auto flicker
 			$object.auto_flick_stop();
@@ -561,10 +561,10 @@
 		}
 		
 		// ----- Move the flicker
-		$object.move_flicker				= function($new_position){
+		$object.move_flicker					= function($new_position){
 			
 			// Update flick position
-			$flick_position					= $new_position;
+			$flick_position						= $new_position;
 			
 			// Move based on desired animation
 			if($object.settings.flick_animation == 'transform-slide'){
@@ -579,7 +579,7 @@
 				
 				$flicker.find('ul.flicks').animate({ 'left' : '-'+ $flick_position +'00%' }, function(){
 				
-					$flicker_moving 				= false;
+					$flicker_moving 			= false;
 				});
 			}
 			
