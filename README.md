@@ -20,15 +20,35 @@ Below is an example:
 </head>
 ```
 
-Once included you can call Flickerplate simply by referencing a class in your javascript file.
+Once included, create the neccessary HTML and call Flickerplate by referencing the containing class in your javascript file.
 
-For example:
+Javascript call:
 
 ```
 $(document).ready(function(){
-		
 	$('.flicker-example').flicker();
 });
+```
+
+Basic HTML:
+
+```
+<div class="flicker-example">
+	<ul>
+		<li>
+			<div class="flick-title">Title 1</div>
+			<div class="flick-sub-text">Description text 1</div>
+		</li>
+		<li>
+			<div class="flick-title">Title 2</div>
+			<div class="flick-sub-text">Description text 2</div>
+		</li>
+		<li>
+			<div class="flick-title">Title 3</div>
+			<div class="flick-sub-text">Description text 3</div>
+		</li>
+	</ul>
+</div>
 ```
 
 
