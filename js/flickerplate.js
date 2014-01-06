@@ -152,7 +152,7 @@
  * flickerplate.js
  *
  * Author:        	Chris Humboldt
- * Last Edited:   	3 January 2014
+ * Last Edited:   	6 January 2014
  * Edited By:   	Chris Humboldt
  */
 
@@ -252,7 +252,7 @@
 			var $block_text						= $flicker.data('block-text');
 			if(($block_text) && ($block_text.length > 0)){
 				
-				if($block_text == 'no'){
+				if($block_text == 'false'){
 					
 					$object.settings.block_text = false;
 				}
@@ -271,7 +271,7 @@
 				$flick_block_text					= $(this).data('block-text');
 				if(($flick_block_text) && ($flick_block_text.length > 0)){
 				
-					if($flick_block_text != 'no'){
+					if($flick_block_text != 'false'){
 			
 						$(this).find('.flick-title').wrapInner('<span class="flick-block-text"></span>');
 						$(this).find('.flick-sub-text').wrapInner('<span class="flick-block-text"></span>');
@@ -305,7 +305,7 @@
 				$data_arrow_navigation				= $flicker.data('arrows');
 				if(($data_arrow_navigation) && ($data_arrow_navigation.length > 0)){
 				
-					if($data_arrow_navigation != 'no'){
+					if($data_arrow_navigation != 'false'){
 				
 						$object.create_arrow_navigation();
 					}
@@ -334,7 +334,7 @@
 			
 				if(($data_dot_navigation) && ($data_dot_navigation.length > 0)){
 				
-					if($data_dot_navigation != 'no'){
+					if($data_dot_navigation != 'false'){
 				
 						$object.create_dot_navigation($dot_alignment);
 					}
@@ -359,7 +359,7 @@
 			
 				if(($data_auto_flick) && ($data_auto_flick.length > 0)){
 				
-					if($data_auto_flick != 'no'){
+					if($data_auto_flick != 'false'){
 
 						$object.settings.auto_flick	= true;
 					}
