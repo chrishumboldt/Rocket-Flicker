@@ -7,16 +7,19 @@ A cool jQuery plugin that lets you flick through content.
 Getting Started
 =========
 
-Requires jQuery, Modernizr (touch check) and jQuery.Finger (supplied with Flickerplate already).
+This plugin is by definition a jQuery plugin and so jQuery is required. It also requires Modernizr for touch detection and the jQuery.Finger library for touch events (which is supplied in the flickerplate.js file). Both jQuery and a custom build of Modernizr are supplied in the zip package.
 
-Compile "sass/flickerplate.scss" as part of your project or just include "css/flickerplate.css" in your head tag. You will also need to include "js/flickerplate.js" with a minified version supplied in the "js/min" directory.
-
-Below is an example:
+To include Flickerplate in your project include the following files as in the example below.
 
 ```
 <head>
-    <link href="css/flickerplate.css"  type="text/css" rel="stylesheet">
-    <script src="js/min/flickerplate.min.js" type="text/javascript"></script>
+	// Required javascript
+    <script src="js/min/jquery-v1.10.2.min.js"></script>
+    <script src="js/min/modernizr-custom-v2.7.1.min.js"></script>
+	
+    // Flickerplate
+    <script src="js/min/flickerplate.min.js"></script>
+    <link href="flickerplate.css" rel="stylesheet" type="text/css">
 </head>
 ```
 
