@@ -223,6 +223,19 @@ $images_path					: '../images';
 				background-color: #000;
 			}
 		}
+		
+		ul.flicks li .flick-inner {
+			color: fade-out(#000, 0.1);
+		
+			.flick-content {
+				.flick-sub-text {
+					color: fade-out(#000, 0.1);
+				}
+				.flick-title span.flick-block-text, .flick-sub-text span.flick-block-text {
+					background-color: fade-out(#fff, 0.5);
+				}
+			}
+		}
 	}
 	.#{$identifier} ul.flicks li.flick-theme-dark .flick-inner {
 		color: fade-out(#000, 0.1);
