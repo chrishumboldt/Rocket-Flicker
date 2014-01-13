@@ -19,7 +19,7 @@ See an example below of a basic include.
 	
     // Flickerplate
     <script src="js/min/flickerplate.min.js"></script>
-    <link href="flickerplate.css" rel="stylesheet" type="text/css">
+    <link href="css/flickerplate.css" rel="stylesheet" type="text/css">
 </head>
 ```
 
