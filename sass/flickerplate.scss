@@ -9,7 +9,7 @@
 // Table of Contents:
 // ---------------------------------------------------------------------------------------
 
-// Variables
+// Variables-
 // Mixins
 // Global
 // Large View
@@ -19,22 +19,22 @@
 
 // Variables
 // ---------------------------------------------------------------------------------------
-$limit_width					: 1100px;
-$dot_size						: 14px;
-$flicker_class					: 'flickerplate';
-$images_path					: '../images';
+$limit-width					: 1100px;
+$dot-size						: 14px;
+$flicker-class					: 'flickerplate';
+$images-path					: '../images';
 
 
 // Mixins
 // ---------------------------------------------------------------------------------------
 
 // General
-@mixin animate($attribute, $transition_speed: 0.2s) {
-	-webkit-transition: $attribute $transition_speed ease-out;
-	-moz-transition: $attribute $transition_speed ease-out;
-	-o-transition: $attribute $transition_speed ease-out;
-	-ms-transition: $attribute $transition_speed ease-out;
-	transition: $attribute $transition_speed ease-out;
+@mixin animate($attribute, $transition-speed: 0.2s) {
+	-webkit-transition: $attribute $transition-speed ease-out;
+	-moz-transition: $attribute $transition-speed ease-out;
+	-o-transition: $attribute $transition-speed ease-out;
+	-ms-transition: $attribute $transition-speed ease-out;
+	transition: $attribute $transition-speed ease-out;
 }
 @mixin single-background-image($image, $position: center) {
 	background-image: url($image);
@@ -50,11 +50,11 @@ $images_path					: '../images';
 }
 
 // Container
-@mixin fp-webplate-flicker($height: 600px, $back_colour: lighten(#000,90%)) {
+@mixin fp-webplate-flicker($height: 600px, $back-colour: lighten(#000,90%)) {
 	position: relative;
 	width: 100%;
 	height: $height;
-	background-color: $back_colour;
+	background-color: $back-colour;
 	overflow: hidden;
 }
 
@@ -82,7 +82,7 @@ $images_path					: '../images';
 		vertical-align: middle;
 		
 		.flick-content {
-			max-width: $limit_width;
+			max-width: $limit-width;
 			margin-left: auto;
 			margin-right: auto;
 		}
@@ -134,7 +134,7 @@ $images_path					: '../images';
 		.arrow {
 			opacity: 0;
 			margin: 0px 0px 0px 50%;
-			@include single-background-image('#{$images_path}/arrow-left-light.png', left);
+			@include single-background-image('#{$images-path}/arrow-left-light.png', left);
 		}
 	}
 	.arrow-navigation.right {
@@ -143,7 +143,7 @@ $images_path					: '../images';
 		.arrow {
 			opacity: 0;
 			margin: 0px 0px 0px -50%;
-			@include single-background-image('#{$images_path}/arrow-right-light.png', right);
+			@include single-background-image('#{$images-path}/arrow-right-light.png', right);
 		}
 	}
 	.arrow-navigation.left.hover .arrow {
@@ -175,8 +175,8 @@ $images_path					: '../images';
 			float: none;
 		}
 		.dot {
-			width: $dot_size;
-			height: $dot_size;
+			width: $dot-size;
+			height: $dot-size;
 			margin: 0px 6px;
 			background-color: fade-out(#fff, 0.7);
 			@include rounded-corners(50%);
@@ -205,10 +205,10 @@ $images_path					: '../images';
 	
 		// Arrow navigation
 		.arrow-navigation.left .arrow {
-			background-image: url('#{$images_path}/arrow-left-dark.png');
+			background-image: url('#{$images-path}/arrow-left-dark.png');
 		}
 		.arrow-navigation.right .arrow {
-			background-image: url('#{$images_path}/arrow-right-dark.png');
+			background-image: url('#{$images-path}/arrow-right-dark.png');
 		}
 	
 		// Dot navigation
@@ -296,7 +296,7 @@ $images_path					: '../images';
 // Class references
 // ---------------------------------------------------------------------------------------
 // Default flicker - light theme
-.#{$flicker_class} {
+.#{$flicker-class} {
 	@include fp-webplate-flicker();
 	
 	// Flicks
@@ -317,10 +317,10 @@ $images_path					: '../images';
 }
 
 // Dark theme
-@include fp-dark-theme($flicker_class);
+@include fp-dark-theme($flicker-class);
 
 // Animation type
-@include fp-animations($flicker_class);
+@include fp-animations($flicker-class);
 
 // Large View (Desktop and iPad)
 // ---------------------------------------------------------------------------------------
@@ -330,7 +330,7 @@ $images_path					: '../images';
 
 // Fluid View (Desktop and iPad)
 // ---------------------------------------------------------------------------------------
-@media screen and (max-width: $limit_width) {
+@media screen and (max-width: $limit-width) {
 }
 
 
@@ -338,7 +338,7 @@ $images_path					: '../images';
 // ---------------------------------------------------------------------------------------
 @media screen and (-webkit-min-device-pixel-ratio: 3.0) and (max-width: 1080px), screen and (max-width: 700px) {
 	
-	.#{$flicker_class} ul.flicks li .flick-inner .flick-content {
+	.#{$flicker-class} ul.flicks li .flick-inner .flick-content {
 		.flick-title {
 			font-size: 1.667em;
 		}
