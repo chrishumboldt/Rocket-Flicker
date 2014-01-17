@@ -269,9 +269,9 @@
 				
 				// Block text overwrite
 				$flick_block_text					= $(this).data('block-text');
-				if(($flick_block_text) && ($flick_block_text.length > 0)){
+				if($flick_block_text != undefined){
 				
-					if($flick_block_text != 'false'){
+					if($flick_block_text == true){
 			
 						$(this).find('.flick-title').wrapInner('<span class="flick-block-text"></span>');
 						$(this).find('.flick-sub-text').wrapInner('<span class="flick-block-text"></span>');
