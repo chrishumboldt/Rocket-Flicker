@@ -7,7 +7,7 @@ A cool jQuery plugin that lets you flick through content.
 Getting Started
 =========
 
-This plugin is by definition a jQuery plugin and so is required. It also requires Modernizr for touch detection and the jQuery.Finger library for touch events (supplied in the flickerplate.js file). Both jQuery and a custom build of Modernizr are supplied.
+This plugin is by definition a jQuery plugin and so is required. It also requires Modernizr for touch detection and the jQuery.Finger library for touch events. Both jQuery and a custom build of Modernizr are supplied.
 
 See an example below of a basic include.
 
@@ -16,6 +16,7 @@ See an example below of a basic include.
 	<!--Required javascript-->
 	<script src="js/min/jquery-v1.10.2.min.js"></script>
 	<script src="js/min/modernizr-custom-v2.7.1.min.js"></script>
+	<script src="js/min/jquery-finger-v0.1.0.min.js"></script>
 	
 	<!--Flickerplate-->
 	<script src="js/min/flickerplate.min.js"></script>

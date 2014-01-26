@@ -1,0 +1,28 @@
+{
+  "name": "Flickerplate",
+  "version": "1.0.0",
+  "description": "A cool jQuery plugin that lets you flick through content.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chrishumboldt/Flickerplate.git"
+  },
+  "keywords": [
+    "CSS",
+    "Flickerplate",
+    "Webplate",
+    "Responsive",
+    "SASS",
+    "jQuery"
+  ],
+  "author": "Chris Humboldt",
+  "license": "Apache License, Version 2.0",
+  "bugs": {
+    "url": "https://github.com/chrishumboldt/Flickerplate/issues"
+  },
+  "homepage": "http://getwebplate.com/plugins/flickerplate",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-sass": "~0.6.0",
+    "grunt-contrib-watch": "~0.5.3"
+  }
+}
