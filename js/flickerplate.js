@@ -24,7 +24,7 @@
 		// Settings
 		$object.settings 					= {
 			arrows							: true,
-			arrow_constraint				: false,
+			arrows_constraint				: false,
 			auto_flick						: true,
 			auto_flick_delay				: 10,
 			block_text						: true,
@@ -319,10 +319,10 @@
 			});
 
 			// Check arrow constraint
-			$data_arrow_constraint				= $flicker.data('arrow-constraint');
-			if($data_arrow_constraint != undefined)
+			$data_arrows_constraint				= $flicker.data('arrows-constraint');
+			if($data_arrows_constraint != undefined)
 			{
-				$object.settings.arrow_constraint 	= $data_arrow_constraint;
+				$object.settings.arrows_constraint 	= $data_arrows_constraint;
 			}
 			
 			// Navigate using the arrows
@@ -334,7 +334,7 @@
 					$flick_position++;
 					if($flick_position == $flick_count)
 					{
-						if($object.settings.arrow_constraint == false)
+						if($object.settings.arrows_constraint == false)
 						{
 							$flick_position			= 0;
 						}
@@ -349,7 +349,7 @@
 					$flick_position--;
 					if($flick_position < 0)
 					{
-						if($object.settings.arrow_constraint == false)
+						if($object.settings.arrows_constraint == false)
 						{
 							$flick_position			= $flick_count - 1;
 						}
