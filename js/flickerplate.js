@@ -23,15 +23,17 @@
 
 		// Settings
 		$object.settings 					= {
-			block_text						: true,
-			inner_width						: false,
-			theme							: 'light',
-			flick_animation					: 'transition-slide',
+			arrows							: true,
+			arrow_constraint				: false,
 			auto_flick						: true,
 			auto_flick_delay				: 10,
+			block_text						: true,
 			dot_navigation					: true,
 			dot_alignment					: 'center',
-			arrows							: true
+			flick_animation					: 'transition-slide',
+			flick_position 					: 1,
+			inner_width						: false,
+			theme							: 'light'
 		};
 
 		// ----- Initilize
@@ -49,6 +51,12 @@
 			$flicker.find('li:first').addClass('first-flick');
 			
 			// Set the flick position
+			$flick_position 					= ($object.settings.flick_position - 1);
+			$data_flick_position				= $flicker.data('flick-position');
+			if($data_flick_position != undefined)
+			{
+				$flick_position 				= ($data_flick_position - 1);
+			}
 			$flicker.attr('data-flick-position', $flick_position);
 			
 			// Animation type
@@ -202,7 +210,7 @@
 			
 				if(($data_auto_flick_delay)){
 			
-					$flick_delay				= $data_auto_flick_delay * 1000;
+					$flick_delay					= $data_auto_flick_delay * 1000;
 				}
 				
 				if($data_auto_flick != undefined){
@@ -230,6 +238,9 @@
 					});
 				}
 			}
+
+			// Set the flick position on load
+			$object.move_flicker($flick_position);
 		}
 		
 		// ----- Flick flicker
@@ -306,25 +317,46 @@
 					$(this).removeClass('hover')
 				}
 			});
+
+			// Check arrow constraint
+			$data_arrow_constraint				= $flicker.data('arrow-constraint');
+			if($data_arrow_constraint != undefined)
+			{
+				$object.settings.arrow_constraint 	= $data_arrow_constraint;
+			}
 			
 			// Navigate using the arrows
-			$('.arrow-navigation').on('click', function(){
-				
+			$('.arrow-navigation').on('click', function()
+			{	
 				// Check which arrow was clicked
-				if($(this).hasClass('right')){
-					
+				if($(this).hasClass('right'))
+				{	
 					$flick_position++;
-					if($flick_position == $flick_count){
-				
-						$flick_position				= 0;
+					if($flick_position == $flick_count)
+					{
+						if($object.settings.arrow_constraint == false)
+						{
+							$flick_position			= 0;
+						}
+						else
+						{
+							$flick_position			= $flick_count - 1;	
+						}
 					}
 				}
-				else {
-					
+				else
+				{	
 					$flick_position--;
-					if($flick_position < 0){
-				
-						$flick_position				= $flick_count - 1;
+					if($flick_position < 0)
+					{
+						if($object.settings.arrow_constraint == false)
+						{
+							$flick_position			= $flick_count - 1;
+						}
+						else
+						{
+							$flick_position			= 0;	
+						}
 					}
 				}
 			

@@ -43,10 +43,15 @@ module.exports = function(grunt) {
 			// End of CSS
 			// Scripts
 			scripts: {
-				files: '**/*.js',
+				files: 'js/*.js',
 				tasks: ['uglify']
-			}
+			},
 			// End of scripts
+			// Live reload
+			options: {
+				livereload: true,
+		    } 
+		    // End of live reload
 		} 
 		// End of watch
 	});
