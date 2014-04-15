@@ -29,7 +29,8 @@ Once included, create the neccessary HTML and call Flickerplate by referencing t
 Javascript call:
 
 ```
-$(document).ready(function(){
+$(document).ready(function()
+{
 	$('.flicker-example').flicker();
 });
 ```
