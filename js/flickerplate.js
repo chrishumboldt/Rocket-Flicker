@@ -408,6 +408,13 @@
                     $flicker.find('ul.flicks li:eq(' + $new_position + ')').css("opacity", 1);
                 }
             }
+            else if($object.settings.flick_animation == 'jquery-fade') {
+                var $pre_position = parseInt($flicker.attr("data-flick-position"), 10);
+                if ($pre_position !== $new_position) {
+                    $flicker.find('ul.flicks li:eq(' + $pre_position + ')').fadeOut(800);
+                }
+                $flicker.find('ul.flicks li:eq(' + $new_position + ')').fadeIn(800);
+            }
 
 			// Flicker colour
 			$crt_flick							= $flicker.find('ul.flicks li:eq('+ $flick_position +')');

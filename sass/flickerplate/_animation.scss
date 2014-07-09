@@ -81,4 +81,19 @@ $animate-transition-fade-easing: linear;
             }
         }
     }
+
+    #{$identifier}.animate-jquery-fade {
+        ul.flicks {
+            position: relative;
+            li {
+                float: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                //opacity: 0;
+              display: none;
+            }
+        }
+    }
+
 }
