@@ -397,7 +397,18 @@
 					$flicker_moving 			= false;
 				});
 			}
-			
+            else if($object.settings.flick_animation == 'transition-fade') {
+                var $pre_position = parseInt($flicker.attr("data-flick-position"), 10);
+                if ($pre_position === $new_position) {
+                    setTimeout(function () {
+                        $flicker.addClass("fade-inited");
+                    },10);
+                } else {
+                    $flicker.find('ul.flicks li:eq(' + $pre_position + ')').css("opacity", 0);
+                    $flicker.find('ul.flicks li:eq(' + $new_position + ')').css("opacity", 1);
+                }
+            }
+
 			// Flicker colour
 			$crt_flick							= $flicker.find('ul.flicks li:eq('+ $flick_position +')');
 			$flicker.removeClass('flicker-theme-light').removeClass('flicker-theme-dark');
