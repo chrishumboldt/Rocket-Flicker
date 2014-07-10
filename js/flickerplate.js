@@ -198,7 +198,8 @@
 				$object.flick_flicker();
 			
 				// Kill the animation	
-				if($object.settings.flick_animation != 'jquery-slide') {
+				if($object.settings.flick_animation != 'jquery-slide' &&
+				   $object.settings.flick_animation != 'jquery-fade') {
 					$flicker.find('ul.flicks').bind("transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd", function() {
 
 						$flicker_moving 				= false;
@@ -339,7 +340,6 @@
 		
 		// ----- Start auto flicker
 		$object.auto_flick_start				= function() {
-			
 			if($object.settings.auto_flick == true) {
 				
 				$object.flicker_auto				= setInterval($object.auto_flick, $flick_delay);
@@ -409,11 +409,20 @@
                 }
             }
             else if($object.settings.flick_animation == 'jquery-fade') {
+            	var fadeSpeed = 800;
                 var $pre_position = parseInt($flicker.attr("data-flick-position"), 10);
-                if ($pre_position !== $new_position) {
-                    $flicker.find('ul.flicks li:eq(' + $pre_position + ')').fadeOut(800);
+                if ($pre_position === $new_position) {
+                	// initialize
+                	$flicker.find('ul.flicks li:gt(' + $pre_position + ')').css("display", "none");
+                } else {
+                    $flicker.find('ul.flicks li:eq(' + $pre_position + ')')
+                    	.animate({opacity: 0}, fadeSpeed, function(){
+                    		$(this).css("display", "none");
+                    	});
                 }
-                $flicker.find('ul.flicks li:eq(' + $new_position + ')').fadeIn(800);
+                $flicker.find('ul.flicks li:eq(' + $new_position + ')')
+                	.css("display", "")
+                	.animate({opacity: 1}, fadeSpeed);
             }
 
 			// Flicker colour
