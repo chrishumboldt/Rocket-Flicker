@@ -66,7 +66,7 @@ For a more detailed explanation read the online documentation at http://getwebpl
 Contributors
 =========
 
-<a href="https://github.com/chrishumboldt">Chris Humboldt</a>
+<a href="https://github.com/chrishumboldt">Chris Humboldt</a><br>
 <a href="https://github.com/dsuket">dsuket</a>
 
 
