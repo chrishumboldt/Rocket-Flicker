@@ -51,19 +51,11 @@
 	<!--Execute flickerplate-->
 	<script>
 	$(function(){
-		$('.flicker-example').flicker({
+		$('.flicker-example').flicker(
+		{
             auto_flick: true,
             auto_flick_delay: 5,
-            // flick_animation: "transform-slide"
-            // flick_animation: "transition-slide"
-            // flick_animation: "jquery-slide"
-            // flick_animation: "transition-fade"
-            flick_animation: "jquery-fade"
-            //// auto detecte slide
-            // flick_animation: $("html").hasClass("csstransforms3d") ? "transform-slide" : 
-            //	    $("html").hasClass("csstransitions") ? "transition-slide" : "jquery-slide"
-            //// auto detecte fade
-            // flick_animation: $("html").hasClass("csstransitions") ? "transition-fade" : "jquery-fade"
+            flick_animation: "transform-slide"
         });
 	});
 	</script>

@@ -63,6 +63,13 @@ Documentation
 For a more detailed explanation read the online documentation at http://getwebplate.com/plugins/flickerplate.
 
 
+Contributors
+=========
+
+<a href="https://github.com/chrishumboldt">Chris Humboldt</a>
+<a href="https://github.com/dsuket">dsuket</a>
+
+
 Copyright and License
 =========
 
