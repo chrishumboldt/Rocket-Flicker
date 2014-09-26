@@ -2,13 +2,20 @@
  * SASS File: 		import.scss
  * Type: 			importer
  * Author:        	Chris Humboldt
- * Last Edited:   	22 March 2014
+ * Last Edited:   	26 September 2014
  */
 
 
 // Table of contents
 // ---------------------------------------------------------------------------------------
+// Variables
 // Imports
+
+
+// Variables
+// ---------------------------------------------------------------------------------------
+$font-face-flickerplate		: "icon-font-flickerplate" !default;
+$images-root				: "../img";
 
 
 // Imports
@@ -17,5 +24,7 @@
 @import "arrow-navigation";
 @import "dot-navigation";
 @import "flicker";
+@import "setup";
 @import "theme-dark";
+
 @import "execute";

@@ -262,8 +262,8 @@
 		$object.create_arrow_navigation			= function() {
 			
 			// The HTML
-			$arrow_nav_html	= '<div class="arrow-navigation left"><div class="arrow"></div></div>';
-			$arrow_nav_html	+= '<div class="arrow-navigation right"><div class="arrow"></div></div>';
+			$arrow_nav_html	= '<div class="arrow-navigation left"></div>';
+			$arrow_nav_html	+= '<div class="arrow-navigation right"></div>';
 
 			// Attach the HTML
 			$flicker.prepend($arrow_nav_html);
