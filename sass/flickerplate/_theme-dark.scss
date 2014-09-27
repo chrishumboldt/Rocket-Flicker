@@ -17,14 +17,6 @@
 	
 	#{$identifier}.flicker-theme-dark {
 	
-		// Arrow navigation
-		.arrow-navigation.left .arrow {
-			background-image: url('#{$images-root}/flickerplate/arrow-left-dark.png');
-		}
-		.arrow-navigation.right .arrow {
-			background-image: url('#{$images-root}/flickerplate/arrow-right-dark.png');
-		}
-	
 		// Dot navigation
 		.dot-navigation {
 			.dot {

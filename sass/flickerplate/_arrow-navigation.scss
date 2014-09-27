@@ -45,13 +45,6 @@
 			&.right:before {
 				@include transparency(1);
 			}
-			&.left:before  {
-				// @include position-set(left 30%);
-			}
-
-			&.right:before {
-				// @include position-set(left 70%);
-			}
 		}
 		.no-touch &:active {
 			&.left:before,

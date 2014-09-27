@@ -1,48 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!--Meta setup - Required for apple device-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
     <!--Title-->
     <title>Flickerplate Example</title>
-	
-	<!--Basic page styles-->
-	<style>
-	html {
-		font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-		background-color: #fff;
-		font-weight: 300;
-	}
-	body {
-		margin: 0px;
-		padding: 0px;
-	}
-	.documentation {
-		width: 1100px;
-		margin: 0px auto;
-		padding: 100px 0px;
-	}
-	.documentation h3, p {
-		text-align: center;
-	}
-	.documentation h3 {
-		margin: 0px 0px 20px 0px;
-		font-weight: 300;
-		font-size: 2em;
-	}
-	a, a:visited {
-		color: #E54028;
-		text-decoration: none;
-	}
-	a:hover {
-		color: #c22d18;
-		text-decoration: underline;  
-		cursor: pointer;
-	}
-	</style>
 	
 	<!--Required libraries-->
     <script src="js/min/jquery-v1.10.2.min.js" type="text/javascript"></script>
     <script src="js/min/modernizr-custom-v2.7.1.min.js" type="text/javascript"></script>
-    <script src="js/min/jquery-finger-v0.1.0.min.js" type="text/javascript"></script>
+    <script src="js/min/hammer-v2.0.3.min.js" type="text/javascript"></script>
 
     <!--Include flickerplate-->
 	<link href="css/flickerplate.css"  type="text/css" rel="stylesheet">
@@ -53,18 +22,21 @@
 	$(function(){
 		$('.flicker-example').flicker(
 		{
-            auto_flick: false,
-            auto_flick_delay: 5,
-            flick_animation: "transform-slide"
+            auto_flick 				: false,
+            auto_flick_delay 		: 8,
+            flick_animation 		: 'transform-slide'
         });
 	});
 	</script>
+
+	<!-- Demo styles -->
+	<link href="css/demo.css"  type="text/css" rel="stylesheet">
 
 </head>
 <body>
 	
 	<!--Basic example-->
-	<div class="flicker-example" data-block-text="false">
+	<div class="flicker-example">
 		
 		<ul>
 			
@@ -86,7 +58,6 @@
 		</ul>
 		
 	</div>
-	
 		
 	<!--Documentation link-->
 	<div class="documentation">

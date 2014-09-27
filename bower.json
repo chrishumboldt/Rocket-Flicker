@@ -25,8 +25,10 @@
     "package.json",
     "index.html",
     "bower.json",
-    "img/field.jpg",
-    "img/forest.jpg",
-    "img/frozen-water.jpg"
+    "img",
+    "sass",
+    "css/demo.css",
+    "css/demo.map.css",
+    "css/flickerplate.css.map",
   ]
 }

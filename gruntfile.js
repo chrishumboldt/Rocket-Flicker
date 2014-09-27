@@ -18,7 +18,8 @@ module.exports = function(grunt) {
 					style: 'compressed'
 				},
 				files: {
-					'css/flickerplate.css': 'sass/flickerplate.scss'
+					'css/demo.css'			: 'sass/demo.scss',
+					'css/flickerplate.css'	: 'sass/flickerplate.scss'
 				}
 			}
 		}, 
@@ -29,7 +30,7 @@ module.exports = function(grunt) {
 				files: {
 					'js/min/jquery-v1.10.2.min.js'				: ['js/jquery-v1.10.2.js'],
 					'js/min/modernizr-custom-v2.7.1.min.js'		: ['js/modernizr-custom-v2.7.1.js'],
-					'js/min/jquery-finger-v0.1.0.min.js'		: ['js/jquery-finger-v0.1.0.js'],
+					'js/min/hammer-v2.0.3.min.js'				: ['js/hammer-v2.0.3.js'],
 					'js/min/flickerplate.min.js'				: ['js/flickerplate.js']
 				}
 			}
