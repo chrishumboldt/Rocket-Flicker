@@ -31,7 +31,7 @@ Javascript call:
 ```
 $(document).ready(function()
 {
-	$('.flicker-example').flicker();
+	$('.flicker-example').flickerplate();
 });
 ```
 
