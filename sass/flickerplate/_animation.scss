@@ -52,6 +52,10 @@ $transition-fade-easing				: linear;
 		ul.flicks {
 			@include position(relative, left 0%);
 			@include animate(left, $transition-slide-duration, $transition-slide-easing);
+
+			@include respond-to(large) {
+				@include animate(left, $transition-slide-duration-large, $transition-slide-easing);
+			}
 		}
 	}
 	#{$identifier}.animate-jquery-slide {
