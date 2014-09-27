@@ -10,7 +10,7 @@
 ;(function($, window, document, undefined)
 {
 	// Plugin setup & settings
-	var $plugin_name					= 'flicker', $defaults =
+	var $plugin_name					= 'flickerplate', $defaults =
 	{
 		arrows							: true,
 		arrows_constraint				: false,
