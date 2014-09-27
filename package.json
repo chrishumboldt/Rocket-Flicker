@@ -1,6 +1,6 @@
 {
   "name": "Flickerplate",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "A cool jQuery plugin that lets you flick through content.",
   "repository": {
     "type": "git",
@@ -22,8 +22,8 @@
   "homepage": "http://getwebplate.com/plugins/flickerplate",
   "devDependencies": {
     "grunt": "~0.4.2",
-    "grunt-contrib-sass": "~0.6.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-uglify": "~0.5.0"
+    "grunt-contrib-sass": "~0.8.0",
+    "grunt-contrib-uglify": "~0.5.1",
+    "grunt-contrib-watch": "~0.6.1"
   }
 }
