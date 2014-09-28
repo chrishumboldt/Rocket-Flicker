@@ -7,7 +7,7 @@ A cool jQuery plugin that lets you flick through content.
 Getting Started
 =========
 
-This plugin is by definition a jQuery plugin and so is required. It also requires Modernizr for touch detection and the jQuery.Finger library for touch events. Both jQuery and a custom build of Modernizr are supplied.
+This plugin is by definition a jQuery plugin and so is required. It also requires Modernizr for touch detection and the Hammer.js library for touch events. Both jQuery and a custom build of Modernizr are supplied.
 
 See an example below of a basic include.
 
