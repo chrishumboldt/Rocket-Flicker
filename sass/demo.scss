@@ -2,7 +2,7 @@
  * SASS File: 		demo.scss
  * Type: 			execute
  * Author:        	Chris Humboldt
- * Last Edited:   	27 September 2014
+ * Last Edited:   	28 September 2014
  */
 
 
@@ -23,6 +23,15 @@
 @include global-setup();
 html {
 	@include font-family($open-sans);
+}
+a {
+	@include text-colour($red);
+	@include text-decoration(none);
+
+	.no-touch &:hover {
+		@include text-colour($red-dark);
+		@include text-decoration(underline);
+	}
 }
 
 
@@ -50,17 +59,6 @@ html {
 	p {
 		@include text-line-height(22px);
 		@include text-size(16px);
-	}
-
-	// Links
-	a {
-		@include text-colour($red);
-		@include text-decoration(none);
-
-		.no-touch &:hover {
-			@include text-colour($red-dark);
-			@include text-decoration(underline);
-		}
 	}
 }
 
