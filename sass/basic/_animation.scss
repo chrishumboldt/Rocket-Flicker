@@ -1,27 +1,21 @@
 /**
- * SASS File: 		_animation.scss
- * Type: 			partial
- * Author:        	Chris Humboldt
- * Last Edited:   	27 September 2014
- * Edited by: 		Chris humboldt
+ * File: _animation.scss
+ * Type: SASS basic file
+ * Author: Chris Humboldt
+ * Last Edited: 29 April 2015
  */
-
 
 // Table of contents
 // ---------------------------------------------------------------------------------------
 // Animation Variables
-
-$transform-slide-duration			: 0.2s;
-$transform-slide-duration-large		: 0.6s;
-$transform-slide-easing				: ease-out;
-
-$transition-slide-duration			: 0.2s;
-$transition-slide-duration-large	: 0.6s;
-$transition-slide-easing			: ease-in-out;
-
-// fade settings
-$transition-fade-duration			: 0.8s;
-$transition-fade-easing				: linear;
+$transform-slide-duration: 0.2s;
+$transform-slide-duration-large: 0.6s;
+$transform-slide-easing: ease-out;
+$transition-slide-duration: 0.2s;
+$transition-slide-duration-large: 0.6s;
+$transition-slide-easing: ease-in-out;
+$transition-fade-duration: 0.8s;
+$transition-fade-easing: linear;
 
 // Animations
 // ---------------------------------------------------------------------------------------
@@ -105,5 +99,4 @@ $transition-fade-easing				: linear;
 			}
 		}
 	}
-
-	}
+}

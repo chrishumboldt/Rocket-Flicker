@@ -1,0 +1,28 @@
+/**
+ * File: _import.scss
+ * Type: SASS import file
+ * Author: Chris Humboldt
+ * Last Edited: 29 April 2015
+ */
+
+// Table of contents
+// ---------------------------------------------------------------------------------------
+// Variables
+// Imports
+
+// Variables
+// ---------------------------------------------------------------------------------------
+$font-face-flickerplate: "icon-font-flickerplate" !default;
+
+// Imports
+// ---------------------------------------------------------------------------------------
+@import "../bower_components/blueplate/sass/import";
+
+@import "basic/animation";
+@import "basic/arrow-navigation";
+@import "basic/dot-navigation";
+@import "basic/flicker";
+@import "basic/setup";
+@import "basic/theme-dark";
+
+@import "css/execute";
