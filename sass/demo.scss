@@ -26,7 +26,7 @@ a {
 	@include text-colour($red);
 	@include text-decoration(none);
 
-	.no-touch &:hover {
+	.flick-no-touch &:hover {
 		@include text-colour($red-dark);
 		@include text-decoration(underline);
 	}

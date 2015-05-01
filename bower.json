@@ -6,7 +6,7 @@
 		"Chris Humboldt <chrismodem@gmail.com>"
 	],
 	"description": "A cool jQuery plugin that lets you flick through content.",
-	"main": "js/min/flickerplate.min.js",
+	"main": ["js/min/flickerplate.min.js", "css/flickerplate.css"],
 	"keywords": [
 		"Webplate",
 		"Flickerplate",

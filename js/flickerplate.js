@@ -2,112 +2,15 @@
  * File: flickerplate.js
  * Type: Javascript file
  * Author: Chris Humboldt
- * Last Edited: 30 April 2015
+ * Last Edited: 1 May 2015
  */
 
 // Table of contents
 // ---------------------------------------------------------------------------------------
-// Modernizr
 // Tools
 // Component call
 // Component
 // Prototype component
-
-// Modernizr
-// ---------------------------------------------------------------------------------------
-/*! modernizr 3.0.0-alpha.3 (Custom Build) | MIT *
- * http://v3.modernizr.com/download/#-touchevents !*/
-! function(e, n) {
-	function o(e, n) {
-		return typeof e === n
-	}
-
-	function t() {
-		var e, n, t, s, i, a, l;
-		for (var c in f) {
-			if (e = [], n = f[c], n.name && (e.push(n.name.toLowerCase()), n.options && n.options.aliases && n.options.aliases.length))
-				for (t = 0; t < n.options.aliases.length; t++) e.push(n.options.aliases[t].toLowerCase());
-			for (s = o(n.fn, "function") ? n.fn() : n.fn, i = 0; i < e.length; i++) a = e[i], l = a.split("."), 1 === l.length ? Modernizr[l[0]] = s : (!Modernizr[l[0]] || Modernizr[l[0]] instanceof Boolean || (Modernizr[l[0]] = new Boolean(Modernizr[l[0]])), Modernizr[l[0]][l[1]] = s), r.push((s ? "" : "no-") + l.join("-"))
-		}
-	}
-
-	function s(e) {
-		var n = c.className,
-			o = Modernizr._config.classPrefix || "";
-		if (Modernizr._config.enableJSClass) {
-			var t = new RegExp("(^|\\s)" + o + "no-js(\\s|$)");
-			n = n.replace(t, "$1" + o + "js$2")
-		}
-		Modernizr._config.enableClasses && (n += " " + o + e.join(" " + o), c.className = n)
-	}
-
-	function i() {
-		var e = n.body;
-		return e || (e = u("body"), e.fake = !0), e
-	}
-
-	function a(e, n, o, t) {
-		var s, a, r, f, l = "modernizr",
-			d = u("div"),
-			p = i();
-		if (parseInt(o, 10))
-			for (; o--;) r = u("div"), r.id = t ? t[o] : l + (o + 1), d.appendChild(r);
-		return s = ["&#173;", '<style id="s', l, '">', e, "</style>"].join(""), d.id = l, (p.fake ? p : d).innerHTML += s, p.appendChild(d), p.fake && (p.style.background = "", p.style.overflow = "hidden", f = c.style.overflow, c.style.overflow = "hidden", c.appendChild(p)), a = n(d, e), p.fake ? (p.parentNode.removeChild(p), c.style.overflow = f, c.offsetHeight) : d.parentNode.removeChild(d), !!a
-	}
-	var r = [],
-		f = [],
-		l = {
-			_version: "3.0.0-alpha.3",
-			_config: {
-				classPrefix: "flick-",
-				enableClasses: !0,
-				enableJSClass: !0,
-				usePrefixes: !0
-			},
-			_q: [],
-			on: function(e, n) {
-				var o = this;
-				setTimeout(function() {
-					n(o[e])
-				}, 0)
-			},
-			addTest: function(e, n, o) {
-				f.push({
-					name: e,
-					fn: n,
-					options: o
-				})
-			},
-			addAsyncTest: function(e) {
-				f.push({
-					name: null,
-					fn: e
-				})
-			}
-		},
-		Modernizr = function() {};
-	Modernizr.prototype = l, Modernizr = new Modernizr;
-	var c = n.documentElement,
-		d = l._config.usePrefixes ? " -webkit- -moz- -o- -ms- ".split(" ") : [];
-	l._prefixes = d;
-	var u = function() {
-			return "function" != typeof n.createElement ? n.createElement(arguments[0]) : n.createElement.apply(n, arguments)
-		},
-		p = l.testStyles = a;
-	Modernizr.addTest("touchevents", function() {
-		var o;
-		if ("ontouchstart" in e || e.DocumentTouch && n instanceof DocumentTouch) o = !0;
-		else {
-			var t = ["@media (", d.join("touch-enabled),("), "heartz", ")", "{#modernizr{top:9px;position:absolute}}"].join("");
-			p(t, function(e) {
-				o = 9 === e.offsetTop
-			})
-		}
-		return o
-	}), t(), s(r), delete l.addTest, delete l.addAsyncTest;
-	for (var h = 0; h < Modernizr._q.length; h++) Modernizr._q[h]();
-	e.Modernizr = Modernizr
-}(window, document);
 
 // Tools
 // ---------------------------------------------------------------------------------------
@@ -144,6 +47,9 @@ var tool = {
 	idAdd: function($selector, $id) {
 		$selector.setAttribute('id', $id);
 	},
+	isTouch: function() {
+		return 'ontouchstart' in window || 'onmsgesturechange' in window;
+	},
 	getIndex: function($node) {
 		return [].indexOf.call($node.parentNode.children, $node);
 	},
@@ -178,6 +84,13 @@ var tool = {
 // Component call
 // ---------------------------------------------------------------------------------------
 function Flickerplate($selector, $userOptions) {
+	// Add touch detection
+	var $htmlElement = document.getElementsByTagName('html')[0];
+	if (!tool.isTouch() && !tool.hasClass($htmlElement, 'flick-no-touch')) {
+		tool.classAdd($htmlElement, 'flick-no-touch');
+	}
+
+	// Component
 	var $selectorType = $selector.charAt(0).toString();
 
 	if ($selectorType === '.') {

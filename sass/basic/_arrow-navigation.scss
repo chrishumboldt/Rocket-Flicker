@@ -2,7 +2,7 @@
  * File: _arrow-navigation.scss
  * Type: SASS basic file
  * Author: Chris Humboldt
- * Last Edited: 29 April 2015
+ * Last Edited: 1 May 2015
  */
 
 // Table of contents
@@ -36,7 +36,7 @@
 		}
 
 		// Hover state
-		.flick-no-touchevents &:hover {
+		.flick-no-touch &:hover {
 			@include cursor(pointer);
 
 			&.left:before,
@@ -44,7 +44,7 @@
 				@include transparency(1);
 			}
 		}
-		.flick-no-touchevents &:active {
+		.flick-no-touch &:active {
 			&.left:before,
 			&.right:before {
 				@include margin-top(-23px);
