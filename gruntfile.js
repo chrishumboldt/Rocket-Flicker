@@ -16,7 +16,7 @@ module.exports = function(grunt) {
 			dist: {
 				options: {
 					style: 'compressed',
-					sourcemap: 'auto'
+					sourcemap: 'none'
 				},
 				files: {
 					'css/demo.css': 'sass/demo.scss',
