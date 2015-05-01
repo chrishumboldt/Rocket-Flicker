@@ -8,6 +8,7 @@
 // Table of contents
 // ---------------------------------------------------------------------------------------
 // Tools
+// Touch check
 // Component call
 // Component
 // Prototype component
@@ -81,16 +82,16 @@ var tool = {
 	}
 };
 
+// Touch check
+// ---------------------------------------------------------------------------------------
+var $htmlElement = document.getElementsByTagName('html')[0];
+if (!tool.isTouch() && !tool.hasClass($htmlElement, 'flick-no-touch')) {
+	tool.classAdd($htmlElement, 'flick-no-touch');
+}
+
 // Component call
 // ---------------------------------------------------------------------------------------
 function Flickerplate($selector, $userOptions) {
-	// Add touch detection
-	var $htmlElement = document.getElementsByTagName('html')[0];
-	if (!tool.isTouch() && !tool.hasClass($htmlElement, 'flick-no-touch')) {
-		tool.classAdd($htmlElement, 'flick-no-touch');
-	}
-
-	// Component
 	var $selectorType = $selector.charAt(0).toString();
 
 	if ($selectorType === '.') {
