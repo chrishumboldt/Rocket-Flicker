@@ -1,22 +1,18 @@
 Flickerplate
 =========
 
-A cool jQuery plugin that lets you flick through content.
+A cool Javascript component that lets you flick through content.
 
 
 Getting Started
 =========
-
-This plugin is by definition a jQuery plugin and so is required. It also requires Modernizr for touch detection and the Hammer.js library for touch events. Both jQuery and a custom build of Modernizr are supplied.
 
 See an example below of a basic include.
 
 ```
 <head>
 	<!--Required javascript-->
-	<script src="js/min/jquery-v1.10.2.min.js"></script>
 	<script src="js/min/modernizr-custom-v2.7.1.min.js"></script>
-	<script src="js/min/hammer-v2.0.3.min.js"></script>
 	
 	<!--Flickerplate-->
 	<script src="js/min/flickerplate.min.js"></script>
@@ -24,7 +20,7 @@ See an example below of a basic include.
 </head>
 ```
 
-Once included, create the neccessary HTML and call Flickerplate by referencing the containing class in your javascript file.
+Once included, create the neccessary HTML and call Flickerplate by referencing the containing class in your Javascript file.
 
 Javascript call:
 
@@ -81,7 +77,7 @@ Contributors
 Copyright and License
 =========
 
-Copyright 2014 Savedge Project
+Copyright 2015 Savedge Project
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

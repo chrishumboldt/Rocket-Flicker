@@ -36,7 +36,7 @@
 		}
 
 		// Hover state
-		.no-touch &:hover {
+		.flick-no-touchevents &:hover {
 			@include cursor(pointer);
 
 			&.left:before,
@@ -44,7 +44,7 @@
 				@include transparency(1);
 			}
 		}
-		.no-touch &:active {
+		.flick-no-touchevents &:active {
 			&.left:before,
 			&.right:before {
 				@include margin-top(-23px);

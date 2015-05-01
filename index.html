@@ -1,33 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!--Meta setup - Required for apple device-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
-    <!--Title-->
-    <title>Flickerplate Example</title>
-	
-	<!--Required libraries-->
-    <script src="js/min/jquery-v1.10.2.min.js" type="text/javascript"></script>
-    <script src="js/min/modernizr-custom-v2.7.1.min.js" type="text/javascript"></script>
-    <script src="js/min/hammer-v2.0.3.min.js" type="text/javascript"></script>
+	<!-- Meta setup - Required for apple device -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <!--Include flickerplate-->
+	<!-- Title -->
+	<title>Flickerplate Example</title>
+
+	<!-- Include Flickerplate -->
+	<script src="js/flickerplate.js" type="text/javascript"></script>
 	<link href="css/flickerplate.css"  type="text/css" rel="stylesheet">
-    <script src="js/min/flickerplate.min.js" type="text/javascript"></script>
-	
-	<!--Execute flickerplate-->
-	<script>
-	$(function(){
-		$('.flicker-example').flickerplate(
-		{
-            auto_flick 				: true,
-            auto_flick_delay 		: 8,
-            flick_animation 		: 'transform-slide'
-        });
-	});
-	</script>
 
 	<!-- Demo styles -->
 	<link href="css/demo.css"  type="text/css" rel="stylesheet">
@@ -35,7 +18,7 @@
 </head>
 <body>
 	
-	<!--Basic example-->
+	<!-- Basic example -->
 	<div class="flicker-example">
 		
 		<ul>
@@ -59,13 +42,18 @@
 		
 	</div>
 		
-	<!--Documentation link-->
+	<!-- Documentation link -->
 	<div class="documentation">
 		
 		<h3>Read The Documentation</h3>
 		<p>There are a lot of options for editing Flickerplate so it's worthwhile getting up to speed. <a href="http://getwebplate.com/plugins/flickerplate">Click here</a> for more information.</p>
 	
 	</div>
+
+	<script>
+	// Execute component
+	new Flickerplate('.flicker-example');
+	</script>
 	
 </body>
 </html>

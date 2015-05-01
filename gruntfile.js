@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.registerTask('build', ['sass', 'uglify']);
 	grunt.registerTask('default', ['watch']);
-	
+
 	// Initialize config
 	grunt.initConfig({
 		// Package
@@ -19,20 +19,18 @@ module.exports = function(grunt) {
 					sourcemap: 'auto'
 				},
 				files: {
-					'css/demo.css'			: 'sass/demo.scss',
-					'css/flickerplate.css'	: 'sass/flickerplate.scss'
+					'css/demo.css': 'sass/demo.scss',
+					'css/flickerplate.css': 'sass/flickerplate.scss'
 				}
 			}
-		}, 
+		},
 		// End of SASS
 		// Uglify
 		uglify: {
 			my_target: {
 				files: {
-					'js/min/jquery-v1.10.2.min.js'				: ['js/jquery-v1.10.2.js'],
-					'js/min/modernizr-custom-v2.7.1.min.js'		: ['js/modernizr-custom-v2.7.1.js'],
-					'js/min/hammer-v2.0.3.min.js'				: ['js/hammer-v2.0.3.js'],
-					'js/min/flickerplate.min.js'				: ['js/flickerplate.js']
+					'js/min/hammer-v2.0.3.min.js': ['js/hammer-v2.0.3.js'],
+					'js/min/flickerplate.min.js': ['js/flickerplate.js']
 				}
 			}
 		},
@@ -53,9 +51,9 @@ module.exports = function(grunt) {
 			// Live reload
 			options: {
 				livereload: true,
-		    } 
-		    // End of live reload
-		} 
+			}
+			// End of live reload
+		}
 		// End of watch
 	});
 	// End of initialize config
