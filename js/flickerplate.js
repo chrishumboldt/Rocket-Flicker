@@ -275,7 +275,7 @@ FlickerplateComponent.prototype = {
 					for (var $i = $allFlicks.length - 1; $i >= 0; $i--)(function($i) {
 						tool.classRemove($allFlicks[$i], 'active');
 					})($i);
-					tool.classAdd($flicker.querySelector('li:nth-child(' + $flickPosition + ')'), 'active');
+					tool.classAdd($flicks.querySelector('li:nth-child(' + $flickPosition + ')'), 'active');
 					break;
 				case 'transition-slide':
 					$flicks.style.left = '-' + $movePosition + '00%';
@@ -291,7 +291,7 @@ FlickerplateComponent.prototype = {
 
 		function flickerHammer() {
 			if (typeof Hammer === 'function') {
-				if ($flickAnimation === 'transform-slide' || $flickAnimation === 'transition-fade' || $flickAnimation === 'transition-slide') {
+				if ($flickAnimation === 'transform-slide' || $flickAnimation === 'transition-slide') {
 					// Interaction
 					var $hammerTime = new Hammer($flicker.querySelector('ul.flicks'));
 					$hammerTime.on('panleft panright', function($ev) {
@@ -299,6 +299,11 @@ FlickerplateComponent.prototype = {
 					});
 					$hammerTime.on('panend', function($ev) {
 						flickerPanEnd($ev);
+					});
+				} else if ($flickAnimation === 'transition-fade') {
+					var $hammerTime = new Hammer($flicker.querySelector('ul.flicks'));
+					$hammerTime.on('swipeleft swiperight', function($ev) {
+						flickerSwipe($ev);
 					});
 				}
 			}
@@ -386,6 +391,20 @@ FlickerplateComponent.prototype = {
 					$flickerMoving = false;
 				});
 			}
+		};
+
+		function flickerSwipe($ev) {
+			if ($ev.type == 'swipeleft') {
+				if (++$flickPosition > $flickCount) {
+					$flickPosition = $arrowsConstraint ? $flickCount : 1;
+				}
+			} else if ($ev.type == 'swiperight') {
+				if (--$flickPosition < 1) {
+					$flickPosition = $arrowsConstraint ? 1 : $flickCount;
+				}
+			}
+			flickerMove();
+			flickerAutoReset();
 		};
 	}
 };
