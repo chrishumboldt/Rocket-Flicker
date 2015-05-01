@@ -158,12 +158,18 @@ FlickerplateComponent.prototype = {
 		var $flickerMoving = false;
 		var $transitionEventListner = "transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd";
 
+		var $lastPosXLeft = 0;
+		var $lastPosXPercent = 0;
+		var $panCSS = 'translate3d(0, 0, 0)';
+		var $panThreshold = 100;
+
 		// Execute
 		flickerSetup();
 
 		flickerAttachArrows();
 		flickerAttachDots();
 		flickerAutoStart();
+		flickerHammer();
 
 		// Functions
 		function flickerAttachArrows() {
@@ -226,31 +232,31 @@ FlickerplateComponent.prototype = {
 					};
 				};
 			}
-		}
+		};
 
 		function flickerAutoFlick() {
 			if (++$flickPosition > $flickCount) {
 				$flickPosition = 1;
 			}
 			flickerMove();
-		}
+		};
 
 		function flickerAutoReset() {
 			flickerAutoStop();
 			flickerAutoStart();
-		}
+		};
 
 		function flickerAutoStart() {
 			if ($autoFlick == true) {
 				$autoFlickWatch = setInterval(flickerAutoFlick, $autoFlickDelay);
 			}
-		}
+		};
 
 		function flickerAutoStop() {
 			if ($autoFlick == true) {
 				$autoFlickWatch = clearInterval($autoFlickWatch);
 			}
-		}
+		};
 
 		function flickerMove($firstCheck) {
 			$firstCheck = $firstCheck || false;
@@ -260,7 +266,9 @@ FlickerplateComponent.prototype = {
 
 			switch ($flickAnimation) {
 				case 'transform-slide':
-					$flicks.setAttribute('style', '-webkit-transform:translate3d(-' + $movePosition + '%, 0, 0);-o-transform:translate3d(-' + $movePosition + '%, 0, 0);-moz-transform:translate3d(-' + $movePosition + '%, 0, 0);transform:translate3d(-' + $movePosition + '%, 0, 0)');
+					var $translate3D = 'translate3d(-' + $movePosition + '%, 0, 0)';
+					$flicks.setAttribute('style', '-webkit-transform:' + $translate3D + ';-o-transform:' + $translate3D + ';-moz-transform:' + $translate3D + ';transform:' + $translate3D);
+					$lastPosXPercent = -($movePosition);
 					break;
 				case 'transition-fade':
 					var $allFlicks = $flicker.querySelectorAll('li');
@@ -271,6 +279,7 @@ FlickerplateComponent.prototype = {
 					break;
 				case 'transition-slide':
 					$flicks.style.left = '-' + $movePosition + '00%';
+					$lastPosXLeft = -($movePosition + '00');
 					break;
 			}
 
@@ -278,6 +287,77 @@ FlickerplateComponent.prototype = {
 				tool.classRemove($flicker.querySelector('.dot.active'), 'active');
 				tool.classAdd($flicker.querySelector('.dot-navigation li:nth-child(' + $flickPosition + ') .dot'), 'active');
 			}
+		};
+
+		function flickerHammer() {
+			if (typeof Hammer === 'function') {
+				if ($flickAnimation === 'transform-slide' || $flickAnimation === 'transition-fade' || $flickAnimation === 'transition-slide') {
+					// Interaction
+					var $hammerTime = new Hammer($flicker.querySelector('ul.flicks'));
+					$hammerTime.on('panleft panright', function($ev) {
+						flickerPan($ev);
+					});
+					$hammerTime.on('panend', function($ev) {
+						flickerPanEnd($ev);
+					});
+				}
+			}
+		};
+
+		function flickerPan($ev) {
+			flickerAutoStop();
+
+			var $flickerWidth = $flicker.clientWidth;
+			var $flicks = $flicker.querySelector('ul.flicks');
+
+			switch ($flickAnimation) {
+				case 'transform-slide':
+					if (tool.isTouch()) {
+						$posX = (Math.round(($ev.deltaX / $flickerWidth) * 1000) / 1000) + $lastPosXPercent;
+					} else {
+						$posX = (Math.round(($ev.deltaX / $flickerWidth) * 10) / 10) + $lastPosXPercent;
+					}
+
+					// Check constraints
+					if ($flickPosition == 1 && $posX > 0) {
+						$posX = 0;
+					} else if (($flickPosition == $flickCount) && ($posX < -($flickCount - 1))) {
+						$posX = -($flickCount - 1)
+					}
+
+					// Move
+					$panCSS = 'translate3d(' + $posX + '%, 0, 0)';
+					$flicks.setAttribute('style', '-webkit-transform:' + $panCSS + ';-o-transform:' + $panCSS + ';-moz-transform:' + $panCSS + ';transform:' + $panCSS);
+					break;
+				case 'transition-slide':
+					$posX = Math.round(($ev.deltaX / $flickerWidth) * 100) + $lastPosXLeft;
+
+					// Check constraint
+					if ($flickPosition == 1 && $posX > 0) {
+						$posX = 0;
+					} else if (($flickPosition == $flickCount) && ($posX < -($flickCount - 1) * 100)) {
+						$posX = -(($flickCount - 1) * 100);
+					}
+
+					// Move
+					$flicks.style.left = $posX + '%';
+					break;
+			}
+		};
+
+		function flickerPanEnd($ev) {
+			var $endPosX = $ev.deltaX;
+
+			if (($endPosX < -$panThreshold) && ($flickPosition < $flickCount)) {
+				$flickPosition++;
+			} else if (($endPosX > $panThreshold) && ($flickPosition > 1)) {
+				$flickPosition--;
+			}
+
+			setTimeout(function() {
+				flickerMove();
+			}, 10);
+			flickerAutoStart();
 		};
 
 		function flickerSetup() {
