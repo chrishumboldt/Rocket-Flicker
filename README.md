@@ -12,10 +12,10 @@ See an example below of a basic include.
 ```
 <head>
 	<!-- Include Hammer (optional) -->
-	<script src="js/hammer-v2.0.3.js"></script>
+	<script src="js/min/hammer-v2.0.3.min.js"></script>
 	
 	<!-- Include Flickerplate -->
-	<script src="js/flickerplate.js"></script>
+	<script src="js/min/flickerplate.min.js"></script>
 	<link href="css/flickerplate.css"  type="text/css" rel="stylesheet">
 </head>
 ```
