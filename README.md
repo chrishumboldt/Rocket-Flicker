@@ -25,7 +25,7 @@ Once included, create the neccessary HTML and call Flickerplate by referencing t
 Javascript call:
 
 ```
-new Flickerplate('.flicker-example');
+new flickerplate('.flicker-example');
 ```
 
 Basic HTML:
