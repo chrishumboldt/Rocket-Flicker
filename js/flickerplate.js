@@ -16,20 +16,20 @@
 // Component
 // Prototype component
 
-function Flickerplate($selector, $userOptions) {
+function flickerplate($selector, $userOptions) {
 	var $selectorType = $selector.charAt(0).toString();
 
 	if ($selectorType === '.') {
 		var $elements = document.querySelectorAll($selector);
 		for (var $i = 0; $i < $elements.length; $i++) {
-			new FlickerplateComponent($elements[$i], $userOptions);
+			new flickerplateComponent($elements[$i], $userOptions);
 		}
 	} else if ($selectorType === '#') {
-		new FlickerplateComponent(document.getElementById($selector.substring(1)), $userOptions);
+		new flickerplateComponent(document.getElementById($selector.substring(1)), $userOptions);
 	}
 };
 
-function FlickerplateComponent($element, $userOptions) {
+function flickerplateComponent($element, $userOptions) {
 	// Tools
 	var tool = function(document) {
 		// Elements
