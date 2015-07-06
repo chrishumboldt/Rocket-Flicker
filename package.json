@@ -1,6 +1,6 @@
 {
 	"name": "Flickerplate",
-	"version": "2.2.0",
+	"version": "3.0.0",
 	"description": "A cool jQuery plugin that lets you flick through content.",
 	"repository": {
 		"type": "git",
