@@ -1,9 +1,8 @@
 /**
- * SASS File: 		flickerplate.scss
- * Type: 			execute
- * Author:        	Chris Humboldt
- * Last Edited:   	27 September 2014
- * Link:			http://getwebplate.com/plugins/flickerplate
+ * File: flickerplate.scss
+ * Type: SASS file
+ * Author: Chris Humboldt
+ * Last Edited: 29 April 2015
  */
 
 // Table of Contents:
@@ -11,16 +10,11 @@
 // Imports
 // Call styles
 
-
 // Imports
 // ---------------------------------------------------------------------------------------
-@import "../bower_components/blueplate/sass/blueplate";
-@import "flickerplate/import";
-
+@import "import";
 
 // Call styles
 // ---------------------------------------------------------------------------------------
-// Call this mixin if you want to load up all the styles
 @include flickerplate-css();
-
 

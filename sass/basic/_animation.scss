@@ -1,27 +1,21 @@
 /**
- * SASS File: 		_animation.scss
- * Type: 			partial
- * Author:        	Chris Humboldt
- * Last Edited:   	27 September 2014
- * Edited by: 		Chris humboldt
+ * File: _animation.scss
+ * Type: SASS basic file
+ * Author: Chris Humboldt
+ * Last Edited: 29 April 2015
  */
-
 
 // Table of contents
 // ---------------------------------------------------------------------------------------
 // Animation Variables
-
-$transform-slide-duration			: 0.2s;
-$transform-slide-duration-large		: 0.6s;
-$transform-slide-easing				: ease-out;
-
-$transition-slide-duration			: 0.2s;
-$transition-slide-duration-large	: 0.6s;
-$transition-slide-easing			: ease-in-out;
-
-// fade settings
-$transition-fade-duration			: 0.8s;
-$transition-fade-easing				: linear;
+$transform-slide-duration: 0.2s;
+$transform-slide-duration-large: 0.6s;
+$transform-slide-easing: ease-out;
+$transition-slide-duration: 0.2s;
+$transition-slide-duration-large: 0.6s;
+$transition-slide-easing: ease-in-out;
+$transition-fade-duration: 0.8s;
+$transition-fade-easing: linear;
 
 // Animations
 // ---------------------------------------------------------------------------------------
@@ -51,10 +45,10 @@ $transition-fade-easing				: linear;
 		// Flicks
 		ul.flicks {
 			@include position(relative, left 0%);
-			@include animate(left, $transition-slide-duration, $transition-slide-easing);
+			@include animate(left, $transition-slide-duration);
 
 			@include respond-to(large) {
-				@include animate(left, $transition-slide-duration-large, $transition-slide-easing);
+				@include animate(left, $transition-slide-duration-large);
 			}
 		}
 	}
@@ -81,15 +75,16 @@ $transition-fade-easing				: linear;
 				@include float(none);
 				@include position(absolute, top 0 left 0);
 				@include transparency(0);
+
+				&.active {
+					@include transparency(1);
+					@include animate(opacity, $transition-fade-duration);
+				}
 			}
 		}
-		&.fade-inited {
+		&.fade-initiated {
 			ul.flicks li {
-				@include animate(opacity, $transition-fade-duration, $transition-fade-easing);
-
-				&.first-flick {
-					@include transparency(1);
-				}
+				@include animate(opacity, $transition-fade-duration);
 			}
 		}
 	}
@@ -105,5 +100,4 @@ $transition-fade-easing				: linear;
 			}
 		}
 	}
-
-	}
+}

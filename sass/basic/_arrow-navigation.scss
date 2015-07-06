@@ -1,15 +1,13 @@
 /**
- * SASS File: 		_arrow-navigation.scss
- * Type: 			partial
- * Author:        	Chris Humboldt
- * Last Edited:   	26 September 2014
+ * File: _arrow-navigation.scss
+ * Type: SASS basic file
+ * Author: Chris Humboldt
+ * Last Edited: 1 May 2015
  */
-
 
 // Table of contents
 // ---------------------------------------------------------------------------------------
 // Arrow navigation
-
 
 // Arrow navigation
 // ---------------------------------------------------------------------------------------
@@ -33,20 +31,20 @@
 			@include transparency(0);
 			@include text-align(center);
 			@include text-colour($white);
-			@include text-size($font-x2-large);
+			@include text-size($size-x2-large);
 			@include animate(opacity);
 		}
 
 		// Hover state
-		.no-touch &:hover {
-			cursor: pointer;
+		.flickerplate-no-touch &:hover {
+			@include cursor(pointer);
 
 			&.left:before,
 			&.right:before {
 				@include transparency(1);
 			}
 		}
-		.no-touch &:active {
+		.flickerplate-no-touch &:active {
 			&.left:before,
 			&.right:before {
 				@include margin-top(-23px);

@@ -1,10 +1,9 @@
 /**
- * SASS File: 		demo.scss
- * Type: 			execute
- * Author:        	Chris Humboldt
- * Last Edited:   	28 September 2014
+ * File: demo.scss
+ * Type: SASS file
+ * Author: Chris Humboldt
+ * Last Edited: 29 April 2015
  */
-
 
 // Table of contents
 // ---------------------------------------------------------------------------------------
@@ -12,10 +11,9 @@
 // Global
 // Documentation
 
-
 // Imports
 // ---------------------------------------------------------------------------------------
-@import "../bower_components/blueplate/sass/blueplate";
+@import "../bower_components/blueplate/sass/import";
 
 
 // Global
@@ -28,12 +26,11 @@ a {
 	@include text-colour($red);
 	@include text-decoration(none);
 
-	.no-touch &:hover {
+	.flick-no-touch &:hover {
 		@include text-colour($red-dark);
 		@include text-decoration(underline);
 	}
 }
-
 
 // Documentation
 // ---------------------------------------------------------------------------------------

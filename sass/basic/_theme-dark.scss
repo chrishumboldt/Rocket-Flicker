@@ -1,57 +1,58 @@
 /**
- * SASS File: 		_theme-dark.scss
- * Type: 			partial
- * Author:        	Chris Humboldt
- * Last Edited:   	26 September 2014
+ * File: _theme-dark.scss
+ * Type: SASS basic file
+ * Author: Chris Humboldt
+ * Last Edited: 29 April 2015
  */
-
 
 // Table of contents
 // ---------------------------------------------------------------------------------------
 // Theme Dark
 
-
 // Theme dark
 // ---------------------------------------------------------------------------------------
 @mixin fp-dark-theme($identifier: ".flickerplate") {
 	
-	#{$identifier}.flicker-theme-dark {
+	#{$identifier}.theme-dark {
 	
 		// Dot navigation
 		.dot-navigation {
 			.dot {
-				background-color: fade-out(#000, 0.88);
+				@include background-colour(fade-out($black, 0.88));
 			}
 			.dot:hover {
-				background-color: fade-out(#000, 0.4);
+				@include background-colour(fade-out($black, 0.4));
 			}
 			.dot.active {
-				background-color: #000;
+				@include background-colour($black);
 			}
 		}
 		
 		ul.flicks li .flick-inner {
-			color: fade-out(#000, 0.1);
+			@include text-colour(fade-out($black, 0.1));
 		
 			.flick-content {
 				.flick-sub-text {
-					color: fade-out(#000, 0.1);
+					@include text-colour(fade-out($black, 0.1));
 				}
 				.flick-title span.flick-block-text, .flick-sub-text span.flick-block-text {
-					background-color: fade-out(#fff, 0.5);
+					@include background-colour(fade-out($white, 0.5));
 				}
 			}
 		}
+		.arrow-navigation:before {
+			@include text-colour(fade-out($black, 0.1));
+		}
 	}
 	#{$identifier} ul.flicks li.flick-theme-dark .flick-inner {
-		color: fade-out(#000, 0.1);
+		@include text-colour(fade-out($black, 0.1));
 		
 		.flick-content {
 			.flick-sub-text {
-				color: fade-out(#000, 0.1);
+				@include text-colour(fade-out($black, 0.1));
 			}
 			.flick-title span.flick-block-text, .flick-sub-text span.flick-block-text {
-				background-color: fade-out(#fff, 0.5);
+				@include background-colour(fade-out($white, 0.5));
 			}
 		}
 	}

@@ -1,550 +1,403 @@
 /**
- * jQuery File: 	flickerplate.js
- * Type:			plugin
- * Author:        	Chris Humboldt
- * Last Edited:   	28 September 2014
+ * File: flickerplate.js
+ * Type: Javascript component
+ * Author: Chris Humboldt
+ 
  */
 
+// Table of contents
+// ---------------------------------------------------------------------------------------
+// 
+// Table of contents
+// ---------------------------------------------------------------------------------------
+// Tools
+// Touch check
+// Component call
+// Component
+// Prototype component
 
-// Plugin
-;(function($, window, document, undefined)
-{
-	// Plugin setup & settings
-	var $plugin_name					= 'flickerplate', $defaults =
-	{
-		arrows							: true,
-		arrows_constraint				: false,
-		auto_flick						: true,
-		auto_flick_delay				: 10,
-		block_text						: true,
-		dot_alignment					: 'center',
-		dot_navigation					: true,
-		flick_animation					: 'transition-slide',
-		flick_position 					: 1,
-		theme							: 'light'
-	};
-	
-	// The actual plugin constructor
-	function Plugin($element, $options) 
-	{
-		this.element 					= $element;
-		this.settings 					= $.extend({}, $defaults, $options);
-		this._defaults 					= $defaults;
-		this._name 						= $plugin_name;
+function Flickerplate($selector, $userOptions) {
+	var $selectorType = $selector.charAt(0).toString();
 
-		// Initilize plugin
-		this.init();
+	if ($selectorType === '.') {
+		var $elements = document.querySelectorAll($selector);
+		for (var $i = 0; $i < $elements.length; $i++) {
+			new FlickerplateComponent($elements[$i], $userOptions);
+		}
+	} else if ($selectorType === '#') {
+		new FlickerplateComponent(document.getElementById($selector.substring(1)), $userOptions);
 	}
-	
-	// Plugin
-	// ---------------------------------------------------------------------------------------
-	Plugin.prototype 					= 
-	{
-		init 							: function()
-		{
-			// Variables
-			// ---------------------------------------------------------------------------------------
-			var $this 					= this;
-			var $settings 				= $this.settings;
-			var $flicker 				= $($this.element);
+};
 
-			var $auto_flick;
-			var $dot_count				= 0;
-			var $fade_speed 			= 800;
-			var $flick_count 			= 0;
-			var $flicker_moving			= false;
+function FlickerplateComponent($element, $userOptions) {
+	// Tools
+	var tool = function(document) {
+		// Elements
+		var $toolEl = {
+			body: document.getElementsByTagName('body')[0],
+			html: document.getElementsByTagName('html')[0]
+		};
+		// HTML
+		var $toolHtml = {
+			test: false
+		};
 
-			var $last_pos_x_left 		= 0;
-			var $last_pos_x_percent		= 0;
-			var $pan_css				= 'translate3d(0, 0, 0)';
-			var $pan_threshold 			= 100;
-
-
-			// Change settings
-			// ---------------------------------------------------------------------------------------
-			if($flicker.data('arrows') != undefined)
-			{
-				$settings.arrows 				= $flicker.data('arrows');
+		// Functions
+		var classAdd = function($element, $class) {
+			var $crtClass = $element.className;
+			if ($crtClass.match(new RegExp('\\b' + $class + '\\b', 'g')) === null) {
+				$element.className = $crtClass === '' ? $class : $crtClass + ' ' + $class;
 			}
-			if($flicker.data('arrows-constraint') != undefined)
-			{
-				$settings.arrows_constraint		= $flicker.data('arrows-constraint');
+		};
+		var classClear = function($element) {
+			$element.removeAttribute('class');
+		};
+		var classRemove = function($element, $class) {
+			if ($element.className.indexOf($class) > -1) {
+				$element.className = $element.className.split(' ').filter(function($val) {
+					return $val != $class;
+				}).toString().replace(/,/g, ' ');
+				if ($element.className === '') {
+					classClear($element);
+				}
 			}
-			if($flicker.data('auto-flick-delay') != undefined)
-			{
-				$settings.auto_flick_delay		= $flicker.data('auto-flick-delay') * 1000;
+		};
+		var exists = function($element) {
+			if ($element === null || typeof($element) === undefined) {
+				return false;
+			} else {
+				return true;
 			}
-			else
-			{
-				$settings.auto_flick_delay 		= $settings.auto_flick_delay * 1000
+		};
+		var getIndex = function($node) {
+			return [].indexOf.call($node.parentNode.children, $node);
+		};
+		var hasClass = function($element, $class) {
+			return (' ' + $element.className + ' ').indexOf(' ' + $class + ' ') > -1;
+		};
+		var isTouch = function() {
+			return 'ontouchstart' in window || 'onmsgesturechange' in window;
+		};
+		var remove = function($selector) {
+			if ($selector.charAt(0) === '#') {
+				var $element = document.getElementById($selector.substring(1));
+				if ($element !== null) {
+					$element.parentNode.removeChild($element);
+				}
+			} else if ($selector.charAt(0) === '.') {
+				var $elements = document.querySelectorAll($selector);
+				for (var $i = $elements.length - 1; $i >= 0; $i--) {
+					if ($elements[$i] !== null) {
+						$elements[$i].parentNode.removeChild($element);
+					}
+				}
 			}
-			if($flicker.data('block-text') != undefined)
-			{
-				$settings.block_text 			= $flicker.data('block-text');
+		};
+		var wrapInner = function($element, $tag, $className) {
+			if (typeof $tag === 'string') {
+				$tag = document.createElement($tag);
 			}
-			$settings.dot_alignment				= $flicker.data('dot-alignment') || $settings.dot_alignment;
-			if($flicker.data('dot-navigation') != undefined)
-			{
-				$settings.dot_navigation 		= $flicker.data('dot-navigation');
+			if ($className !== undefined) {
+				var $div = $element.appendChild($tag).setAttribute('class', $className);
+			} else {
+				var $div = $element.appendChild($tag);
 			}
-			$settings.fade_speed 				= $fade_speed;
-			$settings.flick_animation			= $flicker.data('flick-animation') || $settings.flick_animation;
-			$settings.flick_position			= $flicker.data('flick-position') || $settings.flick_position;
-			$settings.theme						= $flicker.find('li:eq(0)').data('theme') || $flicker.data('theme') || $settings.theme;
+			while ($element.firstChild !== $tag) {
+				$tag.appendChild($element.firstChild);
+			}
+		};
 
+		return {
+			classAdd: classAdd,
+			classClear: classClear,
+			classRemove: classRemove,
+			element: $toolEl,
+			exists: exists,
+			getIndex: getIndex,
+			hasClass: hasClass,
+			html: $toolHtml,
+			isTouch: isTouch,
+			remove: remove,
+			wrapInner: wrapInner
+		}
+	}(document);
 
-			// Execute
-			// ---------------------------------------------------------------------------------------
-			fc_basic_setup();
+	// Touch check
+	console.log(tool.isTouch());
+	console.log(tool.hasClass(tool.element.html, 'flickerplate-no-touch'));
+	if (!tool.isTouch() && !tool.hasClass(tool.element.html, 'flickerplate-no-touch')) {
+		console.log('woot');
+		tool.classAdd(tool.element.html, 'flickerplate-no-touch');
+	}
 
-			fc_attach_arrows();
-			fc_attach_dot_navigation();
-			fc_auto_flick_start();
-			fc_hammer_flick();
+	// Variables
+	var $self = this;
+	var $autoFlickWatch;
+	var $flickCount = 0;
+	var $flickerMoving = false;
+	var $transitionEventListner = "transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd";
 
+	var $lastPosXLeft = 0;
+	var $lastPosXPercent = 0;
+	var $panCSS = 'translate3d(0, 0, 0)';
+	var $panThreshold = 100;
 
-			// Functions
-			// ---------------------------------------------------------------------------------------
-			// Basic setup
-			function fc_basic_setup()
-			{
-				// Add classes
-				$flicker.addClass('flickerplate');
-				$flicker.find('ul:first').addClass('flicks');
+	// Options
+	$userOptions = $userOptions || false;
+	$self.options = {
+		animation: $userOptions.animation || 'transform-slide',
+		arrows: ($userOptions.arrows) ? $userOptions.arrows : true,
+		arrowsConstraint: ($userOptions.arrowsConstraint) ? $userOptions.arrowsConstraint : false,
+		autoFlick: ($userOptions.autoFlick) ? $userOptions.autoFlick : true,
+		autoFlickDelay: $userOptions.autoFlickDelay || 10,
+		dotAlignment: $userOptions.dotAlignment || 'center',
+		dots: ($userOptions.dots) ? $userOptions.dots : true,
+		position: $userOptions.position || 1,
+		theme: $userOptions.theme || 'light'
+	};
 
-				// Animation type
-				$flicker.addClass('animate-' + $settings.flick_animation);
+	// Internal functions
+	function flickerAttachArrows() {
+		if ($self.options.animation != 'scroller-slide' && $self.options.arrows == true) {
+			var $arrowLeft = document.createElement('div');
+			var $arrowRight = document.createElement('div');
 
-				// Theme
-				$flicker.addClass('flicker-theme-' + $settings.theme);
+			$arrowLeft.className = 'arrow-navigation left';
+			$arrowRight.className = 'arrow-navigation right';
 
-				// Set the flick position
-				$flicker.attr('data-flick-position', $settings.flick_position);
-				fc_move_flicker();
+			$element.insertBefore($arrowLeft, $element.querySelector('.flicks'));
+			$element.insertBefore($arrowRight, $element.querySelector('.flicks'));
 
-				// Each flick
-				$flicker.find('ul.flicks > li').each(function()
-				{
-					// Increase count
-					$flick_count++;
-
-					// Wrap each li
-					$(this).wrapInner('<div class="flick-inner"><div class="flick-content"></div></div>');
-
-					// Block text
-					$flick_block_text				= $(this).data('block-text');
-					if($flick_block_text != undefined)
-					{
-						if($flick_block_text == true)
-						{
-							$(this).find('.flick-title').wrapInner('<span class="flick-block-text"></span>');
-							$(this).find('.flick-sub-text').wrapInner('<span class="flick-block-text"></span>');
-						}
-					}
-					else if($settings.block_text == true)
-					{
-						$(this).find('.flick-title').wrapInner('<span class="flick-block-text"></span>');
-						$(this).find('.flick-sub-text').wrapInner('<span class="flick-block-text"></span>');
-					}
-			
-					// Set any backgrounds
-					$background						= $(this).data('background');
-					if($background != undefined)
-					{
-						$(this).css('background-image', 'url(' + $background + ')');
-					} 
-				});
-
-				// Kill the animation	
-				if($settings.flick_animation != 'scroller-slide' && $settings.flick_animation != 'jquery-slide' && $settings.flick_animation != 'jquery-fade')
-				{
-					$flicker.find('ul.flicks').bind("transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd", function()
-					{
-						$flicker_moving 		= false;
-					});
+			// Click event
+			var $arrowNavigationElements = $element.querySelectorAll('.arrow-navigation');
+			$arrowLeft.onclick = function() {
+				if (--$self.options.position < 1) {
+					$self.options.position = $self.options.arrowsConstraint ? 1 : $flickCount;
 				}
+				flickerMove();
+				flickerAutoReset();
 			};
-
-			// Attach arrows
-			function fc_attach_arrows()
-			{
-				if(($settings.flick_animation != 'scroller-slide') && ($settings.arrows == true))
-				{
-					// The HTML
-					$arrow_nav_html				= '<div class="arrow-navigation left"></div>';
-					$arrow_nav_html				+= '<div class="arrow-navigation right"></div>';
-
-					// Attach the HTML
-					$flicker.prepend($arrow_nav_html);
-
-					// Actions
-					$flicker.find('.arrow-navigation').on('click', function()
-					{
-						// Check which arrow was clicked
-						if($(this).hasClass('right'))
-						{	
-							if(++$settings.flick_position > $flick_count)
-							{
-								$settings.flick_position	= $settings.arrows_constraint ? ($flick_count) : 1;
-							}
-						}
-						else
-						{	
-							if(--$settings.flick_position < 1)
-							{
-								$settings.flick_position	= $settings.arrows_constraint ? 1 : ($flick_count);
-							}
-						}
-					
-						// Move flicker
-						fc_move_flicker();
-						fc_auto_flick_reset();
-					});
+			$arrowRight.onclick = function() {
+				if (++$self.options.position > $flickCount) {
+					$self.options.position = $self.options.arrowsConstraint ? $flickCount : 1;
 				}
-			};
-
-			// Attach dot navigation
-			function fc_attach_dot_navigation()
-			{
-				if(($settings.flick_animation != 'scroller-slide') && ($settings.dot_navigation == true))
-				{
-					// The HTML
-					$dot_nav_html				= '<div class="dot-navigation '+ $settings.dot_alignment +'"><ul>';
-					while($dot_count < $flick_count) 
-					{
-						// Increase the count
-						$dot_count++;
-					
-						// Creat dots
-						if($dot_count == 1) {
-						
-							$dot_nav_html	+= '<li><div class="dot active"></div></li>';
-						}
-						else {
-						
-							$dot_nav_html	+= '<li><div class="dot"></div></li>';
-						}
-					}
-					$dot_nav_html	+= '</ul></div>';
-
-					// Attach the HTML
-					$flicker.prepend($dot_nav_html);
-
-					// Actions
-					$flicker.find('.dot-navigation li').on('click', function()
-					{
-						$settings.flick_position 	= $(this).index() + 1;
-
-						// Invoke the movement
-						fc_move_flicker();
-						fc_auto_flick_reset();
-					});
-				}
-			};
-
-			// Auto flick
-			function fc_auto_flick_start()
-			{
-				if($settings.auto_flick == true)
-				{
-					$auto_flick			= setInterval(fc_auto_flick, $settings.auto_flick_delay);
-				}
-			};
-			function fc_auto_flick()
-			{
-				// Check the position
-				if(++$settings.flick_position > $flick_count) {
-					
-					$settings.flick_position		= 1;
-				}
-				
-				// Move flicker
-				fc_move_flicker();
-			};
-			function fc_auto_flick_stop()
-			{
-				if($settings.auto_flick == true)
-				{
-					$auto_flick			= clearInterval($auto_flick);
-				}
-			};
-			function fc_auto_flick_reset()
-			{
-				fc_auto_flick_stop();
-				fc_auto_flick_start();
-			};
-
-			// Hammer flick
-			function fc_hammer_flick()
-			{
-				// Check the animation types
-				if($settings.flick_animation == 'transform-slide' 
-				|| $settings.flick_animation == 'transition-slide'
-				|| $settings.flick_animation == 'jquery-slide')
-				{
-					// Interaction
-					$flicker.find('ul.flicks').hammer()
-					.on('panleft panright', function($ev){ fc_interaction_pan($ev) })
-					.on('panend', function($ev){ fc_interaction_panend($ev) });
-				}
-				else if($settings.flick_animation == 'transition-fade'
-				|| $settings.flick_animation == 'jquery-fade')
-				{
-					$flicker.find('ul.flicks').hammer()
-					.on('swipeleft swiperight', function($ev){ fc_interaction_swipe($ev) });
-				}
-			};
-			function fc_interaction_pan($ev)
-			{
-				// Stop auto flick
-				fc_auto_flick_stop();
-
-				// Variables
-				$flicker_width 		= $flicker.width();
-
-				// Calculate drag
-				switch($settings.flick_animation)
-				{
-					// Transform slide
-					case 'transform-slide':
-
-						// Calculate the drag
-						if(Modernizr.touch)
-						{
-							$pos_x 			= (Math.round(($ev.gesture.deltaX / $flicker_width) * 1000) / 1000) + $last_pos_x_percent;
-						}
-						else
-						{
-							$pos_x 			= (Math.round(($ev.gesture.deltaX / $flicker_width) * 10) / 10) + $last_pos_x_percent;
-						}
-
-						// Check contraints
-						if($settings.flick_position == 1 && $pos_x > 0)
-						{
-							$pos_x 			= 0;
-						}
-						else if(($settings.flick_position == $flick_count) && ($pos_x < -($flick_count - 1)))
-						{
-							$pos_x 			= -($flick_count - 1);
-						}
-
-						// Apply CSS
-						$pan_css			= 'translate3d('+ $pos_x +'%, 0, 0)';
-						$flicker.find('ul.flicks').css(
-						{
-							wekitTransform 	: $pan_css,
-							transform 		: $pan_css
-						});
-
-						break;
-
-					// Transition slide
-					case 'transition-slide':
-					case 'jquery-slide':
-
-						// Calculate the drag
-						$pos_x 				= Math.round(($ev.gesture.deltaX / $flicker_width) * 100) + $last_pos_x_left;
-
-						// Check contraints
-						if($settings.flick_position == 1 && $pos_x > 0)
-						{
-							$pos_x 			= 0;
-						}
-						else if(($settings.flick_position == $flick_count) && ($pos_x < -(($flick_count - 1) * 100)))
-						{
-							$pos_x 			= -(($flick_count - 1) * 100);
-						}
-
-						// Apply CSS
-						$flicker.find('ul.flicks').attr({ style: 'left:'+ $pos_x +'%;' });
-
-						break;
-				}
-			};
-			function fc_interaction_panend($ev)
-			{
-				$end_pos_x 			= $ev.gesture.deltaX;
-
-				// Checks
-				if($end_pos_x < -$pan_threshold)
-				{
-					if($settings.flick_position < $flick_count)
-					{
-						$settings.flick_position++;
-					}
-				}
-				else if($end_pos_x > $pan_threshold)
-				{
-					if($settings.flick_position > 1)
-					{
-						$settings.flick_position--;
-					}
-				}
-
-				// Move the flicker
-				setTimeout(function(){ fc_move_flicker(); }, 10);
-
-				// Start auto flick
-				fc_auto_flick_start();
-			};
-			function fc_interaction_swipe($ev)
-			{
-				if($ev.type == 'swipeleft')
-				{
-					if(++$settings.flick_position > $flick_count)
-					{
-						$settings.flick_position	= $settings.arrows_constraint ? ($flick_count) : 1;
-					}
-				}
-				else if($ev.type == 'swiperight')
-				{
-					if(--$settings.flick_position < 1)
-					{
-						$settings.flick_position	= $settings.arrows_constraint ? 1 : ($flick_count);
-					}
-				}
-
-				fc_move_flicker();
-				fc_auto_flick_reset();
-			};
-
-			// Move flicker
-			function fc_move_flicker()
-			{
-				// Set the position
-				$position 							= $settings.flick_position - 1;
-
-				// Moved based on animation type
-				switch($settings.flick_animation)
-				{
-					// Transform slide
-					case 'transform-slide':
-
-						$flicker.find('ul.flicks').attr({ style: '-webkit-transform:translate3d(-'+ $position +'%, 0, 0);-o-transform:translate3d(-'+ $position +'%, 0, 0);-moz-transform:translate3d(-'+ $position +'%, 0, 0);transform:translate3d(-'+ $position +'%, 0, 0)' });
-						$last_pos_x_percent 		= -($position);
-
-						break;
-
-					// Transition slide
-					case 'transition-slide':
-
-						$flicker.find('ul.flicks').attr({ style: 'left:-'+ $position +'00%;' });
-						$last_pos_x_left 			= -($position + '00');
-
-						break;
-
-					// jQuery slide
-					case 'jquery-slide':
-
-						$flicker.find('ul.flicks').animate({ 'left' : '-'+ $position +'00%' }, function()
-						{
-							$flicker_moving 			= false;
-						});
-						$last_pos_x_left 			= -($position + '00');
-
-						break;
-
-					// Transition fade
-					case 'transition-fade':
-
-						$pre_position 						= parseInt($flicker.attr("data-flick-position")) - 1;
-
-						if($pre_position === $position)
-						{
-							$flicker.find('ul.flicks li:eq(' + $pre_position + ')').css('opacity', 0);
-							$flicker.find('ul.flicks li:eq(' + $position + ')').css('opacity', 1);
-
-							setTimeout(function()
-							{
-								$flicker.addClass('fade-inited');
-							},
-							10);
-						}
-						else 
-						{
-							$flicker.find('ul.flicks li:eq(' + $pre_position + ')').css('opacity', 0);
-							$flicker.find('ul.flicks li:eq(' + $position + ')').css('opacity', 1);
-						}
-
-						break;
-
-					// jQuery fade
-					case 'jquery-fade':
-
-						$pre_position 						= parseInt($flicker.attr("data-flick-position")) - 1;
-
-						if($pre_position === $position)
-						{
-							$flicker.find('ul.flicks li:gt(' + $pre_position + ')').css("display", "none");
-						} 
-						else 
-						{
-							$flicker.find('ul.flicks li:eq(' + $pre_position + ')').animate(
-							{
-								opacity: 0
-							},
-							$settings.fade_speed, function()
-							{
-								$(this).css("display", "none");
-							});
-						}
-						$flicker.find('ul.flicks li:eq(' + $position + ')').css("display", "").animate(
-						{
-							opacity: 1
-						},
-						$settings.fade_speed);
-
-						break;
-
-					// Fallback
-					default:
-
-						$flicker.find('ul.flicks').attr({ style: '-webkit-transform:translate3d(-'+ $position +'%, 0, 0);-o-transform:translate3d(-'+ $position +'%, 0, 0);-moz-transform:translate3d(-'+ $position +'%, 0, 0);transform:translate3d(-'+ $position +'%, 0, 0)' });
-				}
-
-				// Change the theme
-				$flick_theme 				= $flicker.find('ul.flicks li:eq('+ $position +')').data('theme');
-				if($flick_theme != undefined)
-				{
-					$flicker
-					.removeClass('flicker-theme-light')
-					.removeClass('flicker-theme-dark')
-					.addClass('flicker-theme-' + $flick_theme);
-				}
-				else
-				{
-					$flicker
-					.removeClass('flicker-theme-light')
-					.removeClass('flicker-theme-dark')
-					.addClass('flicker-theme-' + $settings.theme);
-				}
-
-				// Update navigation
-				$flicker.find('.dot-navigation .dot.active').removeClass('active');
-				$flicker.find('.dot:eq('+ $position +')').addClass('active');
-				$flicker.attr('data-flick-position', $settings.flick_position);
+				flickerMove();
+				flickerAutoReset();
 			};
 		}
 	};
 
+	function flickerAttachDots() {
+		if ($self.options.animation !== 'scroller-slide' && $self.options.dots === true) {
+			var $dots = document.createElement('div');
+			var $dotsUL = document.createElement('ul');
+			$dots.className = 'dot-navigation ' + $self.options.dotAlignment;
 
-	// Plugin wrapper
-	// ---------------------------------------------------------------------------------------
-	$.fn[$plugin_name] 					= function($options)
-	{
-		var $plugin;
+			for (var $i = $flickCount - 1; $i >= 0; $i--) {
+				var $dotLI = document.createElement('li');
+				var $dot = document.createElement('div');
+				$dot.className = ($i === $flickCount - 1) ? 'dot active' : 'dot';
 
-		this.each(function()
-		{
-			$plugin 					= $.data(this, 'plugin_' + $plugin_name);
+				$dotLI.appendChild($dot);
+				$dotsUL.appendChild($dotLI);
+			};
 
-			if(!$plugin)
-			{
-				$plugin 				= new Plugin(this, $options);
-				$.data(this, 'plugin_' + $plugin_name, $plugin);
-			}
-		});
+			$dots.appendChild($dotsUL);
+			$element.insertBefore($dots, $element.querySelectorAll('.flicks')[0]);
 
-		return $plugin;
+			// Events
+			var $dotElements = $element.querySelectorAll('.dot-navigation li');
+			for (var $i = $dotElements.length - 1; $i >= 0; $i--) {
+				$dotElements[$i].onclick = function() {
+					$self.options.position = tool.getIndex(this) + 1;
+					tool.classRemove($element.querySelector('.dot.active'), 'active');
+					tool.classAdd(this.querySelector('.dot'), 'active');
+					flickerMove();
+				};
+			};
+		}
 	};
-})(jQuery, window, document);
+
+	function flickerAutoFlick() {
+		if (++$self.options.position > $flickCount) {
+			$self.options.position = 1;
+		}
+		flickerMove();
+	};
+
+	function flickerAutoReset() {
+		flickerAutoStop();
+		flickerAutoStart();
+	};
+
+	function flickerAutoStart() {
+		if ($self.options.autoFlick === true) {
+			$autoFlickWatch = setInterval(flickerAutoFlick, $self.options.autoFlickDelay * 1000);
+		}
+	};
+
+	function flickerAutoStop() {
+		if ($self.options.autoFlick === true) {
+			$autoFlickWatch = clearInterval($autoFlickWatch);
+		}
+	};
+
+	function flickerMove($firstCheck) {
+		$firstCheck = $firstCheck || false;
+		var $flicks = $element.querySelector('ul.flicks');
+		var $movePosition = $self.options.position - 1;
+		$element.setAttribute('data-flickerplate-position', $self.options.position);
+
+		switch ($self.options.animation) {
+			case 'transform-slide':
+				var $translate3D = 'translate3d(-' + $movePosition + '%, 0, 0)';
+				$flicks.setAttribute('style', '-webkit-transform:' + $translate3D + ';-o-transform:' + $translate3D + ';-moz-transform:' + $translate3D + ';transform:' + $translate3D);
+				$lastPosXPercent = -($movePosition);
+				break;
+			case 'transition-fade':
+				var $allFlicks = $element.querySelectorAll('li');
+				for (var $i = $allFlicks.length - 1; $i >= 0; $i--)(function($i) {
+					tool.classRemove($allFlicks[$i], 'active');
+				})($i);
+				tool.classAdd($flicks.querySelector('li:nth-child(' + $self.options.position + ')'), 'active');
+				break;
+			case 'transition-slide':
+				$flicks.style.left = '-' + $movePosition + '00%';
+				$lastPosXLeft = -($movePosition + '00');
+				break;
+		}
+
+		if ($self.options.dots === true && $firstCheck === false) {
+			tool.classRemove($element.querySelector('.dot.active'), 'active');
+			tool.classAdd($element.querySelector('.dot-navigation li:nth-child(' + $self.options.position + ') .dot'), 'active');
+		}
+	};
+
+	function flickerHammer() {
+		if (typeof Hammer === 'function') {
+			if ($self.options.animation === 'transform-slide' || $self.options.animation === 'transition-slide') {
+				// Interaction
+				var $hammerTime = new Hammer($element.querySelector('ul.flicks'));
+				$hammerTime.on('panleft panright', function(event) {
+					flickerPan(event);
+				});
+				$hammerTime.on('panend', function(event) {
+					flickerPanEnd(event);
+				});
+			} else if ($self.options.animation === 'transition-fade') {
+				var $hammerTime = new Hammer($element.querySelector('ul.flicks'));
+				$hammerTime.on('swipeleft swiperight', function(event) {
+					flickerSwipe(event);
+				});
+			}
+		}
+	};
+
+	function flickerPan(event) {
+		flickerAutoStop();
+		var $flickerWidth = $element.clientWidth;
+		var $flicks = $element.querySelector('ul.flicks');
+		tool.classRemove($element, 'animate-' + $self.options.animation);
+
+		switch ($self.options.animation) {
+			case 'transform-slide':
+				if (tool.isTouch()) {
+					$posX = (Math.round((event.deltaX / $flickerWidth) * 1000) / 1000) + $lastPosXPercent;
+				} else {
+					$posX = (Math.round((event.deltaX / $flickerWidth) * 10) / 10) + $lastPosXPercent;
+				}
+
+				// Check constraints
+				if ($self.options.position == 1 && $posX > 0) {
+					$posX = 0;
+				} else if (($self.options.position == $flickCount) && ($posX < -($flickCount - 1))) {
+					$posX = -($flickCount - 1)
+				}
+
+				// Move
+				$panCSS = 'translate3d(' + $posX + '%, 0, 0)';
+				$flicks.setAttribute('style', '-webkit-transform:' + $panCSS + ';-o-transform:' + $panCSS + ';-moz-transform:' + $panCSS + ';transform:' + $panCSS);
+				break;
+			case 'transition-slide':
+				$posX = Math.round((event.deltaX / $flickerWidth) * 100) + $lastPosXLeft;
+
+				// Check constraint
+				if ($self.options.position == 1 && $posX > 0) {
+					$posX = 0;
+				} else if (($self.options.position == $flickCount) && ($posX < -($flickCount - 1) * 100)) {
+					$posX = -(($flickCount - 1) * 100);
+				}
+
+				// Move
+				$flicks.style.left = $posX + '%';
+				break;
+		}
+	};
+
+	function flickerPanEnd(event) {
+		var $endPosX = event.deltaX;
+		tool.classAdd($element, 'animate-' + $self.options.animation);
+
+		if (($endPosX < -$panThreshold) && ($self.options.position < $flickCount)) {
+			$self.options.position++;
+		} else if (($endPosX > $panThreshold) && ($self.options.position > 1)) {
+			$self.options.position--;
+		}
+
+		setTimeout(function() {
+			flickerMove();
+		}, 10);
+		flickerAutoStart();
+	};
+
+	function flickerSetup() {
+		tool.classAdd($element, 'flickerplate theme-' + $self.options.theme + ' animate-' + $self.options.animation);
+		tool.classAdd($element.getElementsByTagName('ul')[0], 'flicks');
+		$element.setAttribute('data-flickerplate-position', $self.options.position);
+
+		flickerMove(true);
+
+		// Each flick
+		var $flicks = $element.querySelectorAll('ul.flicks > li');
+		for (var $i = $flicks.length - 1; $i >= 0; $i--) {
+			$flickCount++;
+			tool.wrapInner($flicks[$i], 'div', 'flick-inner');
+			tool.wrapInner($flicks[$i].querySelectorAll('.flick-inner')[0], 'div', 'flick-content');
+
+			var $background = $flicks[$i].getAttribute('data-background') || false;
+			if ($background !== false) {
+				$flicks[$i].style.backgroundImage = 'url(' + $background + ')';
+			}
+		}
+
+		// Kill the animation
+		if ($self.options.animation != 'scroller-slide' && $self.options.animation != 'jquery-slide' && $self.options.animation != 'jquery-fade') {
+			$element.addEventListener($transitionEventListner, function() {
+				$flickerMoving = false;
+			});
+		}
+	};
+
+	function flickerSwipe(event) {
+		if (event.type == 'swipeleft') {
+			if (++$self.options.position > $flickCount) {
+				$self.options.position = $self.options.arrowsConstraint ? $flickCount : 1;
+			}
+		} else if (event.type == 'swiperight') {
+			if (--$self.options.position < 1) {
+				$self.options.position = $self.options.arrowsConstraint ? 1 : $flickCount;
+			}
+		}
+		flickerMove();
+		flickerAutoReset();
+	};
+
+	// Execute
+	flickerSetup();
+	flickerAttachArrows();
+	flickerAttachDots();
+	flickerAutoStart();
+	if (tool.isTouch()) {
+		flickerHammer();
+	}
+}
