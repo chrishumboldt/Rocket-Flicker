@@ -13,7 +13,7 @@
 // ---------------------------------------------------------------------------------------
 @mixin fp-dark-theme($identifier: ".flickerplate") {
 	
-	#{$identifier}.flicker-theme-dark {
+	#{$identifier}.theme-dark {
 	
 		// Dot navigation
 		.dot-navigation {
