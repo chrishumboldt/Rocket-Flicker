@@ -1,22 +1,13 @@
 /**
  * File: _flicker.scss
- * Type: SASS basic file
+ * Type: SASS module
  * Author: Chris Humboldt
- * Last Edited: 29 April 2015
  */
 
-// Table of contents
-// ---------------------------------------------------------------------------------------
 // Variables
-// Flicker
-// Flicks
-
-// Variables
-// ---------------------------------------------------------------------------------------
 $limit-width: 68.750em !default;
 
 // Flicker
-// ---------------------------------------------------------------------------------------
 @mixin fp-flicker($height: 600px, $back-colour: lighten(#000,90%)) {
 	@include position(relative);
 	@include size(100%, $height);
@@ -25,7 +16,6 @@ $limit-width: 68.750em !default;
 }
 
 // Flicks
-// ---------------------------------------------------------------------------------------
 @mixin fp-flicks($width: 10000%) {
 	@include size($width, 100%);
 	@include padding-no();
@@ -37,14 +27,14 @@ $limit-width: 68.750em !default;
 	@include float(left);
 	@include size($width, 100%);
 	@include background-cover();
-			
+
 	.flick-inner {
 		@include display(table-cell);
 		@include height(100%);
 		@include padding(10px);
 		@include text-colour($white);
 		vertical-align: middle;
-		
+
 		.flick-content {
 			@include width-max($limit-width);
 			@include margin-horizontal(auto);
