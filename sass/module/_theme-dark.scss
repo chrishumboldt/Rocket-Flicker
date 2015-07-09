@@ -1,21 +1,12 @@
 /**
  * File: _theme-dark.scss
- * Type: SASS basic file
+ * Type: SASS module
  * Author: Chris Humboldt
- * Last Edited: 29 April 2015
  */
 
-// Table of contents
-// ---------------------------------------------------------------------------------------
-// Theme Dark
-
 // Theme dark
-// ---------------------------------------------------------------------------------------
 @mixin fp-dark-theme($identifier: ".flickerplate") {
-	
 	#{$identifier}.theme-dark {
-	
-		// Dot navigation
 		.dot-navigation {
 			.dot {
 				@include background-colour(fade-out($black, 0.88));
@@ -27,10 +18,8 @@
 				@include background-colour($black);
 			}
 		}
-		
 		ul.flicks li .flick-inner {
 			@include text-colour(fade-out($black, 0.1));
-		
 			.flick-content {
 				.flick-sub-text {
 					@include text-colour(fade-out($black, 0.1));
@@ -46,7 +35,6 @@
 	}
 	#{$identifier} ul.flicks li.flick-theme-dark .flick-inner {
 		@include text-colour(fade-out($black, 0.1));
-		
 		.flick-content {
 			.flick-sub-text {
 				@include text-colour(fade-out($black, 0.1));

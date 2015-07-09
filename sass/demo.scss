@@ -1,23 +1,13 @@
 /**
  * File: demo.scss
- * Type: SASS file
+ * Type: SASS demo
  * Author: Chris Humboldt
- * Last Edited: 29 April 2015
  */
 
-// Table of contents
-// ---------------------------------------------------------------------------------------
 // Imports
-// Global
-// Documentation
-
-// Imports
-// ---------------------------------------------------------------------------------------
 @import "../bower_components/blueplate/sass/import";
 
-
 // Global
-// ---------------------------------------------------------------------------------------
 @include global-setup();
 html {
 	@include font-family($open-sans);
@@ -33,30 +23,21 @@ a {
 }
 
 // Documentation
-// ---------------------------------------------------------------------------------------
 .documentation {
 	@include limit();
 	@include padding-horizontal(10px);
 	@include padding-vertical(50px);
 	@include text-align(center);
-
-	// Respond
-	@include respond-to(large) {
+	@include breakpoint(large) {
 		@include padding-vertical(100px);
 	}
-
-	// Heading
 	h3 {
 		@include margin-bottom(20px);
 		@include text-size(30px);
 		@include text-weight(300);
 	}
-
-	// Paragraph
 	p {
 		@include text-line-height(22px);
 		@include text-size(16px);
 	}
 }
-
-

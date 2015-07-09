@@ -1,16 +1,10 @@
 /**
  * File: _arrow-navigation.scss
- * Type: SASS basic file
- * Author: Chris Humboldt
- * Last Edited: 1 May 2015
+ * Type: SASS module
+ * Author: Chris Humboldr
  */
 
-// Table of contents
-// ---------------------------------------------------------------------------------------
 // Arrow navigation
-
-// Arrow navigation
-// ---------------------------------------------------------------------------------------
 @mixin fp-arrow-navigation() {
 	.arrow-navigation {
 		@include display(block);

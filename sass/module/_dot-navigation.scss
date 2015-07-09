@@ -1,28 +1,20 @@
 /**
  * File: _dot-navigation.scss
- * Type: SASS basic file
+ * Type: SASS module
  * Author: Chris Humboldt
- * Last Edited: 29 April 2015
  */
 
-// Table of contents
-// ---------------------------------------------------------------------------------------
 // Variables
-// Dot navigation
-
-// Variables
-// ---------------------------------------------------------------------------------------
 $dot-size: 14px !default;
 
 // Dot navigation
-// ---------------------------------------------------------------------------------------
 @mixin fp-dot-navigation() {
 	.dot-navigation {
 		@include position(absolute, bottom 15px);
 		@include width(100%);
 		@include text-align(center);
 		@include level(100);
-		
+
 		ul {
 			@include text-align(center);
 			@include list-style(none);
