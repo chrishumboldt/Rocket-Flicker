@@ -12,16 +12,7 @@ Start by including the necessary files.
 
 ```
 <head>
-<<<<<<< HEAD
-	<!-- Include Hammer (optional) -->
-	<script src="js/min/hammer-v2.0.3.min.js"></script>
-	
-	<!-- Include Flickerplate -->
-	<script src="js/min/flickerplate.min.js"></script>
-	<link href="css/flickerplate.css"  type="text/css" rel="stylesheet">
-=======
    <link href="css/flickerplate.css" rel="stylesheet" type="text/css">
->>>>>>> dev-chris
 </head>
 <body>
    /* Your content goes here */
@@ -33,9 +24,6 @@ Start by including the necessary files.
 See the setup of the HTML and Javascript call below.
 
 ```
-<<<<<<< HEAD
-new flickerplate('.flicker-example');
-=======
 <ul class="flicker-example">
    <li data-background="image-url.jpg">
       <div class="flick-title">Example Heading</div>
@@ -49,7 +37,6 @@ new flickerplate('.flicker-example');
 <script>
 new flickerplate('.flicker-example');
 </script>
->>>>>>> dev-chris
 ```
 
 ## Javascript Options
@@ -70,12 +57,6 @@ theme | light | light, dark | Currently two options, light and dark. This will s
 ## Advanced Example
 See an advanced example below with options as per the above.
 
-<<<<<<< HEAD
-Documentation
-=========
-
-Coming soon.
-=======
 ```
 new flickerplate('.flicker-example', {
    animation: 'transition-fade',
@@ -84,7 +65,6 @@ new flickerplate('.flicker-example', {
    theme: 'dark'
 });
 ```
->>>>>>> dev-chris
 
 ## Make It Touch Enabled
 To make your flicker touch enabled, just included the Hammer library (Flickerplate comes with a copy). For example.
