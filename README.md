@@ -12,10 +12,10 @@ Start by including the necessary files.
 
 ```
 <head>
-   <link href="css/flickerplate.css" rel="stylesheet" type="text/css">
+    <link href="css/flickerplate.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-   /* Your content goes here */
+    /* Your content goes here */
     <script src="js/min/flickerplate.js"></script>
 </body>
 ```
