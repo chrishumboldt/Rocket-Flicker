@@ -9,9 +9,8 @@
 	"main": ["js/min/flickerplate.js", "css/flickerplate.css"],
 	"keywords": [
 		"Webplate",
-		"Flickerplate",
+		"Flicker",
 		"Slider",
-		"jQuery",
 		"Javascript"
 	],
 	"license": "Apache License, Version 2.0",
