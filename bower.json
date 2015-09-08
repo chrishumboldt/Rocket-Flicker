@@ -6,7 +6,7 @@
 		"Chris Humboldt <chrismodem@gmail.com>"
 	],
 	"description": "A Javascript component that lets you flick through content.",
-	"main": ["js/min/flickerplate.min.js", "css/flickerplate.css"],
+	"main": ["js/min/flickerplate.js", "css/flickerplate.css"],
 	"keywords": [
 		"Webplate",
 		"Flickerplate",
