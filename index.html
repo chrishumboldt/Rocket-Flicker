@@ -1,61 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<!-- Meta setup - Required for apple device -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
 	<!-- Title -->
-	<title>Flickerplate Example</title>
+	<title>Flickerplate Component</title>
 
-	<!-- Include Hammer (optional) -->
-	<script src="js/hammer-v2.0.3.js"></script>
-
-	<!-- Include Flickerplate -->
-	<script src="js/flickerplate.js"></script>
+	<!-- Scripts -->
 	<link href="css/flickerplate.css"  type="text/css" rel="stylesheet">
-
-	<!-- Demo styles -->
 	<link href="css/demo.css"  type="text/css" rel="stylesheet">
 
 </head>
 <body>
-	
-	<!-- Basic example -->
-	<div class="flicker-example">
-		
-		<ul>
-			
-			<li data-background="img/flicker-1.jpg">
-				<div class="flick-title">Flickerplate Is Working</div>
-				<div class="flick-sub-text">Heaven forbid this package you downloaded is broken. That wouldn't be embarrassing at all.</div>
-			</li>
-			
-			<li data-background="img/flicker-2.jpg">
-				<div class="flick-title">Editable via Javascript or CSS</div>
-				<div class="flick-sub-text">Take a look at the extensive documentation to see how you can change the settings in multiple ways.</div>
-			</li>
-			
-			<li data-background="img/flicker-3.jpg">
-				<div class="flick-title">Touch Enabled Through the Hammer.js Library</div>
-				<div class="flick-sub-text"><a href="http://hammerjs.github.io/">Hammer.js</a> is a great touch library that has been included as part of the Flickerplate package.</div>
-			</li>
-			
-		</ul>
-		
-	</div>
-		
-	<!-- Documentation link -->
-	<div class="documentation">
-		
-		<h3>Read The Documentation</h3>
-		<p>There are a lot of options for editing Flickerplate so it's worthwhile getting up to speed. <a href="http://getwebplate.com/plugins/flickerplate">Click here</a> for more information.</p>
-	
-	</div>
 
+	<div class="heading">
+      <div class="container"><h2>Flickerplate Component</h2></div>
+   </div>
+	<div class="container">
+		<h4>Getting Started</h4>
+		<p>You can either download a copy of the source files or install Flickerplate via Bower.</p>
+<pre class="prettyprint linenums">
+bower install flickerplate
+</pre>
+		<p>Start by including the necessary files.</p>
+<pre class="prettyprint linenums">
+&lt;head&gt;
+    &lt;link href=&quot;css/flickerplate.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    /* Your content goes here */
+    &lt;script src=&quot;js/min/flickerplate.js&quot;>&lt;/script&gt;
+&lt;/body&gt;
+</pre>
+		<br>
+		<h4>Basic Example</h4>
+		<p>See the setup of the HTML and Javascript call below.</p>
+<pre class="prettyprint linenums">
+&lt;ul class="flicker-example"&gt;
+    &lt;li data-background="image-url.jpg"&gt;
+        &lt;div class="flick-title"&gt;Example Heading&lt;/div&gt;
+        &lt;div class="flick-sub-text"&gt;Sub Text&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li data-background="image-url.jpg"&gt;
+        &lt;div class="flick-title"&gt;Example Heading&lt;/div&gt;
+        &lt;div class="flick-sub-text"&gt;Sub Text&lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+&lt;script&gt;
+new flickerplate('.flicker-example');
+&lt;/script&gt;
+</pre>
+		<p class="note">There are options that you can set. Read the more detailed documentation to find out more.</p>
+		<br>
+		<h4>Make It Touch Enabled</h4>
+		<p>To make your flicker touch enabled, just included the Hammer library (Flickerplate comes with a copy). For example.</p>
+<pre class="prettyprint linenums">
+&lt;body&gt;
+    /* Your content goes here */
+    &lt;script src=&quot;js/min/hammer-v2.0.3.js&quot;>&lt;/script&gt;
+    &lt;script src=&quot;js/min/flickerplate.js&quot;>&lt;/script&gt;
+&lt;/body&gt;
+</pre>
+		<br>
+		<h4>Working Example</h4>
+		<div class="flicker-example">
+			<ul>
+				<li data-background="img/flicker-1.jpg">
+					<div class="flick-title">Flickerplate Is Working</div>
+				</li>
+				<li data-background="img/flicker-2.jpg">
+					<div class="flick-title">Editable via Javascript or CSS</div>
+				</li>
+				<li data-background="img/flicker-3.jpg">
+					<div class="flick-title">Touch Enabled Through Hammer.js</div>
+				</li>
+			</ul>
+		</div>
+		<br><br>
+      <h4>Detailed Documentation</h4>
+      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Flickerplate" class="link">https://github.com/chrishumboldt/Flickerplate</a></p>
+	</div>
+	<footer><div class="container"><div class="col-double">
+		<div class="left">
+			Made by <a href="http://chrishumboldt.com" target="_blank">Chris Humboldt</a>
+		</div>
+		<div class="right">
+			A <a href="http://getwebplate.com" target="_blank">Webplate Project</a>&nbsp;&nbsp;
+			Want updates? <a href="http://twitter.com/webplatetweets" target="_blank">@webplatetweets</a>
+		</div>
+	</div></div></footer>
+
+	<!-- Scripts -->
+	<script src="js/min/flickerplate.js"></script>
+	<script src="js/min/demo.js"></script>
 	<script>
 	new flickerplate('.flicker-example');
 	</script>
-	
+
 </body>
 </html>
