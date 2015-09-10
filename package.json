@@ -1,6 +1,6 @@
 {
 	"name": "flickerplate",
-	"version": "3.0.3",
+	"version": "3.0.4",
 	"description": "A Javascript component that lets you flick through content.",
 	"repository": {
 		"type": "git",
