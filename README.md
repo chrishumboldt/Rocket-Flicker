@@ -24,16 +24,18 @@ Start by including the necessary files.
 See the setup of the HTML and Javascript call below.
 
 ```
-<ul class="flicker-example">
-   <li data-background="image-url.jpg">
-      <div class="flick-title">Example Heading</div>
-      <div class="flick-sub-text">Sub Text</div>
-   </li>
-   <li data-background="image-url.jpg">
-      <div class="flick-title">Example Heading</div>
-      <div class="flick-sub-text">Sub Text</div>
-   </li>
-</ul>
+<div class="flicker-example">
+   <ul>
+      <li data-background="image-url.jpg">
+         <div class="flick-title">Example Heading</div>
+         <div class="flick-sub-text">Sub Text</div>
+      </li>
+      <li data-background="image-url.jpg">
+         <div class="flick-title">Example Heading</div>
+         <div class="flick-sub-text">Sub Text</div>
+      </li>
+   </ul>
+</div>
 <script>
 new flickerplate('.flicker-example');
 </script>
