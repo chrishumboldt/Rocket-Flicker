@@ -50,7 +50,9 @@ bower install flickerplate
     &lt;/ul&gt;
 &lt;/div&gt;
 &lt;script&gt;
-new flickerplate('.flicker-example');
+new flickerplate({
+    selector: '.flicker-example'
+});
 &lt;/script&gt;
 </pre>
 		<p class="note">There are options that you can set. Read the more detailed documentation to find out more.</p>
@@ -94,10 +96,12 @@ new flickerplate('.flicker-example');
 	</div></div></footer>
 
 	<!-- Scripts -->
-	<script src="js/min/flickerplate.js"></script>
+	<script src="js/flickerplate.js"></script>
 	<script src="js/min/demo.js"></script>
 	<script>
-	new flickerplate('.flicker-example');
+	new flickerplate({
+		selector: '.flicker-example'
+	});
 	</script>
 
 </body>

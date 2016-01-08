@@ -42,7 +42,7 @@ $transition-fade-easing: linear;
 			@include position(relative, left 0%);
 			@include animate(left, $transition-slide-duration);
 
-			@include respond-to(large) {
+			@include breakpoint(large) {
 				@include animate(left, $transition-slide-duration-large);
 			}
 		}
