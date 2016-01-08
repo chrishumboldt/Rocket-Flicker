@@ -79,10 +79,10 @@ See an advanced example below with options as per the above.
 ```
 new flickerplate({
 	selector: '.flicker-example',
-   animation: 'transition-fade',
-   autoFlick: false,
-   dotAlignment: 'right',
-   theme: 'dark'
+	animation: 'transition-fade',
+	autoFlick: false,
+	dotAlignment: 'right',
+	theme: 'dark'
 });
 ```
 
