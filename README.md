@@ -56,6 +56,21 @@ See the different options you have available on component call.
 | position | 1 | | Set the starting flick. |
 | theme | light | light, dark | Currently two options, light and dark. This will set the font colour, block text colour, arrows and dots to either dark or light. |
 
+#### Defaults
+You can also set or overwrite the above options globally by altering the Flickerplate defaults. To do so reference the **$flickerplateDefault** object. For example:
+
+```
+<script>
+// Default change
+$flickerplateDefault.selector = '.flicker-example';
+$flickerplateDefault.arrows = false;
+$flickerplateDefault.theme = 'dark';
+
+// Execute
+new flickrplate();
+</script>
+```
+
 ## Advanced Example
 See an advanced example below with options as per the above.
 

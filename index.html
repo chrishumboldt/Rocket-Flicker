@@ -79,19 +79,6 @@ new flickerplate('.flicker-example');
 				</li>
 			</ul>
 		</div>
-		<div class="flicker-example">
-			<ul>
-				<li data-background="http://getwebplate.com/images/flicker-1.jpg">
-					<div class="flick-title">Flickerplate Is Working</div>
-				</li>
-				<li data-background="http://getwebplate.com/images/flicker-2.jpg">
-					<div class="flick-title">Editable via Javascript or CSS</div>
-				</li>
-				<li data-background="http://getwebplate.com/images/flicker-3.jpg">
-					<div class="flick-title">Touch Enabled Through Hammer.js</div>
-				</li>
-			</ul>
-		</div>
 		<br><br>
       <h4>Detailed Documentation</h4>
       <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Flickerplate" class="link">https://github.com/chrishumboldt/Flickerplate</a></p>
@@ -107,10 +94,12 @@ new flickerplate('.flicker-example');
 	</div></div></footer>
 
 	<!-- Scripts -->
-	<script src="js/min/flickerplate.js"></script>
+	<script src="js/flickerplate.js"></script>
 	<script src="js/min/demo.js"></script>
 	<script>
-	new flickerplate('.flicker-example');
+	new flickerplate({
+		selector: '.flicker-example'
+	});
 	</script>
 
 </body>
