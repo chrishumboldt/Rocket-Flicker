@@ -44,17 +44,17 @@ new flickerplate('.flicker-example');
 ## Javascript Options
 See the different options you have available on component call.
 
-Name | Default | Options | Description
----- | ---- | ---- | ----
-animation | transform-slide | transform-slide, transform-slide, transition-fade, transition-slide | Choose the animation type you want.
-arrows | true | true, false | Arrows are used to navigate back and forth between the flicks.
-arrowsConstraint | false | true, false | When you get to the end of the flicks pressing the next arrow will navigate you to the beginning again should you have a false constraint. The same applies to the previous arrow.
-autoFlick | true | true, false | Sets the flick to run automatically. A manual flick resets the delay.
-autoFlickDelay | 10 | | Set the delay (in seconds) between each auto flick.
-dotAlignment | center | center, left, right | Set the horizontal alignment of the dot navigation.
-dots | true | true, false | Dot navigation is used to indicate and navigate between the flicks.
-position | 1 | | Set the starting flick.
-theme | light | light, dark | Currently two options, light and dark. This will set the font colour, block text colour, arrows and dots to either dark or light.
+| Name | Default | Options | Description |
+| ---- | ---- | ---- | ---- |
+| animation | transform-slide | transform-slide, transform-slide, transition-fade, transition-slide | Choose the animation type you want. |
+| arrows | true | true, false | Arrows are used to navigate back and forth between the flicks. |
+| arrowsConstraint | false | true, false | When you get to the end of the flicks pressing the next arrow will navigate you to the beginning again should you have a false constraint. The same applies to the previous arrow. |
+| autoFlick | true | true, false | Sets the flick to run automatically. A manual flick resets the delay. |
+| autoFlickDelay | 10 | | Set the delay (in seconds) between each auto flick. |
+| dotAlignment | center | center, left, right | Set the horizontal alignment of the dot navigation. |
+| dots | true | true, false | Dot navigation is used to indicate and navigate between the flicks. |
+| position | 1 | | Set the starting flick. |
+| theme | light | light, dark | Currently two options, light and dark. This will set the font colour, block text colour, arrows and dots to either dark or light. |
 
 ## Advanced Example
 See an advanced example below with options as per the above.
