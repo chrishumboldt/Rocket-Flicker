@@ -37,7 +37,9 @@ See the setup of the HTML and Javascript call below.
    </ul>
 </div>
 <script>
-new flickerplate('.flicker-example');
+new flickerplate({
+	selector: '.flicker-example'
+});
 </script>
 ```
 
@@ -67,7 +69,7 @@ $flickerplateDefault.arrows = false;
 $flickerplateDefault.theme = 'dark';
 
 // Execute
-new flickrplate();
+new flickerplate();
 </script>
 ```
 
@@ -75,7 +77,8 @@ new flickrplate();
 See an advanced example below with options as per the above.
 
 ```
-new flickerplate('.flicker-example', {
+new flickerplate({
+	selector: '.flicker-example',
    animation: 'transition-fade',
    autoFlick: false,
    dotAlignment: 'right',
