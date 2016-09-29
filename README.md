@@ -1,4 +1,4 @@
-# Flickerplate
+# Flickerplate2
 A Javascript component that lets you flick through content.
 
 ## Getting Started
