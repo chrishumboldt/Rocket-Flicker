@@ -8,34 +8,39 @@
 	<!-- Title -->
 	<title>Flickerplate Component</title>
 	<!-- Scripts -->
-	<link href="css/flickerplate.css"  type="text/css" rel="stylesheet">
-	<link href="css/demo.css"  type="text/css" rel="stylesheet">
+	<link href="bower_components/webplate-demo/css/demo.min.css"  type="text/css" rel="stylesheet">
+	<link href="css/flickerplate.min.css"  type="text/css" rel="stylesheet">
 
 </head>
 <body>
 
-	<div class="heading">
-      <div class="container"><h2>Flickerplate Component</h2></div>
-   </div>
-	<div class="container">
-		<h4>Getting Started</h4>
-		<p>You can either download a copy of the source files or install Flickerplate via Bower.</p>
+	<div id="web-demo-message">
+		You need to run "bower install" and include the neccessary demo files in order to view this file.
+	</div>
+
+	<div id="web-demo" style="display:none;">
+		<div class="heading">
+	      <div class="container"><h2>Flickerplate Component</h2></div>
+	   </div>
+		<div class="container">
+			<h4>Getting Started</h4>
+			<p>You can either download a copy of the source files or install Flickerplate via Bower.</p>
 <pre class="prettyprint linenums">
 bower install flickerplate
 </pre>
-		<p>Start by including the necessary files.</p>
+			<p>Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
 &lt;head&gt;
-    &lt;link href=&quot;css/flickerplate.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;link href=&quot;css/flickerplate.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
 &lt;/head&gt;
 &lt;body&gt;
     /* Your content goes here */
-    &lt;script src=&quot;js/min/flickerplate.js&quot;>&lt;/script&gt;
+    &lt;script src=&quot;js/flickerplate.min.js&quot;>&lt;/script&gt;
 &lt;/body&gt;
 </pre>
-		<br>
-		<h4>Basic Example</h4>
-		<p>See the setup of the HTML and Javascript call below.</p>
+			<br>
+			<h4>Basic Example</h4>
+			<p>See the setup of the HTML and Javascript call below.</p>
 <pre class="prettyprint linenums">
 &lt;div class="flicker-example"&gt;
     &lt;ul&gt;
@@ -55,49 +60,50 @@ new flickerplate({
 });
 &lt;/script&gt;
 </pre>
-		<p class="note">There are options that you can set. Read the more detailed documentation to find out more.</p>
-		<br>
-		<h4>Make It Touch Enabled</h4>
-		<p>To make your flicker touch enabled, just included the Hammer library (Flickerplate comes with a copy). For example.</p>
+			<p class="note">There are options that you can set. Read the more detailed documentation to find out more.</p>
+			<br>
+			<h4>Make It Touch Enabled</h4>
+			<p>To make your flicker touch enabled, just included the Hammer library (Flickerplate comes with a copy). For example.</p>
 <pre class="prettyprint linenums">
 &lt;body&gt;
     /* Your content goes here */
-    &lt;script src=&quot;js/min/hammer-v2.0.3.js&quot;>&lt;/script&gt;
-    &lt;script src=&quot;js/min/flickerplate.js&quot;>&lt;/script&gt;
+    &lt;script src=&quot;js/hammer-v2.0.3.min.js&quot;>&lt;/script&gt;
+    &lt;script src=&quot;js/flickerplate.min.js&quot;>&lt;/script&gt;
 &lt;/body&gt;
 </pre>
-		<br>
-		<h4>Working Example</h4>
-		<div class="flicker-example">
-			<ul>
-				<li data-background="http://getwebplate.com/images/flicker-1.jpg">
-					<div class="flick-title">Flickerplate Is Working</div>
-				</li>
-				<li data-background="http://getwebplate.com/images/flicker-2.jpg">
-					<div class="flick-title">Editable via Javascript or CSS</div>
-				</li>
-				<li data-background="http://getwebplate.com/images/flicker-3.jpg">
-					<div class="flick-title">Touch Enabled Through Hammer.js</div>
-				</li>
-			</ul>
+			<br>
+			<h4>Working Example</h4>
+			<div class="flicker-example">
+				<ul>
+					<li data-background="http://getwebplate.com/images/flicker-1.jpg">
+						<div class="flick-title">Flickerplate Is Working</div>
+					</li>
+					<li data-background="http://getwebplate.com/images/flicker-2.jpg">
+						<div class="flick-title">Editable via Javascript or CSS</div>
+					</li>
+					<li data-background="http://getwebplate.com/images/flicker-3.jpg">
+						<div class="flick-title">Touch Enabled Through Hammer.js</div>
+					</li>
+				</ul>
+			</div>
+			<br><br>
+	      <h4>Detailed Documentation</h4>
+	      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Flickerplate" class="link">https://github.com/chrishumboldt/Flickerplate</a></p>
 		</div>
-		<br><br>
-      <h4>Detailed Documentation</h4>
-      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Flickerplate" class="link">https://github.com/chrishumboldt/Flickerplate</a></p>
+		<footer><div class="container"><div class="col-double">
+			<div class="left">
+				Made by <a href="http://chrishumboldt.com" target="_blank">Chris Humboldt</a>
+			</div>
+			<div class="right">
+				A <a href="http://getwebplate.com" target="_blank">Webplate Project</a>&nbsp;&nbsp;
+				Want updates? <a href="http://twitter.com/webplatetweets" target="_blank">@webplatetweets</a>
+			</div>
+		</div></div></footer>
 	</div>
-	<footer><div class="container"><div class="col-double">
-		<div class="left">
-			Made by <a href="http://chrishumboldt.com" target="_blank">Chris Humboldt</a>
-		</div>
-		<div class="right">
-			A <a href="http://getwebplate.com" target="_blank">Webplate Project</a>&nbsp;&nbsp;
-			Want updates? <a href="http://twitter.com/webplatetweets" target="_blank">@webplatetweets</a>
-		</div>
-	</div></div></footer>
 
 	<!-- Scripts -->
-	<script src="js/flickerplate.js"></script>
-	<script src="js/min/demo.js"></script>
+	<script src="bower_components/webplate-demo/js/demo.min.js"></script>
+	<script src="js/flickerplate.min.js"></script>
 	<script>
 	new flickerplate({
 		selector: '.flicker-example'

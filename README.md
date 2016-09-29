@@ -12,11 +12,11 @@ Start by including the necessary files.
 
 ```
 <head>
-	<link href="css/flickerplate.css" rel="stylesheet" type="text/css">
+	<link href="css/flickerplate.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	/* Your content goes here */
-	<script src="js/min/flickerplate.js"></script>
+	<script src="js/flickerplate.min.js"></script>
 </body>
 ```
 
@@ -92,8 +92,8 @@ To make your flicker touch enabled, just included the Hammer library (Flickerpla
 ```
 <body>
 	/* Your content goes here */
-	<script src="js/min/hammer-v2.0.3.js"></script>
-	<script src="js/min/flickerplate.js"></script>
+	<script src="js/hammer-v2.0.3.min.js"></script>
+	<script src="js/flickerplate.min.js"></script>
 </body>
 ```
 
