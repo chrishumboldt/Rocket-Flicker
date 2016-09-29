@@ -1,32 +1,26 @@
 {
 	"name": "flickerplate",
-	"version": "3.0.7",
-	"homepage": "http://getwebplate.com/plugins/flickerplate",
 	"authors": [
 		"Chris Humboldt <chrismodem@gmail.com>"
 	],
 	"description": "A Javascript component that lets you flick through content.",
-	"main": ["js/min/flickerplate.js", "css/flickerplate.css"],
+	"main": ["js/flickerplate.min.js", "css/flickerplate.min.css"],
 	"keywords": [
 		"Webplate",
+		"Component",
 		"Flicker",
 		"Slider",
 		"Javascript"
 	],
-	"license": "Apache License, Version 2.0",
+	"license": "Apache-2.0",
 	"ignore": [
 		"**/.*",
-		"node_modules",
-		"bower_components",
-		"test",
-		"tests",
-		"gulpfile.js",
-		"package.json",
 		"index.html",
 		"bower.json",
-		"css/demo.css",
-		"js/demo.js",
-		"js/min/demo.js",
-		"sass"
-	]
+		"build"
+	],
+	"devDependencies": {
+		"blueplate": "^2.0.0",
+		"webplate-demo": "^1.0.0"
+	}
 }

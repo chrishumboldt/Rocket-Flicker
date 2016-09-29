@@ -1,7 +1,5 @@
 {
   "name": "blueplate",
-  "version": "1.6.3",
-  "homepage": "http://getwebplate.com/plugins/blueplate",
   "authors": [
     "Chris Humboldt <chrismodem@gmail.com>"
   ],
@@ -15,28 +13,28 @@
     "Mixins",
     "CSS"
   ],
-  "license": "Apache License, Version 2.0",
+  "license": "Apache-2.0",
   "ignore": [
     "**/.*",
+    "bower_components",
     "node_modules",
     "test",
     "tests",
-    "gulpfile.js",
-    "package.json",
     "index.html",
-    "bower.json",
-    "css/demo.css",
-    "sass/demo.scss",
-    "js"
+    "bower.json"
   ],
-  "_release": "1.6.3",
+  "devDependencies": {
+    "webplate-demo": "^1.0.0"
+  },
+  "homepage": "https://github.com/chrishumboldt/Blueplate",
+  "version": "2.2.3",
+  "_release": "2.2.3",
   "_resolution": {
     "type": "version",
-    "tag": "v1.6.3",
-    "commit": "7aa77cb01d079bea6d9d0ec26e86e3799e688284"
+    "tag": "v2.2.3",
+    "commit": "3e6b4cb883181500ceb0d2f417ce91d866071ad8"
   },
-  "_source": "git://github.com/chrishumboldt/Blueplate.git",
-  "_target": "~1.6.3",
-  "_originalSource": "blueplate",
-  "_direct": true
+  "_source": "https://github.com/chrishumboldt/Blueplate.git",
+  "_target": "^2.0.0",
+  "_originalSource": "blueplate"
 }
