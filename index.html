@@ -73,7 +73,24 @@ new flickerplate({
 </pre>
 			<br>
 			<h4>Working Example</h4>
-			<div class="flicker-example">
+			<div id="flicker-1" class="flicker-example">
+				<ul>
+					<li data-background="http://getwebplate.com/images/flicker-1.jpg">
+						<div class="flick-title">Flickerplate Is Working</div>
+						<div class="flick-sub-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+					</li>
+					<li data-background="http://getwebplate.com/images/flicker-2.jpg">
+						<div class="flick-title">Editable via Javascript or CSS</div>
+						<div class="flick-sub-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+					</li>
+					<li data-background="http://getwebplate.com/images/flicker-3.jpg">
+						<div class="flick-title">Touch Enabled Through Hammer.js</div>
+						<div class="flick-sub-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+					</li>
+				</ul>
+			</div>
+			<br><br>
+			<!-- <div id="flicker-2" class="flicker-example">
 				<ul>
 					<li data-background="http://getwebplate.com/images/flicker-1.jpg">
 						<div class="flick-title">Flickerplate Is Working</div>
@@ -85,7 +102,7 @@ new flickerplate({
 						<div class="flick-title">Touch Enabled Through Hammer.js</div>
 					</li>
 				</ul>
-			</div>
+			</div> -->
 			<br><br>
 	      <h4>Detailed Documentation</h4>
 	      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Flickerplate" class="link">https://github.com/chrishumboldt/Flickerplate</a></p>
@@ -105,9 +122,17 @@ new flickerplate({
 	<script src="bower_components/webplate-demo/js/demo.min.js"></script>
 	<script src="js/flickerplate.min.js"></script>
 	<script>
-	new flickerplate({
+	Flickerplate.init({
 		selector: '.flicker-example'
 	});
+	// Flickerplate.init({
+	// 	selector: '#flicker-1',
+	// 	arrows: true
+	// });
+	// Flickerplate.init({
+	// 	selector: '#flicker-2',
+	// 	arrows: false
+	// });
 	</script>
 
 </body>
