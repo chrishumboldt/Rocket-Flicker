@@ -90,7 +90,7 @@ new flickerplate({
 				</ul>
 			</div>
 			<br><br>
-			<!-- <div id="flicker-2" class="flicker-example">
+			<div id="flicker-2" class="flicker-example">
 				<ul>
 					<li data-background="http://getwebplate.com/images/flicker-1.jpg">
 						<div class="flick-title">Flickerplate Is Working</div>
@@ -101,8 +101,11 @@ new flickerplate({
 					<li data-background="http://getwebplate.com/images/flicker-3.jpg">
 						<div class="flick-title">Touch Enabled Through Hammer.js</div>
 					</li>
+					<li data-background="http://getwebplate.com/images/flicker-3.jpg">
+						<div class="flick-title">Touch Enabled Through Hammer.js</div>
+					</li>
 				</ul>
-			</div> -->
+			</div>
 			<br><br>
 	      <h4>Detailed Documentation</h4>
 	      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Flickerplate" class="link">https://github.com/chrishumboldt/Flickerplate</a></p>
@@ -122,8 +125,9 @@ new flickerplate({
 	<script src="bower_components/webplate-demo/js/demo.min.js"></script>
 	<script src="js/flickerplate.min.js"></script>
 	<script>
-	Flickerplate.init({
-		selector: '.flicker-example'
+	var tester = Flickerplate.init({
+		selector: '.flicker-example',
+		position: 2
 	});
 	// Flickerplate.init({
 	// 	selector: '#flicker-1',

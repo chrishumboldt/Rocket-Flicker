@@ -124,13 +124,84 @@ var Flickerplate = function () {
 	};
 	// Functions
 	var applyAllFlickers = function (options) {
+		var returnFlicks = [];
 		var allflickers = document.querySelectorAll(options.selector);
 		if (allflickers.length > 0) {
 			for (var i = 0, len = allflickers.length; i < len; i++) {
-				flicker.setup(allflickers[i], options);
+				returnFlicks.push(applyFlicker(allflickers[i], options));
 			}
 		}
+		return returnFlicks;
 	};
+	var applyFlicker = function (thisFlicker, options) {
+		var flicker = {
+			container: thisFlicker,
+			list: thisFlicker.querySelector('ul'),
+			items: thisFlicker.querySelectorAll('li'),
+			options: JSON.parse(JSON.stringify(options)),
+			itemsCount: 0,
+			lastPosXPercent: 0,
+			move: function () {
+				var self = this;
+				var movePosition = self.options.position - 1;
+				// Animation types
+				switch (self.options.animation) {
+					case 'transform-slide':
+						var translate3D = 'translate3d(-' + movePosition + '00%, 0, 0)';
+						self.list.setAttribute('style', '-webkit-transform:' + translate3D + ';-o-transform:' + translate3D + ';-moz-transform:' + translate3D + ';transform:' + translate3D);
+						self.lastPosXPercent = -(movePosition);
+						break;
+					case 'transition-fade':
+						for (var $i = 0, $len = self.items.length; $i < $len; $i++) {
+						   web.classRemove(self.items[i], '_active');
+						}
+						web.classAdd(self.list.querySelector('li:nth-child(' + self.options.position + ')'), '_active');
+						break;
+					case 'transition-slide':
+						self.list.style.left = '-' + movePosition + '00%';
+						self.lastPosXPercent = -(movePosition + '00');
+						break;
+				}
+				// Update dot navigation
+				if (self.options.dots) {
+					web.classRemove(self.dots.querySelector('._active'), '_active');
+					web.classAdd(self.dots.querySelector('li:nth-child(' + self.options.position + ') .dot'), '_active');
+				}
+			},
+			setup: function () {
+				var self = this;
+				// Basic
+				web.classAdd(self.container, ['flickerplate', '_t-' + self.options.theme, '_a-' + self.options.animation]);
+				web.classAdd(self.list, 'flicks');
+				self.itemsCount = self.items.length;
+				// Set backgrounds
+				if (self.itemsCount > 0) {
+					for (var i = 0, len = self.items.length; i < len; i++) {
+						var background = self.items[i].getAttribute('data-background') || false;
+						if (background) {
+							self.items[i].style.backgroundImage = 'url(' + background + ')';
+						}
+					}
+				}
+				// Arrows
+				if (self.options.animation !== 'scroller-slide' && self.options.arrows) {
+					self.arrows = {
+						left: self.container.insertBefore(html.arrow('left'), self.list),
+						right: self.container.insertBefore(html.arrow('right'), self.list)
+					};
+				}
+				// Dots
+				if (self.options.animation !== 'scroller-slide' && self.options.dots) {
+					self.dots = self.container.insertBefore(html.dots(self.itemsCount), self.list);
+				}
+				// Set position
+				self.move();
+			}
+		};
+		flicker.setup();
+		return flicker;
+	};
+	/*
 	var flicker = {
 		move: function (flicker, options) {},
 		navigate: function (flicker, options) {},
@@ -165,6 +236,7 @@ var Flickerplate = function () {
 			this.navigate(flicker, options);
 		}
 	};
+	*/
 	var setup = function () {
 		if (!web.isTouch()) {
 			web.classAdd(web.element.html, 'flickerplate-no-touch');
@@ -186,7 +258,7 @@ var Flickerplate = function () {
 			theme: userOptions.theme || defaults.theme,
 			flicksTotal: 0
 		};
-		applyAllFlickers(options);
+		return applyAllFlickers(options);
 	};
 	// Return
 	return {
