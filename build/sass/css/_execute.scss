@@ -6,6 +6,7 @@
 
 @mixin flickerplate-css() {
 	@include flicker();
+	@include flicker-animations();
 	@include flicker-arrows();
 	@include flicker-dots();
 }

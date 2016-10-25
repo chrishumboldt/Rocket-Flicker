@@ -30,7 +30,7 @@ $dot-size: 14px !default;
 			@include border-radius(50%);
 			@include animate(background-color);
 		}
-		.dot:hover {
+		.fp-no-touch & .dot:hover {
 			@include cursor(pointer);
 			@include background-colour(fade-out($white, 0.4));
 		}

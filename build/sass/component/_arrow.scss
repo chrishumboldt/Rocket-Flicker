@@ -30,14 +30,14 @@
 			@include animate(opacity);
 		}
 		// Hover state
-		.flickerplate-no-touch &:hover {
+		.fp-no-touch &:hover {
 			@include cursor(pointer);
 			&._left:before,
 			&._right:before {
 				@include transparency(1);
 			}
 		}
-		.flickerplate-no-touch &:active {
+		.fp-no-touch &:active {
 			&._left:before,
 			&._right:before {
 				@include margin-top(-23px);

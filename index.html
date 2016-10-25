@@ -75,15 +75,15 @@ new flickerplate({
 			<h4>Working Example</h4>
 			<div id="flicker-1" class="flicker-example">
 				<ul>
-					<li data-background="http://getwebplate.com/images/flicker-1.jpg">
+					<li>
 						<div class="flick-title">Flickerplate Is Working</div>
 						<div class="flick-sub-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 					</li>
-					<li data-background="http://getwebplate.com/images/flicker-2.jpg">
+					<li>
 						<div class="flick-title">Editable via Javascript or CSS</div>
 						<div class="flick-sub-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 					</li>
-					<li data-background="http://getwebplate.com/images/flicker-3.jpg">
+					<li>
 						<div class="flick-title">Touch Enabled Through Hammer.js</div>
 						<div class="flick-sub-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 					</li>
@@ -102,7 +102,7 @@ new flickerplate({
 						<div class="flick-title">Touch Enabled Through Hammer.js</div>
 					</li>
 					<li data-background="http://getwebplate.com/images/flicker-3.jpg">
-						<div class="flick-title">Touch Enabled Through Hammer.js</div>
+						<div class="flick-title">Woot Woot</div>
 					</li>
 				</ul>
 			</div>
@@ -127,16 +127,21 @@ new flickerplate({
 	<script>
 	var tester = Flickerplate.init({
 		selector: '.flicker-example',
-		position: 2
-	});
-	// Flickerplate.init({
+		position: 4
+	})[1];
+	console.log(tester);
+
+	// var tester = Flickerplate.init({
 	// 	selector: '#flicker-1',
-	// 	arrows: true
+	// 	position: 2
 	// });
-	// Flickerplate.init({
+	// var tester2 = Flickerplate.init({
 	// 	selector: '#flicker-2',
-	// 	arrows: false
+	// 	position: 2,
+	// 	theme: 'dark'
 	// });
+	// console.log(tester);
+	// console.log(tester2);
 	</script>
 
 </body>
