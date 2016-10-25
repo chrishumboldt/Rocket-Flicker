@@ -101,6 +101,21 @@ var Web = (function (Web) {
 		};
 		Web.class = classMethods;
 	}
+	// Gets
+	if (!Web.get) {
+		var get = {
+			index: function (node) {
+				return [].indexOf.call(node.parentNode.children, node);
+			},
+			extension: function (file) {
+				return file.split('.').pop().toLowerCase();
+			},
+			integers: function (string) {
+				return string.replace(/^\D+ /g, '').replace(/ /g, '');
+			}
+		};
+		Web.get = get;
+	}
 	// Development
 	if (!Web.log) {
 		var log = function (text) {
@@ -135,6 +150,22 @@ var Web = (function (Web) {
 			}
 		};
 		Web.event = eventMethods;
+	}
+
+	// Time
+	if (!Web.time) {
+		var time = {
+			hours: function (hours) {
+				return hours * 60 * 60 * 1000;
+			},
+			minutes: function (minutes) {
+				return minutes * 60 * 1000;
+			},
+			seconds: function (seconds) {
+				return seconds * 1000;
+			}
+		};
+		Web.time = time;
 	}
 
 	return Web;
@@ -241,6 +272,7 @@ var Flickerplate = (function () {
 			return false;
 		}
 		// Variables
+		var autoFlickWatch;
 		var elements = flickerObj.elements;
 		var flicker = flickerObj.flicker;
 		var options = flickerObj.options;
@@ -249,7 +281,7 @@ var Flickerplate = (function () {
 		var arrowNavigation = function () {
 			if (options.animation === 'scroller-slide' || !options.arrows) {
 				return false;
-			};
+			}
 			Web.event.add(elements.arrows.left, 'click', function () {
 				move('previous');
 			});
@@ -257,7 +289,24 @@ var Flickerplate = (function () {
 				move('next');
 			});
 		};
+		var dotNavigation = function () {
+			if (options.animation === 'scroller-slide' || !options.dots) {
+				return false;
+			}
+			Web.event.add(elements.dots, 'click', function (event) {
+				if (Web.has.class(event.target, 'dot') && !Web.has.class(event.target, '_active')) {
+					move(Web.get.index(event.target.parentNode) + 1);
+				}
+			});
+		};
 		var move = function (to) {
+			// Auto flick
+			if (options.autoFlick && options.autoFlickDelay) {
+				clearTimeout(autoFlickWatch);
+				autoFlickWatch = setTimeout(function () {
+					move('next');
+				}, Web.time.seconds(options.autoFlickDelay));
+			}
 			// Set the new position
 			switch (to) {
 				case 'next':
@@ -309,14 +358,31 @@ var Flickerplate = (function () {
 				Web.class.add(elements.dots.querySelector('li:nth-child(' + options.position + ') .dot'), '_active');
 			}
 		};
+		var start = function (delay) {
+			var delay = (typeof delay === 'number') ? delay : defaults.autoFlickDelay;
+			clearTimeout(autoFlickWatch);
+			options.autoFlick = true;
+			options.autoFlickDelay = delay;
+			autoFlickWatch = setTimeout(function () {
+				move('next');
+			}, Web.time.seconds(options.autoFlickDelay));
+		};
+		var stop = function () {
+			if (options.autoFlick && options.autoFlickDelay) {
+				clearTimeout(autoFlickWatch);
+				options.autoFlick = false;
+			}
+		};
 
 		// Execute and return
 		arrowNavigation();
+		dotNavigation();
 		move(options.position);
-		Web.class.add();
 		return {
 			flicker: flicker,
-			move: move
+			move: move,
+			start: start,
+			stop: stop
 		}
 	};
 
