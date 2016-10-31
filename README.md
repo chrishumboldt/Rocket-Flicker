@@ -108,8 +108,7 @@ var myFlicker = Flickerplate.init({
 	selector: '.flicker-example',
 	animation: 'transition-fade',
 	autoFlick: false,
-	dotAlignment: 'right',
-	theme: 'dark'
+	dotAlignment: 'right'
 });
 ```
 
