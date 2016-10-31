@@ -16,7 +16,7 @@ $dot-size: 14px !default;
 		ul {
 			@include text-align(center);
 			@include list-style(none);
-			@include padding-horizontal(15px);
+			@include padding-horizontal(30px);
 			@include padding-vertical(0px);
 		}
 		ul li {
@@ -38,10 +38,10 @@ $dot-size: 14px !default;
 			@include background-colour($white);
 		}
 	}
-	.flickerplate-dots.left, .flickerplate-dots.left ul {
+	.flickerplate-dots._left, .flickerplate-dots._left ul {
 		@include text-align(left);
 	}
-	.flickerplate-dots.right, .flickerplate-dots.right ul {
+	.flickerplate-dots._right, .flickerplate-dots._right ul {
 		@include text-align(right);
 	}
 }

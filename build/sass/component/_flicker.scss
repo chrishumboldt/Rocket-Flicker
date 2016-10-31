@@ -8,15 +8,18 @@ $back-colour: lighten(#000,90%);
 
 @mixin flicker() {
 	.flickerplate {
-		@include position(relative);
+		@include position(relative, left 0);
 		@include overflow(hidden);
 		@include background-colour($back-colour);
 		ul.flicks {
+			@include position(relative);
 			@include spacing-no();
 			@include flex-display();
 			@include size(100%, 600px);
 			@include list-style(none);
 			@include align-items(center);
+			transform: translate3d(0%, 0px, 0px);
+			-webkit-transform: translate3d(0%, 0px, 0px);
 			> li {
 				@include flex(1, 0, 100%);
 				@include align-items(center);

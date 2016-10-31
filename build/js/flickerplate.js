@@ -186,6 +186,7 @@ var Flickerplate = (function () {
 		position: 1,
 		theme: 'light'
 	};
+	var isTouch = true;
 
 	// HTML
 	var html = {
@@ -217,6 +218,7 @@ var Flickerplate = (function () {
 	var setup = function () {
 		if (!Web.is.touch()) {
 			Web.class.add(Web.element.html, 'fp-no-touch');
+			isTouch = false;
 		}
 	};
 	var setupFlicker = function (flicker, options) {
@@ -256,6 +258,7 @@ var Flickerplate = (function () {
 			}
 			if (options.dots) {
 				flickerEl.dots = flicker.insertBefore(html.dots(flicksCount), flickerUL);
+				Web.class.add(flickerEl.dots, '_' + options.dotAlignment);
 			}
 		}
 
@@ -277,6 +280,14 @@ var Flickerplate = (function () {
 		var flicker = flickerObj.flicker;
 		var options = flickerObj.options;
 
+		var endPosX = 0;
+		var flickerWidth = 0;
+		var lastPosXLeft = 0;
+		var lastPosXPercent = 0;
+		var panCSS = 'translate3d(0, 0, 0)';
+		var panThreshold = 100;
+		var posX = 0;
+
 		// Functions
 		var arrowNavigation = function () {
 			if (options.animation === 'scroller-slide' || !options.arrows) {
@@ -288,6 +299,21 @@ var Flickerplate = (function () {
 			Web.event.add(elements.arrows.right, 'click', function () {
 				move('next');
 			});
+		};
+		var autoStart = function () {
+			autoFlickWatch = setTimeout(function () {
+				move('next');
+			}, Web.time.seconds(options.autoFlickDelay));
+		};
+		var autoStop = function () {
+			clearTimeout(autoFlickWatch);
+		};
+		var checkPosX = function (posXFallback) {
+			if (options.position === 1 && posX > 0) {
+				posX = 0;
+			} else if ((options.position === options.count) && (posX < posXFallback)) {
+				posX = posXFallback;
+			}
 		};
 		var dotNavigation = function () {
 			if (options.animation === 'scroller-slide' || !options.dots) {
@@ -302,10 +328,8 @@ var Flickerplate = (function () {
 		var move = function (to) {
 			// Auto flick
 			if (options.autoFlick && options.autoFlickDelay) {
-				clearTimeout(autoFlickWatch);
-				autoFlickWatch = setTimeout(function () {
-					move('next');
-				}, Web.time.seconds(options.autoFlickDelay));
+				autoStop();
+				autoStart();
 			}
 			// Set the new position
 			switch (to) {
@@ -343,6 +367,7 @@ var Flickerplate = (function () {
 				case 'transform-slide':
 					var translate3D = 'translate3d(-' + movePosition + '00%, 0, 0)';
 					elements.UL.setAttribute('style', '-webkit-transform:' + translate3D + ';-o-transform:' + translate3D + ';-moz-transform:' + translate3D + ';transform:' + translate3D);
+					lastPosXPercent = -(movePosition) * 100;
 					break;
 				case 'transition-fade':
 					Web.class.remove(elements.UL.querySelector('li._active'), '_active');
@@ -350,12 +375,72 @@ var Flickerplate = (function () {
 					break;
 				case 'transition-slide':
 					elements.UL.style.left = '-' + movePosition + '00%';
+					lastPosXLeft = -(movePosition + '00');
 					break;
 			}
 			// Update dot navigation
 			if (options.animation !== 'scroller-slide' && options.dots) {
 				Web.class.remove(elements.dots.querySelector('._active'), '_active');
 				Web.class.add(elements.dots.querySelector('li:nth-child(' + options.position + ') .dot'), '_active');
+			}
+		};
+		var moveHammer = function () {
+			if (typeof Hammer === 'function') {
+				if (options.animation === 'transform-slide' || options.animation === 'transition-slide') {
+					// Interaction
+					var hammerTime = new Hammer(elements.UL);
+					hammerTime.on('panstart', function(event) {
+						movePanStart();
+					});
+					hammerTime.on('panleft panright', function(event) {
+						movePan(event);
+					});
+					hammerTime.on('panend', function(event) {
+						movePanEnd(event);
+					});
+				} else if (options.animation === 'transition-fade') {
+					var hammerTime = new Hammer(elements.UL);
+					hammerTime.on('swipeleft swiperight', function(event) {
+						moveSwipe(event);
+					});
+				}
+			}
+		};
+		var movePan = function (event) {
+			switch (options.animation) {
+				case 'transform-slide':
+					posX = (Math.round((event.deltaX / flickerWidth) * 1000) / 10) + lastPosXPercent;
+					checkPosX(-(options.count - 1) * 100);
+					panCSS = 'translate3d(' + posX + '%, 0, 0)';
+					elements.UL.setAttribute('style', '-webkit-transform:' + panCSS + ';-o-transform:' + panCSS + ';-moz-transform:' + panCSS + ';transform:' + panCSS);
+					break;
+
+				case 'transition-slide':
+					posX = Math.round((event.deltaX / flickerWidth) * 100) + lastPosXLeft;
+					checkPosX(-((options.count - 1) * 100));
+					elements.UL.style.left = posX + '%';
+					break;
+			}
+		};
+		var movePanStart = function () {
+			autoStop();
+			flickerWidth = flicker.clientWidth;
+			Web.class.remove(flicker, '_a-' + options.animation);
+		};
+		var movePanEnd = function (event) {
+			endPosX = event.deltaX;
+			Web.class.add(flicker, '_a-' + options.animation);
+			if ((endPosX < -panThreshold) && (options.position < options.count)) {
+				move('next');
+			} else if ((endPosX > panThreshold) && (options.position > 1)) {
+				move('previous');
+			}
+		};
+		var moveSwipe = function (event) {
+			if (event.type == 'swipeleft') {
+				move('next');
+			} else if (event.type == 'swiperight') {
+				move('previous');
 			}
 		};
 		var start = function (delay) {
@@ -378,6 +463,9 @@ var Flickerplate = (function () {
 		arrowNavigation();
 		dotNavigation();
 		move(options.position);
+		if (isTouch) {
+			moveHammer();
+		}
 		return {
 			flicker: flicker,
 			move: move,

@@ -55,7 +55,7 @@ bower install flickerplate
     &lt;/ul&gt;
 &lt;/div&gt;
 &lt;script&gt;
-new flickerplate({
+Flickerplate.init({
     selector: '.flicker-example'
 });
 &lt;/script&gt;
@@ -90,23 +90,6 @@ new flickerplate({
 				</ul>
 			</div>
 			<br><br>
-			<div id="flicker-2" class="flicker-example">
-				<ul>
-					<li data-background="http://getwebplate.com/images/flicker-1.jpg">
-						<div class="flick-title">Flickerplate Is Working</div>
-					</li>
-					<li data-background="http://getwebplate.com/images/flicker-2.jpg">
-						<div class="flick-title">Editable via Javascript or CSS</div>
-					</li>
-					<li data-background="http://getwebplate.com/images/flicker-3.jpg">
-						<div class="flick-title">Touch Enabled Through Hammer.js</div>
-					</li>
-					<li data-background="http://getwebplate.com/images/flicker-3.jpg">
-						<div class="flick-title">Woot Woot</div>
-					</li>
-				</ul>
-			</div>
-			<br><br>
 	      <h4>Detailed Documentation</h4>
 	      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Flickerplate" class="link">https://github.com/chrishumboldt/Flickerplate</a></p>
 		</div>
@@ -123,25 +106,12 @@ new flickerplate({
 
 	<!-- Scripts -->
 	<script src="bower_components/webplate-demo/js/demo.min.js"></script>
+	<script src="js/hammer-v2.0.3.min.js"></script>
 	<script src="js/flickerplate.min.js"></script>
 	<script>
-	var tester = Flickerplate.init({
-		selector: '.flicker-example',
-		autoFlickDelay: 4
+	Flickerplate.init({
+		selector: '.flicker-example'
 	});
-	console.log(tester);
-
-	// var tester = Flickerplate.init({
-	// 	selector: '#flicker-1',
-	// 	position: 2
-	// });
-	// var tester2 = Flickerplate.init({
-	// 	selector: '#flicker-2',
-	// 	position: 2,
-	// 	theme: 'dark'
-	// });
-	// console.log(tester);
-	// console.log(tester2);
 	</script>
 
 </body>
