@@ -115,7 +115,7 @@ var myFlicker = Flickerplate.init({
 ## Make It Touch Enabled
 To make your flicker touch enabled, just included the Hammer library (Flickerplate comes with a copy). For example.
 
-```
+```html
 <body>
 	/* Your content goes here */
 	<script src="js/hammer-v2.0.3.min.js"></script>
