@@ -3,7 +3,7 @@ A Javascript component that lets you flick through content.
 
 * [Getting Started](#getting-started)
 * [Basic Example](#basic-example)
-* [Initialisation](#Initialisation)
+* [Initialisation](#initialisation)
 	* [Options](#options)
 	* [Defaults](#defaults)
 * [Advanced Example](#advanced-example)
