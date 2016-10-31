@@ -6,16 +6,6 @@
 
 // Webplate tools module extension
 var Web = (function (Web) {
-	// Variables
-	if (!Web.element) {
-		var webEl = {
-			body: document.getElementsByTagName('body')[0],
-			html: document.getElementsByTagName('html')[0],
-			title: document.getElementsByTagName('title')[0],
-			webplateScript: document.getElementById('webplate')
-		};
-		Web.element = webEl;
-	}
 	// Basic checks
 	if (!Web.exists) {
 		var exists = function (check) {
@@ -125,6 +115,13 @@ var Web = (function (Web) {
 		};
 		Web.log = log;
 	}
+	// DOM
+	if (!Web.dom) {
+		Web.dom = {};
+	}
+	if (!Web.dom.html) {
+		Web.dom.html = document.getElementsByTagName('html')[0];
+	}
 	// Events
 	if (!Web.event) {
 		var eventMethods = {
@@ -217,7 +214,7 @@ var Flickerplate = (function () {
 	// Functions
 	var setup = function () {
 		if (!Web.is.touch()) {
-			Web.class.add(Web.element.html, 'fp-no-touch');
+			Web.class.add(Web.dom.html, 'fp-no-touch');
 			isTouch = false;
 		}
 	};
