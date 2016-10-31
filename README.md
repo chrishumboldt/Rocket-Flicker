@@ -1,6 +1,14 @@
 # Flickerplate
 A Javascript component that lets you flick through content.
 
+* [Getting Started](#getting-started)
+* [Basic Example](#basic-example)
+* [Initialisation](#initialisation)
+	* [Options](#options)
+	* [Defaults](#defaults)
+* [Advanced Example](#advanced-example)
+* [Make It Touch Enabled](#make-it-touch-enabled)
+
 ## Getting Started
 You can either download a copy of the source files or install Flickerplate via Bower.
 
@@ -10,7 +18,7 @@ bower install flickerplate
 
 Start by including the necessary files.
 
-```
+```html
 <head>
 	<link href="css/flickerplate.min.css" rel="stylesheet" type="text/css">
 </head>
@@ -23,7 +31,7 @@ Start by including the necessary files.
 ## Basic Example
 See the setup of the HTML and Javascript call below.
 
-```
+```html
 <div class="flicker-example">
 	<ul>
 		<li data-background="image-url.jpg">
@@ -37,14 +45,41 @@ See the setup of the HTML and Javascript call below.
 	</ul>
 </div>
 <script>
-new flickerplate({
+Flickerplate.init({
 	selector: '.flicker-example'
 });
 </script>
 ```
 
-## Javascript Options
-See the different options you have available on component call.
+## Initialisation
+Each initialisation will return an array of component objects (An array will always be returned even if the selector is an id). This includes the flicker element itself as well as relevant methods. For example:
+
+```Javascript
+var flickers = Flickerplate.init({
+	selector: '.flickers'
+});
+
+// The flickers and all methods
+for (var i = 0, len = flickers.length; i < len; i++) {
+	console.log(flickers[i].flicker);
+	flickers[i].move(3); // Move this flicker to position 3
+	flickers[i].start(); // Start the auto flicker
+	flickers[i].stop(); // Stop the auto flicker
+}
+```
+
+Alternatively if you know the selector is unique you can reference the flicker right away with the 0 index. For example:
+
+```javascript
+var myFlicker = Flickerplate.init({
+	selector: '#flicker'
+})[0]; // Reference the first item in the array right away.
+
+myFlicker.stop();
+```
+
+#### Options
+See the different options you have available on initialisation.
 
 | Name | Default | Options | Description |
 | ---- | ---- | ---- | ---- |
@@ -56,40 +91,31 @@ See the different options you have available on component call.
 | dotAlignment | center | center, left, right | Set the horizontal alignment of the dot navigation. |
 | dots | true | true, false | Dot navigation is used to indicate and navigate between the flicks. |
 | position | 1 | | Set the starting flick. |
-| theme | light | light, dark | Currently two options, light and dark. This will set the font colour, block text colour, arrows and dots to either dark or light. |
 
 #### Defaults
-You can also set or overwrite the above options globally by altering the Flickerplate defaults. To do so reference the **$flickerplateDefault** object. For example:
+You can also overwrite the component options globally by altering the defaults. To do so reference the defaults object property. For example:
 
-```
-<script>
-// Default change
-$flickerplateDefault.selector = '.flicker-example';
-$flickerplateDefault.arrows = false;
-$flickerplateDefault.theme = 'dark';
-
-// Execute
-new flickerplate();
-</script>
+```javascript
+Flickerplate.defaults.autoFlickDelay = 20;
+Flickerplate.defaults.dots = false;
 ```
 
 ## Advanced Example
 See an advanced example below with options as per the above.
 
-```
-new flickerplate({
+```javascript
+var myFlicker = Flickerplate.init({
 	selector: '.flicker-example',
 	animation: 'transition-fade',
 	autoFlick: false,
-	dotAlignment: 'right',
-	theme: 'dark'
+	dotAlignment: 'right'
 });
 ```
 
 ## Make It Touch Enabled
 To make your flicker touch enabled, just included the Hammer library (Flickerplate comes with a copy). For example.
 
-```
+```html
 <body>
 	/* Your content goes here */
 	<script src="js/hammer-v2.0.3.min.js"></script>
