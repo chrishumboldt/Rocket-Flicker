@@ -4,7 +4,10 @@
 		"Chris Humboldt <chrismodem@gmail.com>"
 	],
 	"description": "A Javascript component that lets you flick through content.",
-	"main": ["js/flickerplate.min.js", "css/flickerplate.min.css"],
+	"main": [
+		"build/js/flickerplate.js",
+		"build/sass/flickerplate.scss"
+	],
 	"keywords": [
 		"Webplate",
 		"Component",
@@ -15,9 +18,8 @@
 	"license": "Apache-2.0",
 	"ignore": [
 		"**/.*",
-		"index.html",
-		"bower.json",
-		"build"
+		"bower_components",
+		"index.html"
 	],
 	"devDependencies": {
 		"blueplate": "^2.0.0",
