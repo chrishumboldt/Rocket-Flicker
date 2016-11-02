@@ -83,7 +83,7 @@ See the different options you have available on initialisation.
 
 | Name | Default | Options | Description |
 | ---- | ---- | ---- | ---- |
-| animation | transform-slide | transform-slide, transform-slide, transition-fade, transition-slide | Choose the animation type you want. |
+| animation | transform-slide | transform-slide, transition-fade, transition-slide | Choose the animation type you want. |
 | arrows | true | true, false | Arrows are used to navigate back and forth between the flicks. |
 | arrowsConstraint | false | true, false | When you get to the end of the flicks pressing the next arrow will navigate you to the beginning again should you have a false constraint. The same applies to the previous arrow. |
 | autoFlick | true | true, false | Sets the flick to run automatically. A manual flick resets the delay. |
