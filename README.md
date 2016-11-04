@@ -3,7 +3,7 @@ A Javascript component that lets you flick through content.
 
 * [Getting Started](#getting-started)
 * [Basic Example](#basic-example)
-* [Initialisation](#initialisation)
+* [Initialization](#initialization)
 	* [Options](#options)
 	* [Defaults](#defaults)
 * [Advanced Example](#advanced-example)
@@ -51,8 +51,8 @@ Flickerplate.init({
 </script>
 ```
 
-## Initialisation
-Each initialisation will return an array of component objects (An array will always be returned even if the selector is an id). This includes the flicker element itself as well as relevant methods. For example:
+## Initialization
+Each initialization will return an array of component objects (An array will always be returned even if the selector is an id). This includes the flicker element itself as well as relevant methods. For example:
 
 ```Javascript
 var flickers = Flickerplate.init({
@@ -79,7 +79,7 @@ myFlicker.stop();
 ```
 
 #### Options
-See the different options you have available on initialisation.
+See the different options you have available on initialization.
 
 | Name | Default | Options | Description |
 | ---- | ---- | ---- | ---- |
