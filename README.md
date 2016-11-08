@@ -12,7 +12,7 @@ A component that lets you flick through content.
 * [Buttonplate Deprecated](#buttonplate-deprecated)
 
 ## Getting Started
-You can either download a copy of the [source files](https://github.com/chrishumboldt/Rocket-flicker/archive/master.zip) or install via NPM.
+You can either download a copy of the [source files](https://github.com/chrishumboldt/Rocket-Flicker/archive/master.zip) or install via NPM.
 
 ```
 npm install rocket-flicker
