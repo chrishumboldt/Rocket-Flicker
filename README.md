@@ -1,4 +1,4 @@
-# Flickerplate
+# Rocket Flicker
 A Javascript component that lets you flick through content.
 
 * [Getting Started](#getting-started)
@@ -8,23 +8,25 @@ A Javascript component that lets you flick through content.
 	* [Defaults](#defaults)
 * [Advanced Example](#advanced-example)
 * [Make It Touch Enabled](#make-it-touch-enabled)
+* [Rocket Tools](#rocket-tools)
+* [Buttonplate Deprecated](#buttonplate-deprecated)
 
 ## Getting Started
-You can either download a copy of the source files or install Flickerplate via Bower.
+You can either download a copy of the [source files](https://github.com/chrishumboldt/Rocket-flicker/archive/master.zip) or install via NPM.
 
 ```
-bower install flickerplate
+npm install rocket-flicker
 ```
 
 Start by including the necessary files.
 
 ```html
 <head>
-	<link href="css/flickerplate.min.css" rel="stylesheet" type="text/css">
+	<link href="rocket-flicker/css/flicker.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	/* Your content goes here */
-	<script src="js/flickerplate.min.js"></script>
+	<script src="rocket-flicker/js/flicker.min.js"></script>
 </body>
 ```
 
@@ -45,7 +47,7 @@ See the setup of the HTML and Javascript call below.
 	</ul>
 </div>
 <script>
-Flickerplate.init({
+Rocket.flicker({
 	selector: '.flicker-example'
 });
 </script>
@@ -55,7 +57,7 @@ Flickerplate.init({
 Each initialization will return an array of component objects (An array will always be returned even if the selector is an id). This includes the flicker element itself as well as relevant methods. For example:
 
 ```Javascript
-var flickers = Flickerplate.init({
+var flickers = Rocket.flicker({
 	selector: '.flickers'
 });
 
@@ -71,7 +73,7 @@ for (var i = 0, len = flickers.length; i < len; i++) {
 Alternatively if you know the selector is unique you can reference the flicker right away with the 0 index. For example:
 
 ```javascript
-var myFlicker = Flickerplate.init({
+var myFlicker = Rocket.flicker({
 	selector: '#flicker'
 })[0]; // Reference the first item in the array right away.
 
@@ -96,15 +98,15 @@ See the different options you have available on initialization.
 You can also overwrite the component options globally by altering the defaults. To do so reference the defaults object property. For example:
 
 ```javascript
-Flickerplate.defaults.autoFlickDelay = 20;
-Flickerplate.defaults.dots = false;
+Rocket.defaults.flicker.autoFlickDelay = 20;
+Rocket.defaults.flicker.dots = false;
 ```
 
 ## Advanced Example
 See an advanced example below with options as per the above.
 
 ```javascript
-var myFlicker = Flickerplate.init({
+var myFlicker = Rocket.flicker({
 	selector: '.flicker-example',
 	animation: 'transition-fade',
 	autoFlick: false,
@@ -113,15 +115,21 @@ var myFlicker = Flickerplate.init({
 ```
 
 ## Make It Touch Enabled
-To make your flicker touch enabled, just included the Hammer library (Flickerplate comes with a copy). For example.
+To make your flicker touch enabled, just included the Hammer library (Rocket Flicker comes with a copy). For example.
 
 ```html
 <body>
 	/* Your content goes here */
-	<script src="js/hammer-v2.0.3.min.js"></script>
-	<script src="js/flickerplate.min.js"></script>
+	<script src="rocket-flicker/js/hammer-v2.0.3.min.js"></script>
+	<script src="rocket-flicker/js/flicker.min.js"></script>
 </body>
 ```
+
+#### Rocket Tools
+If you are using this component in conjunction with [Rocket Tools](https://github.com/chrishumboldt/Rocket-Tools), then **always** load the Rocket Tools library first. This component extends that library when detected.
+
+#### Flickerplate Deprecated
+The original library, Flickerplate, has been deprecated. The entire Webplate project is being refactored and rebranded with a new development philosophy. Flickerplate will be maintained only with bug fixes under the **flickerplate** branch.
 
 ## Author
 Created and maintained by Chris Humboldt<br>
