@@ -1,7 +1,7 @@
 {
    "name": "rocket-flicker",
    "version": "4.0.0",
-   "description": "A Rocket component that lets you flick through content.",
+   "description": "A component that lets you flick through content.",
    "repository": {
       "type": "git",
       "url": "git+https://github.com/chrishumboldt/Flickerplate.git"
