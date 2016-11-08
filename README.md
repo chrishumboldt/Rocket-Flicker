@@ -1,5 +1,5 @@
 # Rocket Flicker
-A Javascript component that lets you flick through content.
+A Rocket component that lets you flick through content.
 
 * [Getting Started](#getting-started)
 * [Basic Example](#basic-example)
