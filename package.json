@@ -1,10 +1,10 @@
 {
    "name": "rocket-flicker",
-   "version": "4.0.4",
+   "version": "4.0.5",
    "description": "A component that lets you flick through content.",
    "repository": {
       "type": "git",
-      "url": "git+https://github.com/chrishumboldt/Flickerplate.git"
+      "url": "git+https://github.com/chrishumboldt/Rocket-Flicker.git"
    },
    "keywords": [
       "Rocket",
@@ -19,9 +19,9 @@
    "author": "Chris Humboldt <chrismodem@gmail.com>",
    "license": "Apache-2.0",
    "bugs": {
-      "url": "https://github.com/chrishumboldt/Flickerplate/issues"
+      "url": "https://github.com/chrishumboldt/Rocket-Flicker/issues"
    },
-   "homepage": "https://github.com/chrishumboldt/Flickerplate#readme",
+   "homepage": "https://github.com/chrishumboldt/Rocket-Flicker#readme",
    "engines": {
       "npm": "^3.0.0"
    },
