@@ -6,36 +6,36 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<!-- Title -->
-	<title>Flickerplate Component</title>
+	<title>Rocket Flicker Component</title>
 	<!-- Scripts -->
-	<link href="bower_components/webplate-demo/css/demo.min.css"  type="text/css" rel="stylesheet">
-	<link href="css/flickerplate.min.css"  type="text/css" rel="stylesheet">
+	<link href="node_modules/rocket-demo/css/demo.min.css"  type="text/css" rel="stylesheet">
+	<link href="css/flicker.min.css"  type="text/css" rel="stylesheet">
 
 </head>
 <body>
 
-	<div id="web-demo-message">
-		You need to run "bower install" and include the neccessary demo files in order to view this file.
+	<div id="rocket-demo-message">
+		You need to run "npm install" and include the neccessary demo files in order to view this file.
 	</div>
 
-	<div id="web-demo" style="display:none;">
+	<div id="rocket-demo" style="display:none;">
 		<div class="heading">
-	      <div class="container"><h2>Flickerplate Component</h2></div>
+	      <div class="container"><h2>Rocket Flicker Component</h2></div>
 	   </div>
 		<div class="container">
 			<h4>Getting Started</h4>
-			<p>You can either download a copy of the source files or install Flickerplate via Bower.</p>
+			<p>You can either download a copy of the <a href="https://github.com/chrishumboldt/Rocket-Flicker/archive/master.zip" class="link">source files</a> or install via NPM.</p>
 <pre class="prettyprint linenums">
-bower install flickerplate
+npm install rocket-flicker
 </pre>
 			<p>Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
 &lt;head&gt;
-    &lt;link href=&quot;css/flickerplate.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;link href=&quot;rocket-flicker/css/flicker.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
 &lt;/head&gt;
 &lt;body&gt;
     /* Your content goes here */
-    &lt;script src=&quot;js/flickerplate.min.js&quot;>&lt;/script&gt;
+    &lt;script src=&quot;rocket-flicker/js/flicker.min.js&quot;>&lt;/script&gt;
 &lt;/body&gt;
 </pre>
 			<br>
@@ -55,7 +55,7 @@ bower install flickerplate
     &lt;/ul&gt;
 &lt;/div&gt;
 &lt;script&gt;
-Flickerplate.init({
+Rocket.flicker({
     selector: '.flicker-example'
 });
 &lt;/script&gt;
@@ -63,12 +63,12 @@ Flickerplate.init({
 			<p class="note">There are options that you can set. Read the more detailed documentation to find out more.</p>
 			<br>
 			<h4>Make It Touch Enabled</h4>
-			<p>To make your flicker touch enabled, just included the Hammer library (Flickerplate comes with a copy). For example.</p>
+			<p>To make your flicker touch enabled, just included the Hammer library (Rocket Flicker comes with a copy). For example.</p>
 <pre class="prettyprint linenums">
 &lt;body&gt;
     /* Your content goes here */
-    &lt;script src=&quot;js/hammer-v2.0.3.min.js&quot;>&lt;/script&gt;
-    &lt;script src=&quot;js/flickerplate.min.js&quot;>&lt;/script&gt;
+    &lt;script src=&quot;rocket-flicker/js/hammer-v2.0.3.min.js&quot;>&lt;/script&gt;
+    &lt;script src=&quot;rocket-flicker/js/flicker.min.js&quot;>&lt;/script&gt;
 &lt;/body&gt;
 </pre>
 			<br>
@@ -76,7 +76,7 @@ Flickerplate.init({
 			<div id="flicker-1" class="flicker-example">
 				<ul>
 					<li>
-						<div class="flick-title">Flickerplate Is Working</div>
+						<div class="flick-title">Rocket Flicker Is Working</div>
 						<div class="flick-sub-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 					</li>
 					<li>
@@ -91,25 +91,25 @@ Flickerplate.init({
 			</div>
 			<br><br>
 	      <h4>Detailed Documentation</h4>
-	      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Flickerplate" class="link">https://github.com/chrishumboldt/Flickerplate</a></p>
+	      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Rocket-Flicker" class="link">https://github.com/chrishumboldt/Rocket-Flicker</a></p>
 		</div>
 		<footer><div class="container"><div class="col-double">
 			<div class="left">
 				Made by <a href="http://chrishumboldt.com" target="_blank">Chris Humboldt</a>
 			</div>
-			<div class="right">
+			<!-- <div class="right">
 				A <a href="http://getwebplate.com" target="_blank">Webplate Project</a>&nbsp;&nbsp;
 				Want updates? <a href="http://twitter.com/webplatetweets" target="_blank">@webplatetweets</a>
-			</div>
+			</div> -->
 		</div></div></footer>
 	</div>
 
 	<!-- Scripts -->
-	<script src="bower_components/webplate-demo/js/demo.min.js"></script>
+	<script src="node_modules/rocket-demo/js/demo.min.js"></script>
 	<script src="js/hammer-v2.0.3.min.js"></script>
-	<script src="js/flickerplate.min.js"></script>
+	<script src="build/js/flicker.js"></script>
 	<script>
-	Flickerplate.init({
+	Rocket.flicker({
 		selector: '.flicker-example'
 	});
 	</script>
