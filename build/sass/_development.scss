@@ -1,5 +1,5 @@
 /**
- * File: _import.scss
+ * File: _development.scss
  * Type: SASS import
  * Author: Chris Humboldt
  */
@@ -8,7 +8,7 @@
 $font-face-flickerplate: "icon-font-rocket-flicker" !default;
 
 // Imports
-@import "../../../rocket-propel/build/sass/import";
+@import "../../node_modules/rocket-propel/build/sass/import";
 
 @import "component/setup";
 @import "component/animation";

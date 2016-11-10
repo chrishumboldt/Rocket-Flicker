@@ -83,16 +83,16 @@ myFlicker.stop();
 #### Options
 See the different options you have available on initialization.
 
-| Name | Default | Options | Description |
-| ---- | ---- | ---- | ---- |
-| animation | transform-slide | transform-slide, transition-fade, transition-slide | Choose the animation type you want. |
-| arrows | true | true, false | Arrows are used to navigate back and forth between the flicks. |
-| arrowsConstraint | false | true, false | When you get to the end of the flicks pressing the next arrow will navigate you to the beginning again should you have a false constraint. The same applies to the previous arrow. |
-| autoFlick | true | true, false | Sets the flick to run automatically. A manual flick resets the delay. |
-| autoFlickDelay | 10 | | Set the delay (in seconds) between each auto flick. |
-| dotAlignment | center | center, left, right | Set the horizontal alignment of the dot navigation. |
-| dots | true | true, false | Dot navigation is used to indicate and navigate between the flicks. |
-| position | 1 | | Set the starting flick. |
+Name | Default | Options | Description
+---- | ---- | ---- | ----
+`animation` | `transform-slide` | `transform-slide`, `transition-fade`, `transition-slide` | Choose the animation type you want.
+`arrows` | `true` | `true`, `false` | Arrows are used to navigate back and forth between the flicks.
+`arrowsConstraint` | `false` | `true`, `false` | When you get to the end of the flicks pressing the next arrow will navigate you to the beginning again should you have a false constraint. The same applies to the previous arrow.
+`autoFlick` | `true` | `true`, `false` | Sets the flick to run automatically. A manual flick resets the delay.
+`autoFlickDelay` | `10` | | Set the delay (in seconds) between each auto flick.
+`dotAlignment` | `center` | `center`, `left`, `right` | Set the horizontal alignment of the dot navigation.
+`dots` | `true` | `true`, `false` | Dot navigation is used to indicate and navigate between the flicks.
+`position` | `1` | | Set the starting flick.
 
 #### Defaults
 You can also overwrite the component options globally by altering the defaults. To do so reference the defaults object property. For example:
@@ -141,7 +141,7 @@ GitHub <a href="https://github.com/chrishumboldt">github.com/chrishumboldt</a><b
 <a href="https://github.com/dsuket">dsuket</a>
 
 ## Copyright and License
-Copyright 2016 Webplate Project
+Copyright 2016 Rocket Project
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
