@@ -30,14 +30,14 @@
 			@include animate(opacity);
 		}
 		// Hover state
-		.fp-no-touch &:hover {
+		.rocket-no-touch &:hover {
 			@include cursor(pointer);
 			&._left:before,
 			&._right:before {
 				@include transparency(1);
 			}
 		}
-		.fp-no-touch &:active {
+		.rocket-no-touch &:active {
 			&._left:before,
 			&._right:before {
 				@include margin-top(-23px);

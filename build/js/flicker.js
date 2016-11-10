@@ -384,7 +384,7 @@ var RocketFlickerComponent = (function () {
 	// Functions
 	var setup = function () {
 		if (!Rocket.is.touch()) {
-			Rocket.class.add(Rocket.dom.html, 'fp-no-touch');
+			Rocket.class.add(Rocket.dom.html, 'rocket-no-touch');
 			isTouch = false;
 		}
 	};

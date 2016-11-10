@@ -1,6 +1,6 @@
 {
    "name": "rocket-flicker",
-   "version": "4.0.0",
+   "version": "4.0.1",
    "description": "A component that lets you flick through content.",
    "repository": {
       "type": "git",
