@@ -16,7 +16,7 @@ $transition-fade-easing: linear;
 
 // Animations
 @mixin flicker-animations() {
-	.flickerplate._a-transform-slide {
+	.rocket-flicker._a-transform-slide {
 		// Flicks
 		ul.flicks {
 			-webkit-perspective: 1000;
@@ -36,7 +36,7 @@ $transition-fade-easing: linear;
 			}
 		}
 	}
-	.flickerplate._a-transition-slide {
+	.rocket-flicker._a-transition-slide {
 		ul.flicks {
 			@include position(relative, left 0%);
 			@include animate(left, $transition-slide-duration);
@@ -46,14 +46,14 @@ $transition-fade-easing: linear;
 			}
 		}
 	}
-	.flickerplate._a-scroller-slide {
+	.rocket-flicker._a-scroller-slide {
 		@include padding-bottom(0px);
 		@include overflow(auto);
 		ul.flicks {
 			@include position(auto);
 		}
 	}
-	.flickerplate._a-transition-fade {
+	.rocket-flicker._a-transition-fade {
 		ul.flicks {
 			@include position(relative);
 			li {

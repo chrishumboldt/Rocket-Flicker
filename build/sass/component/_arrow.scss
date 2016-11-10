@@ -6,7 +6,7 @@
 
 // Arrow navigation
 @mixin flicker-arrows() {
-	.flickerplate-arrow {
+	.rocket-flicker-arrow {
 		@include display(block);
 		@include position(absolute, top 10%);
 		@include size($space-medium, 80%);

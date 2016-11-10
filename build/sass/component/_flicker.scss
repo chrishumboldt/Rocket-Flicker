@@ -7,7 +7,7 @@
 $back-colour: lighten(#000,90%);
 
 @mixin flicker() {
-	.flickerplate {
+	.rocket-flicker {
 		@include position(relative, left 0);
 		@include overflow(hidden);
 		@include background-colour($back-colour);

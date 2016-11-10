@@ -7,7 +7,7 @@
 $dot-size: 14px !default;
 
 @mixin flicker-dots() {
-	.flickerplate-dots {
+	.rocket-flicker-dots {
 		@include position(absolute, bottom 15px);
 		@include width(100%);
 		@include text-align(center);
@@ -38,10 +38,10 @@ $dot-size: 14px !default;
 			@include background-colour($white);
 		}
 	}
-	.flickerplate-dots._left, .flickerplate-dots._left ul {
+	.rocket-flicker-dots._left, .rocket-flicker-dots._left ul {
 		@include text-align(left);
 	}
-	.flickerplate-dots._right, .flickerplate-dots._right ul {
+	.rocket-flicker-dots._right, .rocket-flicker-dots._right ul {
 		@include text-align(right);
 	}
 }
