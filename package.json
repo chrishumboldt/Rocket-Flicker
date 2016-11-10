@@ -22,10 +22,10 @@
       "url": "https://github.com/chrishumboldt/Flickerplate/issues"
    },
    "homepage": "https://github.com/chrishumboldt/Flickerplate#readme",
-	"engines": {
+   "engines": {
       "npm": "^3.0.0"
    },
-	"dependencies": {
+   "dependencies": {
       "rocket-propel": "^3.0.0"
    },
    "devDependencies": {
