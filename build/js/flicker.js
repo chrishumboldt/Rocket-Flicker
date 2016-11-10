@@ -1,5 +1,5 @@
 /**
- * File: buil/js/flickerplate.js
+ * File: buil/js/rocket-flicker.js
  * Type: Javascript component file
  * Author: Chris Humboldt
 **/
@@ -11,7 +11,7 @@ var Rocket = (function (Rocket) {
 		Rocket.defaults = {};
 	}
 	Rocket.defaults.flicker = {
-		selector: '.flickerplate',
+		selector: '.flicker',
 		animation: 'transform-slide',
 		arrows: true,
 		arrowsConstraint: false,
@@ -20,7 +20,6 @@ var Rocket = (function (Rocket) {
 		dotAlignment: 'center',
 		dots: true,
 		position: 1,
-		theme: 'light'
 	}
 	// Basic checks
 	if (!Rocket.exists) {
@@ -360,14 +359,14 @@ var RocketFlickerComponent = (function () {
 		arrow: function (direction) {
 			var direction = direction || 'left';
 			var elmArrow = document.createElement('div');
-			elmArrow.className = 'flickerplate-arrow _' + direction;
+			elmArrow.className = 'rocket-flicker-arrow _' + direction;
 			return elmArrow;
 		},
 		dots: function (count) {
 			var dots = document.createElement('div');
 			var dotsUl = document.createElement('ul');
 
-			dots.className = 'flickerplate-dots';
+			dots.className = 'rocket-flicker-dots';
 			for (var i = 0, len = count; i < len; i++) {
 				var dotLi = document.createElement('li');
 				var dot = document.createElement('div');
@@ -403,7 +402,7 @@ var RocketFlickerComponent = (function () {
 		};
 		options.count = flicksCount;
 
-		Rocket.class.add(flicker, ['flickerplate', '_t-' + options.theme, '_a-' + options.animation]);
+		Rocket.class.add(flicker, ['rocket-flicker', '_a-' + options.animation]);
 		Rocket.class.add(flickerUL, 'flicks');
 
 		// Set backgrounds
@@ -654,8 +653,7 @@ var RocketFlickerComponent = (function () {
 			autoFlickDelay: (typeof uOptions.autoFlickDelay === 'number') ? uOptions.autoFlickDelay : Rocket.defaults.flicker.autoFlickDelay,
 			dotAlignment: (typeof uOptions.dotAlignment === 'string') ? uOptions.dotAlignment : Rocket.defaults.flicker.dotAlignment,
 			dots: (typeof uOptions.dots === 'boolean') ? uOptions.dots : Rocket.defaults.flicker.dots,
-			position: (typeof uOptions.position === 'number') ? uOptions.position : Rocket.defaults.flicker.position,
-			theme: (typeof uOptions.theme === 'string') ? uOptions.theme : Rocket.defaults.flicker.theme
+			position: (typeof uOptions.position === 'number') ? uOptions.position : Rocket.defaults.flicker.position
 		};
 		var flickers = document.querySelectorAll(options.selector);
 		if (flickers.length < 1) {

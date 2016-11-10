@@ -93,6 +93,7 @@ Name | Default | Options | Description
 `dotAlignment` | `center` | `center`, `left`, `right` | Set the horizontal alignment of the dot navigation.
 `dots` | `true` | `true`, `false` | Dot navigation is used to indicate and navigate between the flicks.
 `position` | `1` | | Set the starting flick.
+`selector` | `.flicker` | | Set the flicker selector.
 
 #### Defaults
 You can also overwrite the component options globally by altering the defaults. To do so reference the defaults object property. For example:
