@@ -9,7 +9,7 @@ A component that lets you flick through content.
 * [Advanced Example](#advanced-example)
 * [Make It Touch Enabled](#make-it-touch-enabled)
 * [Rocket Tools](#rocket-tools)
-* [Buttonplate Deprecated](#buttonplate-deprecated)
+* [Flickerplate Deprecated](#flickerplate-deprecated)
 
 ## Getting Started
 You can either download a copy of the [source files](https://github.com/chrishumboldt/Rocket-Flicker/archive/master.zip) or install via NPM.
@@ -125,10 +125,10 @@ To make your flicker touch enabled, just included the Hammer library (Rocket Fli
 </body>
 ```
 
-#### Rocket Tools
+## Rocket Tools
 If you are using this component in conjunction with [Rocket Tools](https://github.com/chrishumboldt/Rocket-Tools), then **always** load the Rocket Tools library first. This component extends that library when detected.
 
-#### Flickerplate Deprecated
+## Flickerplate Deprecated
 The original library, Flickerplate, has been deprecated. The entire Webplate project is being refactored and rebranded with a new development philosophy. Flickerplate will be maintained only with bug fixes under the **flickerplate** branch.
 
 ## Author
