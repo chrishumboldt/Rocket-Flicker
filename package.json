@@ -1,7 +1,7 @@
 {
    "name": "rocket-flicker",
-   "version": "4.0.5",
-   "description": "A component that lets you flick through content.",
+   "version": "4.0.6",
+   "description": "A module that lets you flick through content.",
    "repository": {
       "type": "git",
       "url": "git+https://github.com/chrishumboldt/Rocket-Flicker.git"
@@ -9,7 +9,7 @@
    "keywords": [
       "Rocket",
       "Part",
-      "Component",
+      "Module",
       "Flicker",
       "Slider",
       "Javascript",
@@ -30,15 +30,5 @@
    },
    "devDependencies": {
       "rocket-demo": "^2.0.0"
-   },
-   "rocket": {
-      "build": [
-         "build/js/flicker.js",
-         "build/sass/_import.scss"
-      ],
-      "production": [
-         "css/flicker.min.css",
-         "js/flicker.min.js"
-      ]
    }
 }
