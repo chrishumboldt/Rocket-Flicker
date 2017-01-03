@@ -243,67 +243,6 @@ var Rocket = (function (Rocket) {
 		};
 		Rocket.get = get;
 	}
-	// Helpers
-	if (!Rocket.helper) {
-		var helper = {
-			makeArray: function (arValue, unique) {
-				var returnArray = [];
-				// Catch
-				if (!arValue) {
-					return returnArray;
-				}
-				// Continue
-				var unique = (typeof unique === 'boolean') ? unique : false;
-				if (is.array(arValue)) {
-					// Already an array
-					if (unique) {
-						returnArray = arValue.filter(function (val) {
-							return returnArray.indexOf(val) < 0;
-						});
-					} else {
-						returnArray = arValue;
-					}
-				} else if (is.element(arValue)) {
-					// Element
-					returnArray.push(arValue);
-				} else if (typeof arValue === 'string') {
-					// String
-					if (has.spaces(arValue)) {
-						if (unique) {
-							returnArray = arValue.split(' ').filter(function (val) {
-								return returnArray.indexOf(val) < 0;
-							});
-						} else {
-							returnArray = arValue.split(' ');
-						}
-					} else {
-						returnArray.push(arValue);
-					}
-				}
-
-				return returnArray;
-			},
-			parse: {
-				json: function (json) {
-					if (is.json(json)) {
-						return JSON.parse(json);
-					}
-					return json;
-				}
-			},
-			setDefault: function (setValue, defaultValue) {
-				if (typeof setValue == 'undefined' && typeof defaultValue == 'undefined') {
-					return false;
-				} else if (typeof setValue != 'undefined' && typeof defaultValue == 'undefined') {
-					return setValue;
-				} else if (typeof setValue === typeof defaultValue) {
-					return setValue;
-				} else {
-					return defaultValue;
-				}
-			}
-		};
-	}
 	// Time
 	if (!Rocket.time) {
 		var time = {
