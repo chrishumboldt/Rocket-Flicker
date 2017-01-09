@@ -1,0 +1,10 @@
+{
+   "build": [{
+      "name": "flicker",
+      "css": ["flicker.scss"],
+      "js": ["flicker.js"]
+   }, {
+      "name": "hammer-v2.0.3",
+      "js": ["hammer-v2.0.3.js"]
+   }]
+}
