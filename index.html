@@ -24,18 +24,20 @@
 	   </div>
 		<div class="container">
 			<h4>Getting Started</h4>
-			<p>You can either download a copy of the <a href="https://github.com/chrishumboldt/Rocket-Flicker/archive/master.zip" class="link">source files</a> or install via NPM.</p>
+         <p>Install via NPM.</p>
 <pre class="prettyprint linenums">
 npm install rocket-flicker
 </pre>
+         <p class="note">Note that this module has a dependency <a href="https://github.com/chrishumboldt/Rocket-Tools" class="link" target="_blank">Rocket Tools (20kb)</a> which will automatically be installed as well.</p>
 			<p>Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
 &lt;head&gt;
-    &lt;link href=&quot;rocket-flicker/css/flicker.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;link href=&quot;node_modules/rocket-flicker/css/flicker.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
 &lt;/head&gt;
 &lt;body&gt;
     /* Your content goes here */
-    &lt;script src=&quot;rocket-flicker/js/flicker.min.js&quot;>&lt;/script&gt;
+    &lt;script src=&quot;node_modules/rocket-tools/js/tools.min.js&quot;>&lt;/script&gt;
+    &lt;script src=&quot;node_modules/rocket-flicker/js/flicker.min.js&quot;>&lt;/script&gt;
 &lt;/body&gt;
 </pre>
 			<br>
@@ -67,8 +69,9 @@ Rocket.flicker({
 <pre class="prettyprint linenums">
 &lt;body&gt;
     /* Your content goes here */
-    &lt;script src=&quot;rocket-flicker/js/hammer-v2.0.3.min.js&quot;>&lt;/script&gt;
-    &lt;script src=&quot;rocket-flicker/js/flicker.min.js&quot;>&lt;/script&gt;
+    &lt;script src=&quot;node_modules/rocket-flicker/js/hammer-v2.0.3.min.js&quot;>&lt;/script&gt;
+    &lt;script src=&quot;node_modules/rocket-tools/js/tools.min.js&quot;>&lt;/script&gt;
+    &lt;script src=&quot;node_modules/rocket-flicker/js/flicker.min.js&quot;>&lt;/script&gt;
 &lt;/body&gt;
 </pre>
 			<br>
@@ -105,6 +108,7 @@ Rocket.flicker({
 	</div>
 
 	<!-- Scripts -->
+   <script src="node_modules/rocket-tools/js/tools.min.js"></script>
 	<script src="node_modules/rocket-demo/js/demo.min.js"></script>
 	<script src="js/hammer-v2.0.3.min.js"></script>
 	<script src="build/js/flicker.js"></script>

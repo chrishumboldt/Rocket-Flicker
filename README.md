@@ -12,21 +12,24 @@ A module that lets you flick through content.
 * [Flickerplate Deprecated](#flickerplate-deprecated)
 
 ## Getting Started
-You can either download a copy of the [source files](https://github.com/chrishumboldt/Rocket-Flicker/archive/master.zip) or install via NPM.
+Install via NPM.
 
 ```
 npm install rocket-flicker
 ```
 
+**NOTE** that this module has a dependency [Rocket Tools (20kb)](https://github.com/chrishumboldt/Rocket-Tools) which will automatically be installed as well.
+
 Start by including the necessary files.
 
 ```html
 <head>
-	<link href="rocket-flicker/css/flicker.min.css" rel="stylesheet" type="text/css">
+	<link href="node_modules/rocket-flicker/css/flicker.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	/* Your content goes here */
-	<script src="rocket-flicker/js/flicker.min.js"></script>
+   <script src="node_modules/rocket-tools/js/tools.min.js"></script>
+	<script src="node_modules/rocket-flicker/js/flicker.min.js"></script>
 </body>
 ```
 
@@ -121,13 +124,11 @@ To make your flicker touch enabled, just included the Hammer library (Rocket Fli
 ```html
 <body>
 	/* Your content goes here */
-	<script src="rocket-flicker/js/hammer-v2.0.3.min.js"></script>
-	<script src="rocket-flicker/js/flicker.min.js"></script>
+	<script src="node_modules/rocket-flicker/js/hammer-v2.0.3.min.js"></script>
+   <script src="node_modules/rocket-tools/js/tools.min.js"></script>
+	<script src="node_modules/rocket-flicker/js/flicker.min.js"></script>
 </body>
 ```
-
-## Rocket Tools
-If you are using this component in conjunction with [Rocket Tools](https://github.com/chrishumboldt/Rocket-Tools), then **always** load the Rocket Tools library first. This component extends that library when detected.
 
 ## Flickerplate Deprecated
 The original library, Flickerplate, has been deprecated. The entire Webplate project is being refactored and rebranded with a new development philosophy. Flickerplate will be maintained only with bug fixes under the **flickerplate** branch.
