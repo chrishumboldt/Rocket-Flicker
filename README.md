@@ -24,12 +24,12 @@ Start by including the necessary files.
 
 ```html
 <head>
-	<link href="node_modules/rocket-flicker/css/flicker.min.css" rel="stylesheet" type="text/css">
+   <link href="node_modules/rocket-flicker/css/flicker.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	/* Your content goes here */
+   /* Your content goes here */
    <script src="node_modules/rocket-tools/js/tools.min.js"></script>
-	<script src="node_modules/rocket-flicker/js/flicker.min.js"></script>
+   <script src="node_modules/rocket-flicker/js/flicker.min.js"></script>
 </body>
 ```
 
@@ -123,10 +123,10 @@ To make your flicker touch enabled, just included the Hammer library (Rocket Fli
 
 ```html
 <body>
-	/* Your content goes here */
-	<script src="node_modules/rocket-flicker/js/hammer-v2.0.3.min.js"></script>
+   /* Your content goes here */
+   <script src="node_modules/rocket-flicker/js/hammer-v2.0.3.min.js"></script>
    <script src="node_modules/rocket-tools/js/tools.min.js"></script>
-	<script src="node_modules/rocket-flicker/js/flicker.min.js"></script>
+   <script src="node_modules/rocket-flicker/js/flicker.min.js"></script>
 </body>
 ```
 
