@@ -8,15 +8,16 @@ A module that lets you flick through content.
 	* [Defaults](#defaults)
 * [Advanced Example](#advanced-example)
 * [Make It Touch Enabled](#make-it-touch-enabled)
-* [Rocket Tools](#rocket-tools)
 * [Flickerplate Deprecated](#flickerplate-deprecated)
 
 ## Getting Started
-You can either download a copy of the [source files](https://github.com/chrishumboldt/Rocket-Flicker/archive/master.zip) or install via NPM.
+Install via NPM.
 
 ```
 npm install rocket-flicker
 ```
+
+**NOTE** that this module has a dependency [Rocket Tools (20kb)](https://github.com/chrishumboldt/Rocket-Tools) which will automatically be installed as well.
 
 Start by including the necessary files.
 
@@ -96,7 +97,7 @@ Name | Default | Options | Description
 `selector` | `.flicker` | | Set the flicker selector.
 
 #### Defaults
-You can also overwrite the component options globally by altering the defaults. To do so reference the defaults object property. For example:
+You can also overwrite the module options globally by altering the defaults. To do so reference the defaults object property. For example:
 
 ```javascript
 Rocket.defaults.flicker.autoFlickDelay = 20;
@@ -126,9 +127,6 @@ To make your flicker touch enabled, just included the Hammer library (Rocket Fli
 </body>
 ```
 
-## Rocket Tools
-If you are using this component in conjunction with [Rocket Tools](https://github.com/chrishumboldt/Rocket-Tools), then **always** load the Rocket Tools library first. This component extends that library when detected.
-
 ## Flickerplate Deprecated
 The original library, Flickerplate, has been deprecated. The entire Webplate project is being refactored and rebranded with a new development philosophy. Flickerplate will be maintained only with bug fixes under the **flickerplate** branch.
 
@@ -142,7 +140,7 @@ GitHub <a href="https://github.com/chrishumboldt">github.com/chrishumboldt</a><b
 <a href="https://github.com/dsuket">dsuket</a>
 
 ## Copyright and License
-Copyright 2016 Rocket Project
+Copyright 2017 Rocket Project
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
