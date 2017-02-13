@@ -118,7 +118,7 @@ var myFlicker = Rocket.flicker({
 ```
 
 ## Make It Touch Enabled
-To make your flicker touch enabled, just included the Hammer library (Rocket Flicker comes with a copy). For example.
+To make your flicker touch enabled, just included the Hammer library (Rocket Flicker comes with a copy). For example:
 
 ```html
 <body>
