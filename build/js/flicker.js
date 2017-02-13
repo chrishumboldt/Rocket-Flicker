@@ -1,367 +1,19 @@
 /**
- * File: buil/js/rocket-flicker.js
- * Type: Javascript component file
  * Author: Chris Humboldt
 **/
 
 // Rocket Tools module extension
-var Rocket = (function (Rocket) {
-	// Defaults
-	if (!Rocket.defaults) {
-		Rocket.defaults = {};
-	}
-	Rocket.defaults.flicker = {
-		selector: '.flicker',
-		animation: 'transform-slide',
-		arrows: true,
-		arrowsConstraint: false,
-		autoFlick: true,
-		autoFlickDelay: 10,
-		dotAlignment: 'center',
-		dots: true,
-		position: 1,
-	}
-
-   if (!Rocket.array) {
-      var array = {
-         clean: function (thisArray) {
-            // Catch
-            if (!is.array(thisArray)) {
-               return false;
-            };
-            // Continue
-            return thisArray.filter(function (value) {
-               return (value !== null);
-            });
-         },
-         make: function (arValue, isUnique) {
-            var returnArray = [];
-            // Catch
-            if (!arValue) {
-               return returnArray;
-            }
-            // Continue
-            var unique = helper.setDefault(isUnique, false);
-            if (is.array(arValue) && arValue.length > 0) {
-               returnArray = arValue;
-            }
-            else if (is.element(arValue)) {
-               returnArray.push(arValue);
-            }
-            else if (is.string(arValue)) {
-               returnArray = arValue.split(' ');
-            }
-            else if (is.object(arValue)) {
-               arValue = Array.prototype.slice.call(arValue);
-               if (is.array(arValue) && arValue.length > 0) {
-                  returnArray = arValue;
-               }
-            }
-
-            return (unique) ? array.unique(returnArray) : returnArray;
-         },
-         unique: function (thisArray) {
-            // Catch
-            if (!is.array(thisArray)) {
-               return false;
-            };
-            // Continue
-            return thisArray.filter(function (value, index, self) {
-               return self.indexOf(value) === index;
-            });
-         }
-      };
-      Rocket.array = array;
-   }
-
-	if (!Rocket.exists) {
-		var exists = function (check) {
-			return (typeof check === 'undefined' || check === null || check === false) ? false : true;
-		};
-		Rocket.exists = exists;
-	}
-
-	if (!Rocket.has) {
-		var has = {
-			spaces: function (check) {
-				return /\s/.test(check);
-			},
-			class: function (element, className) {
-				return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
-			}
-		};
-		Rocket.has = has;
-	}
-
-	if (!Rocket.is) {
-		var is = {
-         array: function (check) {
-            return (typeof check === 'object' && check instanceof Array) ? true : false;
-         },
-         boolean: function (check) {
-            return (typeof check === 'boolean');
-         },
-         browser: function () {
-            /*
-            A very basic check to detect if using a browser.
-            Lifted this directly from the Require.js check.
-            https://github.com/requirejs/requirejs/blob/master/require.js
-            */
-            return !!(typeof window !== 'undefined' && typeof navigator !== 'undefined' && window.document)
-         },
-         color: function (color) {
-            return is.colour(color);
-         },
-         colour: function (colour) {
-            return defaults.regexp.colour.test(colour);
-         },
-         date: function (date, thisRegExp) {
-            var regExp = (thisRegExp instanceof RegExp) ? thisRegExp : defaults.regexp.date;
-            return regExp.test(date);
-         },
-         element: function (element) {
-            return (element.nodeType && element.nodeType === 1) ? true : false;
-         },
-         email: function (email, thisRegExp) {
-            var regExp = (thisRegExp instanceof RegExp) ? thisRegExp : defaults.regexp.email;
-            return regExp.test(email);
-         },
-         function: function (check) {
-            return (typeof check === 'function');
-         },
-         image: function (file, arAllowedTypes) {
-            var allowedTypes = (is.array(arAllowedTypes)) ? arAllowedTypes : defaults.extensions.images;
-            return allowedTypes[file.split('.').pop().toLowerCase()];
-         },
-         integer: function (check) {
-            return (is.number(check) && (parseFloat(check) === parseInt(check)));
-         },
-         json: function (json) {
-            if (typeof json !== 'object') {
-               try {
-                  JSON.parse(json);
-               } catch (e) {
-                  return false;
-               }
-            }
-            return true;
-         },
-         number: function (check) {
-            return (typeof check === 'number');
-         },
-         object: function (check) {
-            return (typeof check === 'object');
-         },
-         password: function (password, thisRegExp) {
-            var regExp = (thisRegExp instanceof RegExp) ? thisRegExp : defaults.regexp.password;
-            return regExp.test(password);
-         },
-         string: function (str) {
-            return (typeof str === 'string');
-         },
-         time: function (time, thisRegExp) {
-            var regExp = (thisRegExp instanceof RegExp) ? thisRegExp : defaults.regexp.time;
-            return regExp.test(time);
-         },
-         touch: function () {
-            return 'ontouchstart' in window || 'onmsgesturechange' in window;
-         },
-         url: function (url, thisRegExp) {
-            var regExp = (thisRegExp instanceof RegExp) ? thisRegExp : defaults.regexp.url;
-            return regExp.test(url);
-         }
-		};
-		Rocket.is = is;
-	}
-	// Classes
-	if (!Rocket.class) {
-		var classMethods = {
-			add: function (elements, classNames) {
-				classMethods.executeClasses(elements, classNames, false);
-			},
-			clear: function (element) {
-				if (exists(element)) {
-					element.removeAttribute('class');
-				}
-			},
-			executeAdd: function (element, classes) {
-				element.className = element.className.split(' ').concat(classes).filter(function (val, i, ar) {
-					return (ar.indexOf(val) === i) && (val !== '');
-				}).toString().replace(/,/g, ' ');
-			},
-			executeClasses: function (elements, classesAdd, classesRemove) {
-				// Catch
-				if (!exists(elements)) {
-					return false;
-				}
-				// Create elements array
-				var arElements = [];
-				if (is.element(elements)) {
-					arElements.push(elements);
-				} else if (is.array(elements)) {
-					arElements = elements;
-				}
-				// Catch
-				if (arElements.length < 1) {
-					return false;
-				}
-				// Create classes array
-				var arClassesAdd = array.make(classesAdd, true);
-				var arClassesRemove = array.make(classesRemove, true);
-				var actionAdd = (arClassesAdd.length > 0) ? true : false;
-				var actionRemove = (arClassesRemove.length > 0) ? true : false;
-
-				// Execute
-				for (var i = 0, len = arElements.length; i < len; i++) {
-					if (actionAdd) {
-						classMethods.executeAdd(arElements[i], arClassesAdd)
-					}
-					if (actionRemove) {
-						classMethods.executeRemove(arElements[i], arClassesRemove)
-					}
-				}
-			},
-			executeRemove: function (element, classes) {
-				element.className = element.className.split(' ').filter(function (val) {
-					return classes.indexOf(val) < 0;
-				}).toString().replace(/,/g, ' ');
-				if (element.className === '') {
-					classMethods.clear(element);
-				}
-			},
-			remove: function (elements, classNames) {
-				classMethods.executeClasses(elements, false, classNames);
-			},
-			replace: function (elements, classesRemove, classesAdd) {
-				classMethods.executeClasses(elements, classesAdd, classesRemove);
-			},
-			toggle: function (elements, className) {
-				// Catch
-				if (!exists(elements) || typeof className !== 'string' || has.spaces(className)) {
-					return false;
-				}
-				// Create elements array
-				var arElements = [];
-				if (is.element(elements)) {
-					arElements.push(elements);
-				} else if (is.array(elements)) {
-					arElements = elements;
-				}
-				// Catch
-				if (arElements.length < 1) {
-					return false;
-				}
-				// Execute
-				for (var i = 0, len = elements.length; i < len; i++) {
-					if (!has.class(elements[i], className)) {
-						classMethods.executeAdd(elements[i], [className]);
-					} else {
-						classMethods.executeRemove(elements[i], [className]);
-					}
-				}
-			}
-		};
-		Rocket.class = classMethods;
-	}
-   // Helper
-   if (!Rocket.helper) {
-      var helper = {
-         parse: {
-              json: function (json) {
-                  if (Rocket.is.json(json)) {
-                      return JSON.parse(json);
-                  }
-                  return json;
-              }
-         },
-         setDefault: function (setValue, defaultValue) {
-              if (typeof setValue == 'undefined' && typeof defaultValue == 'undefined') {
-                  return false;
-              }
-              else if (typeof setValue != 'undefined' && typeof defaultValue == 'undefined') {
-                  return setValue;
-              }
-              else if (typeof setValue === typeof defaultValue) {
-                  return setValue;
-              }
-              else {
-                  return defaultValue;
-              }
-         }
-      };
-      Rocket.helper = helper;
-   }
-	// Development
-	if (!Rocket.log) {
-		var log = function (text) {
-			if (window && window.console) {
-				console.log(text);
-			}
-		};
-		Rocket.log = log;
-	}
-	// DOM
-	if (!Rocket.dom) {
-		Rocket.dom = {};
-	}
-	if (!Rocket.dom.html) {
-		Rocket.dom.html = document.getElementsByTagName('html')[0];
-	}
-	// Events
-	if (!Rocket.event) {
-		var eventMethods = {
-			add: function (elem, type, eventHandle) {
-				if (elem == null || typeof (elem) == 'undefined') return;
-				if (elem.addEventListener) {
-					elem.addEventListener(type, eventHandle, false);
-				} else if (elem.attachEvent) {
-					elem.attachEvent('on' + type, eventHandle);
-				} else {
-					elem['on' + type] = eventHandle;
-				}
-			},
-			remove: function (elem, type, eventHandle) {
-				if (elem == null || typeof (elem) == 'undefined') return;
-				if (elem.removeEventListener) {
-					elem.removeEventListener(type, eventHandle, false);
-				} else if (elem.detachEvent) {
-					elem.detachEvent('on' + type, eventHandle);
-				} else {
-					elem['on' + type] = eventHandle;
-				}
-			}
-		};
-		Rocket.event = eventMethods;
-	}
-	// Gets
-	if (!Rocket.get) {
-		var get = {
-			extension: function (file) {
-				return file.split('.').pop().toLowerCase();
-			},
-			index: function (node) {
-				return [].indexOf.call(node.parentNode.children, node);
-			}
-		};
-		Rocket.get = get;
-	}
-	// Time
-	if (!Rocket.milliseconds) {
-      Rocket.milliseconds = {
-          hours: function (hours) {
-              return hours * 60 * 60 * 1000;
-          },
-          minutes: function (minutes) {
-              return minutes * 60 * 1000;
-          },
-          seconds: function (seconds) {
-              return seconds * 1000;
-          }
-      };
-	}
-
-	return Rocket;
-})(Rocket || {});
+Rocket.defaults.flicker = {
+   selector: '.flicker',
+   animation: 'transform-slide',
+   arrows: true,
+   arrowsConstraint: false,
+   autoFlick: true,
+   autoFlickDelay: 10,
+   dotAlignment: 'center',
+   dots: true,
+   position: 1,
+}
 
 // Component container
 var RocketFlickerComponent = (function () {
@@ -401,7 +53,7 @@ var RocketFlickerComponent = (function () {
 
 	function setup() {
 		if (!Rocket.is.touch()) {
-			Rocket.class.add(Rocket.dom.html, 'rocket-no-touch');
+			Rocket.classes.add(Rocket.dom.html, 'rocket-no-touch');
 			isTouch = false;
 		}
 	};
@@ -421,8 +73,8 @@ var RocketFlickerComponent = (function () {
 		};
 		options.count = flicksCount;
 
-		Rocket.class.add(flicker, ['rocket-flicker', '_a-' + options.animation]);
-		Rocket.class.add(flickerUL, 'flicks');
+		Rocket.classes.add(flicker, ['rocket-flicker', '_a-' + options.animation]);
+		Rocket.classes.add(flickerUL, 'flicks');
 
 		// Set backgrounds
 		if (flicksCount > 0) {
@@ -443,7 +95,7 @@ var RocketFlickerComponent = (function () {
 			}
 			if (options.dots) {
 				flickerEl.dots = flicker.insertBefore(html.dots(flicksCount), flickerUL);
-				Rocket.class.add(flickerEl.dots, '_' + options.dotAlignment);
+				Rocket.classes.add(flickerEl.dots, '_' + options.dotAlignment);
 			}
 		}
 
@@ -556,8 +208,8 @@ var RocketFlickerComponent = (function () {
 					lastPosXPercent = -(movePosition) * 100;
 					break;
 				case 'transition-fade':
-					Rocket.class.remove(elements.UL.querySelector('li._active'), '_active');
-					Rocket.class.add(elements.UL.querySelector('li:nth-child(' + options.position + ')'), '_active');
+					Rocket.classes.remove(elements.UL.querySelector('li._active'), '_active');
+					Rocket.classes.add(elements.UL.querySelector('li:nth-child(' + options.position + ')'), '_active');
 					break;
 				case 'transition-slide':
 					elements.UL.style.left = '-' + movePosition + '00%';
@@ -566,8 +218,8 @@ var RocketFlickerComponent = (function () {
 			}
 			// Update dot navigation
 			if (options.animation !== 'scroller-slide' && options.dots) {
-				Rocket.class.remove(elements.dots.querySelector('._active'), '_active');
-				Rocket.class.add(elements.dots.querySelector('li:nth-child(' + options.position + ') .dot'), '_active');
+				Rocket.classes.remove(elements.dots.querySelector('._active'), '_active');
+				Rocket.classes.add(elements.dots.querySelector('li:nth-child(' + options.position + ') .dot'), '_active');
 			}
 		};
 
@@ -614,12 +266,12 @@ var RocketFlickerComponent = (function () {
 		var movePanStart = function () {
 			autoStop();
 			flickerWidth = flicker.clientWidth;
-			Rocket.class.remove(flicker, '_a-' + options.animation);
+			Rocket.classes.remove(flicker, '_a-' + options.animation);
 		};
 
 		var movePanEnd = function (event) {
 			endPosX = event.deltaX;
-			Rocket.class.add(flicker, '_a-' + options.animation);
+			Rocket.classes.add(flicker, '_a-' + options.animation);
 			if ((endPosX < -panThreshold) && (options.position < options.count)) {
 				move('next');
 			} else if ((endPosX > panThreshold) && (options.position > 1)) {
