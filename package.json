@@ -1,4 +1,38 @@
 {
+<<<<<<< HEAD
+   "name": "rocket-flicker",
+   "version": "4.0.8",
+   "description": "A module that lets you flick through content.",
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/chrishumboldt/Rocket-Flicker.git"
+   },
+   "keywords": [
+      "Rocket",
+      "Part",
+      "Module",
+      "Flicker",
+      "Slider",
+      "Javascript",
+      "CSS",
+      "SASS"
+   ],
+   "author": "Chris Humboldt <chrismodem@gmail.com>",
+   "license": "Apache-2.0",
+   "bugs": {
+      "url": "https://github.com/chrishumboldt/Rocket-Flicker/issues"
+   },
+   "homepage": "https://github.com/chrishumboldt/Rocket-Flicker#readme",
+   "engines": {
+      "npm": "^3.0.0"
+   },
+   "dependencies": {
+      "rocket-propel": "^3.0.0"
+   },
+   "devDependencies": {
+      "rocket-demo": "^2.0.0"
+   }
+=======
   "name": "rocket-flicker",
   "version": "4.1.0",
   "description": "A module that lets you flick through content.",
@@ -32,4 +66,5 @@
   "devDependencies": {
     "rocket-demo": "^2.0.0"
   }
+>>>>>>> bd9f0424135f0e21c5acbc8e6fbcd23ae96bf61d
 }

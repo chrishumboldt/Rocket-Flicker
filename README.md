@@ -8,7 +8,6 @@ A module that lets you flick through content.
 	* [Defaults](#defaults)
 * [Advanced Example](#advanced-example)
 * [Make It Touch Enabled](#make-it-touch-enabled)
-* [Rocket Tools](#rocket-tools)
 * [Flickerplate Deprecated](#flickerplate-deprecated)
 
 ## Getting Started
@@ -99,7 +98,7 @@ Name | Default | Options | Description
 `selector` | `.flicker` | | Set the flicker selector.
 
 #### Defaults
-You can also overwrite the component options globally by altering the defaults. To do so reference the defaults object property. For example:
+You can also overwrite the module options globally by altering the defaults. To do so reference the defaults object property. For example:
 
 ```javascript
 Rocket.defaults.flicker.autoFlickDelay = 20;
@@ -119,7 +118,7 @@ var myFlicker = Rocket.flicker({
 ```
 
 ## Make It Touch Enabled
-To make your flicker touch enabled, just included the Hammer library (Rocket Flicker comes with a copy). For example.
+To make your flicker touch enabled, just included the Hammer library (Rocket Flicker comes with a copy). For example:
 
 ```html
 <body>
@@ -143,7 +142,7 @@ GitHub <a href="https://github.com/chrishumboldt">github.com/chrishumboldt</a><b
 <a href="https://github.com/dsuket">dsuket</a>
 
 ## Copyright and License
-Copyright 2016 Rocket Project
+Copyright 2017 Rocket Project
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
