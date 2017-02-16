@@ -30,6 +30,6 @@
     "rocket-demo": "^2.0.0"
   },
   "dependencies": {
-    "rocket-tools": "^1.12.5"
+    "rocket-tools": "^1.12.6"
   }
 }
