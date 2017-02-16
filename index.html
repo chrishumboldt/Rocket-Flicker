@@ -92,6 +92,18 @@ Rocket.flicker({
 					</li>
 				</ul>
 			</div>
+         <div id="flicker-2" class="flicker-example">
+				<ul>
+					<li>
+						<div class="flick-title">Rocket Flicker Is Working</div>
+						<div class="flick-sub-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+					</li>
+					<li>
+						<div class="flick-title">Editable via Javascript or CSS</div>
+						<div class="flick-sub-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+					</li>
+				</ul>
+			</div>
 			<br><br>
 	      <h4>Detailed Documentation</h4>
 	      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Rocket-Flicker" class="link">https://github.com/chrishumboldt/Rocket-Flicker</a></p>
@@ -113,9 +125,10 @@ Rocket.flicker({
 	<script src="js/hammer-v2.0.3.min.js"></script>
 	<script src="js/flicker.min.js"></script>
 	<script>
-	Rocket.flicker({
+	var flickers = Rocket.flicker({
 		target: '.flicker-example'
 	});
+   Rocket.log(flickers);
 	</script>
 
 </body>
