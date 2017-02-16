@@ -50,17 +50,17 @@ See the setup of the HTML and Javascript call below.
 </div>
 <script>
 Rocket.flicker({
-	selector: '.flicker-example'
+	target: '.flicker-example'
 });
 </script>
 ```
 
 ## Initialization
-Each initialization will return an array of component objects (An array will always be returned even if the selector is an id). This includes the flicker element itself as well as relevant methods. For example:
+Each initialization will return an array of component objects (An array will always be returned even if the target is an id). This includes the flicker element itself as well as relevant methods. For example:
 
 ```Javascript
 var flickers = Rocket.flicker({
-	selector: '.flickers'
+	target: '.flickers'
 });
 
 // The flickers and all methods
@@ -72,11 +72,11 @@ for (var i = 0, len = flickers.length; i < len; i++) {
 }
 ```
 
-Alternatively if you know the selector is unique you can reference the flicker right away with the 0 index. For example:
+Alternatively if you know the target is unique you can reference the flicker right away with the 0 index. For example:
 
 ```javascript
 var myFlicker = Rocket.flicker({
-	selector: '#flicker'
+	target: '#flicker'
 })[0]; // Reference the first item in the array right away.
 
 myFlicker.stop();
@@ -95,7 +95,7 @@ Name | Default | Options | Description
 `dotAlignment` | `center` | `center`, `left`, `right` | Set the horizontal alignment of the dot navigation.
 `dots` | `true` | `true`, `false` | Dot navigation is used to indicate and navigate between the flicks.
 `position` | `1` | | Set the starting flick.
-`selector` | `.flicker` | | Set the flicker selector.
+`target` | `.flicker` | | Set the flicker target.
 
 #### Defaults
 You can also overwrite the module options globally by altering the defaults. To do so reference the defaults object property. For example:
@@ -110,7 +110,7 @@ See an advanced example below with options as per the above.
 
 ```javascript
 var myFlicker = Rocket.flicker({
-	selector: '.flicker-example',
+	target: '.flicker-example',
 	animation: 'transition-fade',
 	autoFlick: false,
 	dotAlignment: 'right'
