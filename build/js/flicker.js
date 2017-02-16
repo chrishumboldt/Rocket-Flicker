@@ -165,63 +165,10 @@ var RockMod_Flicker;
     }
     function moveHammer(options) {
         if (typeof Hammer === 'function') {
-            if (options.animation === 'transform-slide' || options.animation === 'transition-slide') {
-                var hammerTime = new Hammer(options.elements.UL);
-                hammerTime.on('panstart', function (event) {
-                    movePanStart(options);
-                });
-                hammerTime.on('panleft panright', function (event) {
-                    movePan(event, options);
-                });
-                hammerTime.on('panend', function (event) {
-                    movePanEnd(event, options);
-                });
-            }
-            else if (options.animation === 'transition-fade') {
-                var hammerTime = new Hammer(options.elements.UL);
-                hammerTime.on('swipeleft swiperight', function (event) {
-                    moveSwipe(event, options);
-                });
-            }
-        }
-    }
-    function movePan(event, options) {
-        function checkPosX(posXFallback) {
-            if (options.position === 1 && options.posX > 0) {
-                options.posX = 0;
-            }
-            else if ((options.position === options.count) && (options.posX < posXFallback)) {
-                options.posX = posXFallback;
-            }
-        }
-        ;
-        switch (options.animation) {
-            case 'transform-slide':
-                options.posX = (Math.round((event.deltaX / options.flickerWidth) * 1000) / 10) + options.lastPosXPercent;
-                checkPosX(-(options.count - 1) * 100);
-                options.panCSS = 'translate3d(' + options.posX + '%, 0, 0)';
-                options.elements.UL.setAttribute('style', '-webkit-transform:' + options.panCSS + ';-o-transform:' + options.panCSS + ';-moz-transform:' + options.panCSS + ';transform:' + options.panCSS);
-                break;
-            case 'transition-slide':
-                options.posX = Math.round((event.deltaX / options.flickerWidth) * 100) + options.lastPosXLeft;
-                checkPosX(-((options.count - 1) * 100));
-                options.elements.UL.style.left = options.posX + '%';
-                break;
-        }
-    }
-    function movePanStart(options) {
-        options.autoStop();
-        options.flickerWidth = options.elements.flicker.clientWidth;
-        Rocket.classes.remove(options.elements.flickerflicker, '_a-' + options.animation);
-    }
-    function movePanEnd(event, options) {
-        options.endPosX = event.deltaX;
-        Rocket.classes.add(options.elements.flicker, '_a-' + options.animation);
-        if ((options.endPosX < -options.panThreshold) && (options.position < options.count)) {
-            move('next', options);
-        }
-        else if ((options.endPosX > options.panThreshold) && (options.position > 1)) {
-            move('previous', options);
+            var hammerTime = new Hammer(options.elements.UL);
+            hammerTime.on('swipeleft swiperight', function (event) {
+                moveSwipe(event, options);
+            });
         }
     }
     function moveSwipe(event, options) {

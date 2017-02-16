@@ -197,6 +197,7 @@ module RockMod_Flicker {
 
    function moveHammer(options: options) {
       if (typeof Hammer === 'function') {
+         /*
          if (options.animation === 'transform-slide' || options.animation === 'transition-slide') {
             // Interaction
             var hammerTime = new Hammer(options.elements.UL);
@@ -215,9 +216,15 @@ module RockMod_Flicker {
                moveSwipe(event, options);
             });
          }
+         */
+         var hammerTime = new Hammer(options.elements.UL);
+         hammerTime.on('swipeleft swiperight', function(event) {
+            moveSwipe(event, options);
+         });
       }
    }
 
+   /*
    function movePan(event: any, options: options) {
       function checkPosX(posXFallback) {
 			if (options.position === 1 && options.posX > 0) {
@@ -258,6 +265,7 @@ module RockMod_Flicker {
          move('previous', options);
       }
    }
+   */
 
    function moveSwipe(event: any, options: options) {
       if (event.type == 'swipeleft') {
