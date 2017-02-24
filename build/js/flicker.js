@@ -56,6 +56,7 @@ var RockMod_Flicker;
         return {
             flicker: flicker,
             move: moveInner,
+            options: options,
             start: start,
             stop: stop
         };

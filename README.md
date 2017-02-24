@@ -67,6 +67,7 @@ var flickers = Rocket.flicker({
 for (var i = 0, len = flickers.length; i < len; i++) {
 	console.log(flickers[i].flicker);
 	flickers[i].move(3); // Move this flicker to position 3
+   flickers[i].options(); // View the flicker options
 	flickers[i].start(); // Start the auto flicker
 	flickers[i].stop(); // Stop the auto flicker
 }
