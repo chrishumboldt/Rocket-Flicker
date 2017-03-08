@@ -2,12 +2,10 @@
 Author: Chris Humboldt
 */
 
-// export declare var Hammer: any;
-
 declare var Hammer: any;
 
 declare interface options {
-   target?: string;
+   targets?: string;
    animation?: string;
    arrows?: boolean;
    arrowsConstraint?: boolean;

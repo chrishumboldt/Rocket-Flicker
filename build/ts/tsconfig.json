@@ -3,7 +3,9 @@
 		"outDir": "../js",
 		"target": "es5"
 	},
-   "exclude": [
-      "./interfaces.ts"
+   "filesGlob": [
+      "../../node_modules/rocket-tools/index.d.ts",
+      "./declarations.d.ts",
+      "./**/*.ts"
    ]
 }

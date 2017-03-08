@@ -4,8 +4,8 @@ A module that lets you flick through content.
 * [Getting Started](#getting-started)
 * [Basic Example](#basic-example)
 * [Initialization](#initialization)
-	* [Options](#options)
-	* [Defaults](#defaults)
+   * [Options](#options)
+   * [Defaults](#defaults)
 * [Advanced Example](#advanced-example)
 * [Make It Touch Enabled](#make-it-touch-enabled)
 * [Flickerplate Deprecated](#flickerplate-deprecated)
@@ -36,39 +36,37 @@ Start by including the necessary files.
 See the setup of the HTML and Javascript call below.
 
 ```html
-<div class="flicker-example">
-	<ul>
-		<li data-background="image-url.jpg">
-			<div class="flick-title">Example Heading</div>
-			<div class="flick-sub-text">Sub Text</div>
-		</li>
-		<li data-background="image-url.jpg">
-			<div class="flick-title">Example Heading</div>
-			<div class="flick-sub-text">Sub Text</div>
-		</li>
-	</ul>
+<div class="rocket-flicker">
+   <ul>
+      <li data-background="image-url.jpg">
+         <div class="flick-title">Example Heading</div>
+         <div class="flick-sub-text">Sub Text</div>
+      </li>
+      <li data-background="image-url.jpg">
+         <div class="flick-title">Example Heading</div>
+         <div class="flick-sub-text">Sub Text</div>
+      </li>
+   </ul>
 </div>
+
 <script>
-Rocket.flicker({
-	target: '.flicker-example'
-});
+Rocket.flicker();
 </script>
 ```
 
 ## Initialization
-Each initialization will return an array of component objects (An array will always be returned even if the target is an id). This includes the flicker element itself as well as relevant methods. For example:
+Each initialization will return an array of module objects (An array will always be returned even if the target is an id). This includes the flicker element itself as well as relevant methods. For example:
 
 ```Javascript
-var flickers = Rocket.flicker({
-	target: '.flickers'
-});
+var flickers = Rocket.flicker();
 
 // The flickers and all methods
 for (var i = 0, len = flickers.length; i < len; i++) {
-	console.log(flickers[i].flicker);
-	flickers[i].move(3); // Move this flicker to position 3
-	flickers[i].start(); // Start the auto flicker
-	flickers[i].stop(); // Stop the auto flicker
+   console.log(flickers[i].flicker);
+   flickers[i].move(3); // Move this flicker to position 3
+   flickers[i].options(); // View the flicker options
+   flickers[i].start(); // Start the auto flicker
+   flickers[i].stop(); // Stop the auto flicker
 }
 ```
 
@@ -76,7 +74,7 @@ Alternatively if you know the target is unique you can reference the flicker rig
 
 ```javascript
 var myFlicker = Rocket.flicker({
-	target: '#flicker'
+   targets: '#flicker'
 })[0]; // Reference the first item in the array right away.
 
 myFlicker.stop();
@@ -87,15 +85,15 @@ See the different options you have available on initialization.
 
 Name | Default | Options | Description
 ---- | ---- | ---- | ----
-`animation` | `transform-slide` | `transform-slide`, `transition-fade`, `transition-slide` | Choose the animation type you want.
-`arrows` | `true` | `true`, `false` | Arrows are used to navigate back and forth between the flicks.
-`arrowsConstraint` | `false` | `true`, `false` | When you get to the end of the flicks pressing the next arrow will navigate you to the beginning again should you have a false constraint. The same applies to the previous arrow.
-`autoFlick` | `true` | `true`, `false` | Sets the flick to run automatically. A manual flick resets the delay.
+`animation` | `transformslide` | `transformslide` `transitionfade` `transitionslide` | Choose the animation type you want.
+`arrows` | `true` | `true` `false` | Arrows are used to navigate back and forth between the flicks.
+`arrowsConstraint` | `false` | `true` `false` | When you get to the end of the flicks pressing the next arrow will navigate you to the beginning again should you have a false constraint. The same applies to the previous arrow.
+`autoFlick` | `true` | `true` `false` | Sets the flick to run automatically. A manual flick resets the delay.
 `autoFlickDelay` | `10` | | Set the delay (in seconds) between each auto flick.
-`dotAlignment` | `center` | `center`, `left`, `right` | Set the horizontal alignment of the dot navigation.
-`dots` | `true` | `true`, `false` | Dot navigation is used to indicate and navigate between the flicks.
+`dotAlignment` | `center` | `center` `left` `right` | Set the horizontal alignment of the dot navigation.
+`dots` | `true` | `true` `false` | Dot navigation is used to indicate and navigate between the flicks.
 `position` | `1` | | Set the starting flick.
-`target` | `.flicker` | | Set the flicker target.
+`targets` | `.rocket-flicker` | | Set the flicker target elements.
 
 #### Defaults
 You can also overwrite the module options globally by altering the defaults. To do so reference the defaults object property. For example:
@@ -110,10 +108,10 @@ See an advanced example below with options as per the above.
 
 ```javascript
 var myFlicker = Rocket.flicker({
-	target: '.flicker-example',
-	animation: 'transition-fade',
-	autoFlick: false,
-	dotAlignment: 'right'
+   targets: '.flicker-example',
+   animation: 'transitionfade',
+   autoFlick: false,
+   dotAlignment: 'right'
 });
 ```
 
@@ -148,7 +146,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,

@@ -1,8 +1,6 @@
-/**
- * File: _animation.scss
- * Type: SASS module
- * Author: Chris Humboldt
- */
+/*
+Author: Chris Humboldt
+*/
 
 // Animation variables
 $transform-slide-duration: 0.2s;
@@ -16,7 +14,7 @@ $transition-fade-easing: linear;
 
 // Animations
 @mixin flicker-animations() {
-	.rocket-flicker._a-transform-slide {
+	.rocket-flicker._a-transformslide {
 		// Flicks
 		ul.flicks {
 			-webkit-perspective: 1000;
@@ -24,19 +22,17 @@ $transition-fade-easing: linear;
 			transform: translate3d(0%, 0px, 0px);
 			-webkit-transform: translate3d(0%, 0px, 0px);
 			-webkit-transition: -webkit-transform $transform-slide-duration $transform-slide-easing;
-			-o-transition: -o-transform $transform-slide-duration $transform-slide-easing;
 			-moz-transition: -moz-transform $transform-slide-duration $transform-slide-easing;
 			transition: transform $transform-slide-duration $transform-slide-easing;
 
 			@include breakpoint(large) {
 				-webkit-transition: -webkit-transform $transform-slide-duration-large $transform-slide-easing;
-				-o-transition: -o-transform $transform-slide-duration-large $transform-slide-easing;
 				-moz-transition: -moz-transform $transform-slide-duration-large $transform-slide-easing;
 				transition: transform $transform-slide-duration-large $transform-slide-easing;
 			}
 		}
 	}
-	.rocket-flicker._a-transition-slide {
+	.rocket-flicker._a-transitionslide {
 		ul.flicks {
 			@include position(relative, left 0%);
 			@include animate(left, $transition-slide-duration);
@@ -46,14 +42,14 @@ $transition-fade-easing: linear;
 			}
 		}
 	}
-	.rocket-flicker._a-scroller-slide {
+	.rocket-flicker._a-scrollerslide {
 		@include padding-bottom(0px);
 		@include overflow(auto);
 		ul.flicks {
 			@include position(auto);
 		}
 	}
-	.rocket-flicker._a-transition-fade {
+	.rocket-flicker._a-transitionfade {
 		ul.flicks {
 			@include position(relative);
 			li {

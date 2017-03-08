@@ -2,13 +2,10 @@
 Author: Chris Humboldt
 */
 
-///<reference path='../../node_modules/rocket-tools/index.d.ts' />
-///<reference path='./interfaces.d.ts' />
-
 // Extend Rocket defaults
 Rocket.defaults.flicker = {
-   target: '.flicker',
-   animation: 'transform-slide',
+   target: '.rocket-flicker',
+   animation: 'transformslide',
    arrows: true,
    arrowsConstraint: false,
    autoFlick: true,
@@ -21,7 +18,7 @@ Rocket.defaults.flicker = {
 // Module container
 module RockMod_Flicker {
    // Variables
-   const _d = Rocket.defaults.flicker;
+   const _RD = Rocket.defaults.flicker;
 
    // Functions
    function applyFlicker(flicker, options: options) {
@@ -78,13 +75,14 @@ module RockMod_Flicker {
       return {
          flicker: flicker,
          move: moveInner,
+         options: options,
          start: start,
          stop: stop
       }
    }
 
    function arrowNavigation(options: options) {
-      if (options.animation === 'scroller-slide' || !options.arrows) {
+      if (options.animation === 'scrollerslide' || !options.arrows) {
          return false;
       }
       Rocket.event.add(options.elements.arrows.left, 'click', function () {
@@ -96,7 +94,7 @@ module RockMod_Flicker {
    }
 
    function dotNavigation(options: options) {
-      if (options.animation === 'scroller-slide' || !options.dots) {
+      if (options.animation === 'scrollerslide' || !options.dots) {
          return false;
       }
       Rocket.event.add(options.elements.dots, 'click', function (event) {
@@ -174,22 +172,22 @@ module RockMod_Flicker {
       let movePosition = options.position - 1;
 
       switch (options.animation) {
-         case 'transform-slide':
+         case 'transformslide':
             var translate3D = 'translate3d(-' + movePosition + '00%, 0, 0)';
             elements.UL.setAttribute('style', '-webkit-transform:' + translate3D + ';-o-transform:' + translate3D + ';-moz-transform:' + translate3D + ';transform:' + translate3D);
             options.lastPosXPercent = -(movePosition) * 100;
             break;
-         case 'transition-fade':
+         case 'transitionfade':
             Rocket.classes.remove(elements.UL.querySelector('li._active'), '_active');
             Rocket.classes.add(elements.UL.querySelector('li:nth-child(' + options.position + ')'), '_active');
             break;
-         case 'transition-slide':
+         case 'transitionslide':
             elements.UL.style.left = '-' + movePosition + '00%';
             options.lastPosXLeft = -(movePosition + '00');
             break;
       }
       // Update dot navigation
-      if (options.animation !== 'scroller-slide' && options.dots) {
+      if (options.animation !== 'scrollerslide' && options.dots) {
          Rocket.classes.remove(elements.dots.querySelector('._active'), '_active');
          Rocket.classes.add(elements.dots.querySelector('li:nth-child(' + options.position + ') .dot'), '_active');
       }
@@ -197,75 +195,12 @@ module RockMod_Flicker {
 
    function moveHammer(options: options) {
       if (typeof Hammer === 'function') {
-         /*
-         if (options.animation === 'transform-slide' || options.animation === 'transition-slide') {
-            // Interaction
-            var hammerTime = new Hammer(options.elements.UL);
-            hammerTime.on('panstart', function(event) {
-               movePanStart(options);
-            });
-            hammerTime.on('panleft panright', function(event) {
-               movePan(event, options);
-            });
-            hammerTime.on('panend', function(event) {
-               movePanEnd(event, options);
-            });
-         } else if (options.animation === 'transition-fade') {
-            var hammerTime = new Hammer(options.elements.UL);
-            hammerTime.on('swipeleft swiperight', function(event) {
-               moveSwipe(event, options);
-            });
-         }
-         */
          var hammerTime = new Hammer(options.elements.UL);
          hammerTime.on('swipeleft swiperight', function(event) {
             moveSwipe(event, options);
          });
       }
    }
-
-   /*
-   function movePan(event: any, options: options) {
-      function checkPosX(posXFallback) {
-			if (options.position === 1 && options.posX > 0) {
-				options.posX = 0;
-			} else if ((options.position === options.count) && (options.posX < posXFallback)) {
-				options.posX = posXFallback;
-			}
-		};
-
-      switch (options.animation) {
-         case 'transform-slide':
-            options.posX = (Math.round((event.deltaX / options.flickerWidth) * 1000) / 10) + options.lastPosXPercent;
-            checkPosX(-(options.count - 1) * 100);
-            options.panCSS = 'translate3d(' + options.posX + '%, 0, 0)';
-            options.elements.UL.setAttribute('style', '-webkit-transform:' + options.panCSS + ';-o-transform:' + options.panCSS + ';-moz-transform:' + options.panCSS + ';transform:' + options.panCSS);
-            break;
-
-         case 'transition-slide':
-            options.posX = Math.round((event.deltaX / options.flickerWidth) * 100) + options.lastPosXLeft;
-            checkPosX(-((options.count - 1) * 100));
-            options.elements.UL.style.left = options.posX + '%';
-            break;
-      }
-   }
-
-   function movePanStart(options: options) {
-      options.autoStop();
-      options.flickerWidth = options.elements.flicker.clientWidth;
-      Rocket.classes.remove(options.elements.flickerflicker, '_a-' + options.animation);
-   }
-
-   function movePanEnd(event: any, options: options) {
-      options.endPosX = event.deltaX;
-      Rocket.classes.add(options.elements.flicker, '_a-' + options.animation);
-      if ((options.endPosX < -options.panThreshold) && (options.position < options.count)) {
-         move('next', options);
-      } else if ((options.endPosX > options.panThreshold) && (options.position > 1)) {
-         move('previous', options);
-      }
-   }
-   */
 
    function moveSwipe(event: any, options: options) {
       if (event.type == 'swipeleft') {
@@ -315,7 +250,7 @@ module RockMod_Flicker {
 			}
 		}
 		// Set arrows & dots
-		if (options.animation !== 'scroller-slide') {
+		if (options.animation !== 'scrollerslide') {
 			if (options.arrows) {
 				newOptions.elements.arrows = {
 					left: flicker.insertBefore(html.arrow('left'), flickerUL),
@@ -333,30 +268,27 @@ module RockMod_Flicker {
 
    // Initialiser
    export function init(uOptions: options): any {
-      // Catch
-      if (!Rocket.is.object(uOptions)) { return false; }
+      if (!Rocket.is.object(uOptions)) { uOptions = {}; }
 
-      // Continue
       const options = {
-         target: Rocket.helper.setDefault(uOptions.target, _d.target),
-         animation: Rocket.helper.setDefault(uOptions.animation, _d.animation),
-         arrows: Rocket.helper.setDefault(uOptions.arrows, _d.arrows),
-         arrowsConstraint: Rocket.helper.setDefault(uOptions.arrowsConstraint, _d.arrowsConstraint),
-         autoFlick: Rocket.helper.setDefault(uOptions.autoFlick, _d.autoFlick),
-         autoFlickDelay: Rocket.helper.setDefault(uOptions.autoFlickDelay, _d.autoFlickDelay),
-         dotAlignment: Rocket.helper.setDefault(uOptions.dotAlignment, _d.dotAlignment),
-         dots: Rocket.helper.setDefault(uOptions.dots, _d.dots),
-         position: Rocket.helper.setDefault(uOptions.position, _d.position)
+         targets: Rocket.helper.setDefault(uOptions.targets, _RD.target),
+         animation: Rocket.helper.setDefault(uOptions.animation, _RD.animation),
+         arrows: Rocket.helper.setDefault(uOptions.arrows, _RD.arrows),
+         arrowsConstraint: Rocket.helper.setDefault(uOptions.arrowsConstraint, _RD.arrowsConstraint),
+         autoFlick: Rocket.helper.setDefault(uOptions.autoFlick, _RD.autoFlick),
+         autoFlickDelay: Rocket.helper.setDefault(uOptions.autoFlickDelay, _RD.autoFlickDelay),
+         dotAlignment: Rocket.helper.setDefault(uOptions.dotAlignment, _RD.dotAlignment),
+         dots: Rocket.helper.setDefault(uOptions.dots, _RD.dots),
+         position: Rocket.helper.setDefault(uOptions.position, _RD.position)
       }
 
-      var flickers = Rocket.dom.select(options.target);
+      var flickers = Rocket.dom.select(options.targets);
 
       // Catch
       if (flickers.length < 1) {
          return false;
       }
 
-      // Continue
       // Initialise each instance and return
       let objReturn = [];
       for (let flicker of flickers) {
