@@ -2,12 +2,10 @@
 <html>
 <head>
 
-	<!-- Meta setup - Required for apple device -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<!-- Title -->
 	<title>Rocket Flicker Component</title>
-	<!-- Scripts -->
+
 	<link href="node_modules/rocket-demo/css/demo.min.css"  type="text/css" rel="stylesheet">
 	<link href="css/flicker.min.css"  type="text/css" rel="stylesheet">
 
@@ -44,7 +42,7 @@ npm install rocket-flicker
 			<h4>Basic Example</h4>
 			<p>See the setup of the HTML and Javascript call below.</p>
 <pre class="prettyprint linenums">
-&lt;div class="flicker-example"&gt;
+&lt;div class="rocket-flicker"&gt;
     &lt;ul&gt;
         &lt;li data-background="image-url.jpg"&gt;
             &lt;div class="flick-title"&gt;Example Heading&lt;/div&gt;
@@ -56,10 +54,9 @@ npm install rocket-flicker
         &lt;/li&gt;
     &lt;/ul&gt;
 &lt;/div&gt;
+
 &lt;script&gt;
-Rocket.flicker({
-    target: '.flicker-example'
-});
+Rocket.flicker();
 &lt;/script&gt;
 </pre>
 			<p class="note">There are options that you can set. Read the more detailed documentation to find out more.</p>
@@ -76,7 +73,7 @@ Rocket.flicker({
 </pre>
 			<br>
 			<h4>Working Example</h4>
-			<div id="flicker-1" class="flicker-example">
+			<div class="rocket-flicker">
 				<ul>
 					<li>
 						<div class="flick-title">Rocket Flicker Is Working</div>
@@ -109,14 +106,12 @@ Rocket.flicker({
 
 	<!-- Scripts -->
    <script src="node_modules/rocket-tools/js/tools.min.js"></script>
-	<script src="node_modules/rocket-demo/js/demo.min.js"></script>
-	<script src="js/hammer-v2.0.3.min.js"></script>
-	<script src="js/flicker.min.js"></script>
-	<script>
-	var flickers = Rocket.flicker({
-		target: '.flicker-example'
-	});
-	</script>
+   <script src="node_modules/rocket-demo/js/demo.min.js"></script>
+   <script src="js/hammer-v2.0.3.min.js"></script>
+   <script src="js/flicker.min.js"></script>
+   <script>
+   var flickers = Rocket.flicker();
+   </script>
 
 </body>
 </html>

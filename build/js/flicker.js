@@ -1,6 +1,6 @@
 Rocket.defaults.flicker = {
-    target: '.flicker',
-    animation: 'transform-slide',
+    target: '.rocket-flicker',
+    animation: 'transformslide',
     arrows: true,
     arrowsConstraint: false,
     autoFlick: true,
@@ -11,7 +11,7 @@ Rocket.defaults.flicker = {
 };
 var RockMod_Flicker;
 (function (RockMod_Flicker) {
-    var _d = Rocket.defaults.flicker;
+    var _RD = Rocket.defaults.flicker;
     function applyFlicker(flicker, options) {
         if (!Rocket.is.element(flicker) || !Rocket.is.object(options)) {
             return false;
@@ -62,7 +62,7 @@ var RockMod_Flicker;
         };
     }
     function arrowNavigation(options) {
-        if (options.animation === 'scroller-slide' || !options.arrows) {
+        if (options.animation === 'scrollerslide' || !options.arrows) {
             return false;
         }
         Rocket.event.add(options.elements.arrows.left, 'click', function () {
@@ -73,7 +73,7 @@ var RockMod_Flicker;
         });
     }
     function dotNavigation(options) {
-        if (options.animation === 'scroller-slide' || !options.dots) {
+        if (options.animation === 'scrollerslide' || !options.dots) {
             return false;
         }
         Rocket.event.add(options.elements.dots, 'click', function (event) {
@@ -145,21 +145,21 @@ var RockMod_Flicker;
         var elements = options.elements;
         var movePosition = options.position - 1;
         switch (options.animation) {
-            case 'transform-slide':
+            case 'transformslide':
                 var translate3D = 'translate3d(-' + movePosition + '00%, 0, 0)';
                 elements.UL.setAttribute('style', '-webkit-transform:' + translate3D + ';-o-transform:' + translate3D + ';-moz-transform:' + translate3D + ';transform:' + translate3D);
                 options.lastPosXPercent = -(movePosition) * 100;
                 break;
-            case 'transition-fade':
+            case 'transitionfade':
                 Rocket.classes.remove(elements.UL.querySelector('li._active'), '_active');
                 Rocket.classes.add(elements.UL.querySelector('li:nth-child(' + options.position + ')'), '_active');
                 break;
-            case 'transition-slide':
+            case 'transitionslide':
                 elements.UL.style.left = '-' + movePosition + '00%';
                 options.lastPosXLeft = -(movePosition + '00');
                 break;
         }
-        if (options.animation !== 'scroller-slide' && options.dots) {
+        if (options.animation !== 'scrollerslide' && options.dots) {
             Rocket.classes.remove(elements.dots.querySelector('._active'), '_active');
             Rocket.classes.add(elements.dots.querySelector('li:nth-child(' + options.position + ') .dot'), '_active');
         }
@@ -213,7 +213,7 @@ var RockMod_Flicker;
                 }
             }
         }
-        if (options.animation !== 'scroller-slide') {
+        if (options.animation !== 'scrollerslide') {
             if (options.arrows) {
                 newOptions.elements.arrows = {
                     left: flicker.insertBefore(html.arrow('left'), flickerUL),
@@ -229,20 +229,20 @@ var RockMod_Flicker;
     }
     function init(uOptions) {
         if (!Rocket.is.object(uOptions)) {
-            return false;
+            uOptions = {};
         }
         var options = {
-            target: Rocket.helper.setDefault(uOptions.target, _d.target),
-            animation: Rocket.helper.setDefault(uOptions.animation, _d.animation),
-            arrows: Rocket.helper.setDefault(uOptions.arrows, _d.arrows),
-            arrowsConstraint: Rocket.helper.setDefault(uOptions.arrowsConstraint, _d.arrowsConstraint),
-            autoFlick: Rocket.helper.setDefault(uOptions.autoFlick, _d.autoFlick),
-            autoFlickDelay: Rocket.helper.setDefault(uOptions.autoFlickDelay, _d.autoFlickDelay),
-            dotAlignment: Rocket.helper.setDefault(uOptions.dotAlignment, _d.dotAlignment),
-            dots: Rocket.helper.setDefault(uOptions.dots, _d.dots),
-            position: Rocket.helper.setDefault(uOptions.position, _d.position)
+            targets: Rocket.helper.setDefault(uOptions.targets, _RD.target),
+            animation: Rocket.helper.setDefault(uOptions.animation, _RD.animation),
+            arrows: Rocket.helper.setDefault(uOptions.arrows, _RD.arrows),
+            arrowsConstraint: Rocket.helper.setDefault(uOptions.arrowsConstraint, _RD.arrowsConstraint),
+            autoFlick: Rocket.helper.setDefault(uOptions.autoFlick, _RD.autoFlick),
+            autoFlickDelay: Rocket.helper.setDefault(uOptions.autoFlickDelay, _RD.autoFlickDelay),
+            dotAlignment: Rocket.helper.setDefault(uOptions.dotAlignment, _RD.dotAlignment),
+            dots: Rocket.helper.setDefault(uOptions.dots, _RD.dots),
+            position: Rocket.helper.setDefault(uOptions.position, _RD.position)
         };
-        var flickers = Rocket.dom.select(options.target);
+        var flickers = Rocket.dom.select(options.targets);
         if (flickers.length < 1) {
             return false;
         }
