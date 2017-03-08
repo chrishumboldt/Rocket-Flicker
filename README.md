@@ -4,8 +4,8 @@ A module that lets you flick through content.
 * [Getting Started](#getting-started)
 * [Basic Example](#basic-example)
 * [Initialization](#initialization)
-	* [Options](#options)
-	* [Defaults](#defaults)
+* [Options](#options)
+* [Defaults](#defaults)
 * [Advanced Example](#advanced-example)
 * [Make It Touch Enabled](#make-it-touch-enabled)
 * [Flickerplate Deprecated](#flickerplate-deprecated)
@@ -37,22 +37,20 @@ See the setup of the HTML and Javascript call below.
 
 ```html
 <div class="rocket-flicker">
-	<ul>
-		<li data-background="image-url.jpg">
-			<div class="flick-title">Example Heading</div>
-			<div class="flick-sub-text">Sub Text</div>
-		</li>
-		<li data-background="image-url.jpg">
-			<div class="flick-title">Example Heading</div>
-			<div class="flick-sub-text">Sub Text</div>
-		</li>
-	</ul>
+   <ul>
+      <li data-background="image-url.jpg">
+         <div class="flick-title">Example Heading</div>
+         <div class="flick-sub-text">Sub Text</div>
+      </li>
+      <li data-background="image-url.jpg">
+         <div class="flick-title">Example Heading</div>
+         <div class="flick-sub-text">Sub Text</div>
+      </li>
+   </ul>
 </div>
 
 <script>
-Rocket.flicker({
-	targets: '.flicker-example'
-});
+Rocket.flicker();
 </script>
 ```
 
@@ -64,11 +62,11 @@ var flickers = Rocket.flicker();
 
 // The flickers and all methods
 for (var i = 0, len = flickers.length; i < len; i++) {
-	console.log(flickers[i].flicker);
-	flickers[i].move(3); // Move this flicker to position 3
+   console.log(flickers[i].flicker);
+   flickers[i].move(3); // Move this flicker to position 3
    flickers[i].options(); // View the flicker options
-	flickers[i].start(); // Start the auto flicker
-	flickers[i].stop(); // Stop the auto flicker
+   flickers[i].start(); // Start the auto flicker
+   flickers[i].stop(); // Stop the auto flicker
 }
 ```
 
@@ -76,7 +74,7 @@ Alternatively if you know the target is unique you can reference the flicker rig
 
 ```javascript
 var myFlicker = Rocket.flicker({
-	target: '#flicker'
+   targets: '#flicker'
 })[0]; // Reference the first item in the array right away.
 
 myFlicker.stop();
@@ -110,10 +108,10 @@ See an advanced example below with options as per the above.
 
 ```javascript
 var myFlicker = Rocket.flicker({
-	targets: '.flicker-example',
-	animation: 'transitionfade',
-	autoFlick: false,
-	dotAlignment: 'right'
+   targets: '.flicker-example',
+   animation: 'transitionfade',
+   autoFlick: false,
+   dotAlignment: 'right'
 });
 ```
 
@@ -148,7 +146,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
