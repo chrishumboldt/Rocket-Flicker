@@ -55,7 +55,7 @@ Rocket.flicker();
 ```
 
 ## Initialization
-Each initialization will return an array of component objects (An array will always be returned even if the target is an id). This includes the flicker element itself as well as relevant methods. For example:
+Each initialization will return an array of module objects (An array will always be returned even if the target is an id). This includes the flicker element itself as well as relevant methods. For example:
 
 ```Javascript
 var flickers = Rocket.flicker();
