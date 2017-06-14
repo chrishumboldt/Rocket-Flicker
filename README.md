@@ -74,7 +74,7 @@ Alternatively if you know the target is unique you can reference the flicker rig
 
 ```javascript
 var myFlicker = Rocket.flicker({
-   targets: '#flicker'
+   target: '#flicker'
 })[0]; // Reference the first item in the array right away.
 
 myFlicker.stop();
@@ -85,6 +85,7 @@ See the different options you have available on initialization.
 
 Name | Default | Options | Description
 ---- | ---- | ---- | ----
+`target` | `.rocket-flicker` | | Set the flicker target elements.
 `animation` | `transformslide` | `transformslide` `transitionfade` `transitionslide` | Choose the animation type you want.
 `arrows` | `true` | `true` `false` | Arrows are used to navigate back and forth between the flicks.
 `arrowsConstraint` | `false` | `true` `false` | When you get to the end of the flicks pressing the next arrow will navigate you to the beginning again should you have a false constraint. The same applies to the previous arrow.
@@ -93,7 +94,6 @@ Name | Default | Options | Description
 `dotAlignment` | `center` | `center` `left` `right` | Set the horizontal alignment of the dot navigation.
 `dots` | `true` | `true` `false` | Dot navigation is used to indicate and navigate between the flicks.
 `position` | `1` | | Set the starting flick.
-`targets` | `.rocket-flicker` | | Set the flicker target elements.
 
 #### Defaults
 You can also overwrite the module options globally by altering the defaults. To do so reference the defaults object property. For example:
@@ -108,7 +108,7 @@ See an advanced example below with options as per the above.
 
 ```javascript
 var myFlicker = Rocket.flicker({
-   targets: '.flicker-example',
+   target: '.flicker-example',
    animation: 'transitionfade',
    autoFlick: false,
    dotAlignment: 'right'

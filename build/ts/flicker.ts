@@ -1,6 +1,6 @@
-/*
-Author: Chris Humboldt
-*/
+/**
+@author Chris Humboldt
+**/
 
 // Extend Rocket defaults
 Rocket.defaults.flicker = {
@@ -271,7 +271,7 @@ module RockMod_Flicker {
       if (!Rocket.is.object(uOptions)) { uOptions = {}; }
 
       const options = {
-         targets: Rocket.helper.setDefault(uOptions.targets, _RD.target),
+         target: Rocket.helper.setDefault(uOptions.target, _RD.target),
          animation: Rocket.helper.setDefault(uOptions.animation, _RD.animation),
          arrows: Rocket.helper.setDefault(uOptions.arrows, _RD.arrows),
          arrowsConstraint: Rocket.helper.setDefault(uOptions.arrowsConstraint, _RD.arrowsConstraint),
@@ -282,7 +282,7 @@ module RockMod_Flicker {
          position: Rocket.helper.setDefault(uOptions.position, _RD.position)
       }
 
-      var flickers = Rocket.dom.select(options.targets);
+      var flickers = Rocket.dom.select(options.target);
 
       // Catch
       if (flickers.length < 1) {

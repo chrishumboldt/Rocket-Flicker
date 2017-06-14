@@ -1,3 +1,7 @@
+/**
+@author Chris Humboldt
+**/
+// Extend Rocket defaults
 Rocket.defaults.flicker = {
     target: '.rocket-flicker',
     animation: 'transformslide',
@@ -9,16 +13,23 @@ Rocket.defaults.flicker = {
     dots: true,
     position: 1
 };
+// Module container
 var RockMod_Flicker;
 (function (RockMod_Flicker) {
+    // Variables
     var _RD = Rocket.defaults.flicker;
+    // Functions
     function applyFlicker(flicker, options) {
+        // Catch
         if (!Rocket.is.element(flicker) || !Rocket.is.object(options)) {
             return false;
         }
+        // Continue
         options = setupFlicker(flicker, options);
+        // Variables
         var autoFlickWatch;
         var elements = options.elements;
+        // Functions
         options.autoStart = function () {
             autoFlickWatch = setTimeout(function () {
                 move('next', options);
@@ -47,6 +58,7 @@ var RockMod_Flicker;
             }
         }
         ;
+        // Execute
         arrowNavigation(options);
         dotNavigation(options);
         move(options.position, options);
@@ -105,10 +117,12 @@ var RockMod_Flicker;
         }
     };
     function move(to, options) {
+        // Auto flick
         if (options.autoFlick && options.autoFlickDelay) {
             options.autoStop();
             options.autoStart();
         }
+        // Set the new position
         switch (to) {
             case 'next':
                 if (options.position < options.count) {
@@ -142,6 +156,7 @@ var RockMod_Flicker;
                     return false;
                 }
         }
+        // Move it
         var elements = options.elements;
         var movePosition = options.position - 1;
         switch (options.animation) {
@@ -159,6 +174,7 @@ var RockMod_Flicker;
                 options.lastPosXLeft = -(movePosition + '00');
                 break;
         }
+        // Update dot navigation
         if (options.animation !== 'scrollerslide' && options.dots) {
             Rocket.classes.remove(elements.dots.querySelector('._active'), '_active');
             Rocket.classes.add(elements.dots.querySelector('li:nth-child(' + options.position + ') .dot'), '_active');
@@ -181,9 +197,12 @@ var RockMod_Flicker;
         }
     }
     function setupFlicker(flicker, options) {
+        // Catch
         if (!Rocket.is.element(flicker) || !Rocket.is.object(options)) {
             return false;
         }
+        // Continue
+        // Variables
         var newOptions = JSON.parse(JSON.stringify(options));
         var flickerUL = flicker.querySelector('ul');
         var flickerLIs = flicker.querySelectorAll('li');
@@ -203,8 +222,10 @@ var RockMod_Flicker;
         newOptions.panCSS = 'translate3d(0, 0, 0)';
         newOptions.panThreshold = 100;
         newOptions.posX = 0;
+        // Classes
         Rocket.classes.add(flicker, ['rocket-flicker', '_a-' + options.animation]);
         Rocket.classes.add(flickerUL, 'flicks');
+        // Set backgrounds
         if (flicksCount > 0) {
             for (var i = 0, len = flicksCount; i < len; i++) {
                 var background = flickerLIs[i].getAttribute('data-background') || false;
@@ -213,6 +234,7 @@ var RockMod_Flicker;
                 }
             }
         }
+        // Set arrows & dots
         if (options.animation !== 'scrollerslide') {
             if (options.arrows) {
                 newOptions.elements.arrows = {
@@ -227,12 +249,13 @@ var RockMod_Flicker;
         }
         return newOptions;
     }
+    // Initialiser
     function init(uOptions) {
         if (!Rocket.is.object(uOptions)) {
             uOptions = {};
         }
         var options = {
-            targets: Rocket.helper.setDefault(uOptions.targets, _RD.target),
+            target: Rocket.helper.setDefault(uOptions.target, _RD.target),
             animation: Rocket.helper.setDefault(uOptions.animation, _RD.animation),
             arrows: Rocket.helper.setDefault(uOptions.arrows, _RD.arrows),
             arrowsConstraint: Rocket.helper.setDefault(uOptions.arrowsConstraint, _RD.arrowsConstraint),
@@ -242,10 +265,12 @@ var RockMod_Flicker;
             dots: Rocket.helper.setDefault(uOptions.dots, _RD.dots),
             position: Rocket.helper.setDefault(uOptions.position, _RD.position)
         };
-        var flickers = Rocket.dom.select(options.targets);
+        var flickers = Rocket.dom.select(options.target);
+        // Catch
         if (flickers.length < 1) {
             return false;
         }
+        // Initialise each instance and return
         var objReturn = [];
         for (var _i = 0, flickers_1 = flickers; _i < flickers_1.length; _i++) {
             var flicker = flickers_1[_i];
@@ -255,4 +280,5 @@ var RockMod_Flicker;
     }
     RockMod_Flicker.init = init;
 })(RockMod_Flicker || (RockMod_Flicker = {}));
+// Bind to Rocket
 Rocket.flicker = RockMod_Flicker.init;
