@@ -1,6 +1,6 @@
-/*
-Author: Chris Humboldt
-*/
+/**
+@author Chris Humboldt
+**/
 
 declare var Hammer: any;
 
