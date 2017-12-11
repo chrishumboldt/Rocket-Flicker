@@ -17,7 +17,7 @@ Install via NPM.
 npm install rocket-flicker
 ```
 
-**NOTE** that this module has a dependency [Rocket Tools (21kb)](https://github.com/chrishumboldt/Rocket-Tools) which will automatically be installed as well.
+**NOTE** that this module has a dependency [Rocket Tools (28kb)](https://github.com/chrishumboldt/Rocket-Tools) which will automatically be installed as well.
 
 Start by including the necessary files.
 
@@ -58,10 +58,10 @@ Rocket.flicker();
 Each initialization will return an array of module objects (An array will always be returned even if the target is an id). This includes the flicker element itself as well as relevant methods. For example:
 
 ```Javascript
-var flickers = Rocket.flicker();
+const flickers = Rocket.flicker();
 
 // The flickers and all methods
-for (var i = 0, len = flickers.length; i < len; i++) {
+for (let i = 0, len = flickers.length; i < len; i++) {
    console.log(flickers[i].flicker);
    flickers[i].move(3); // Move this flicker to position 3
    flickers[i].start(); // Start the auto flicker
@@ -72,7 +72,7 @@ for (var i = 0, len = flickers.length; i < len; i++) {
 Alternatively if you know the target is unique you can reference the flicker right away with the 0 index. For example:
 
 ```javascript
-var myFlicker = Rocket.flicker({
+const myFlicker = Rocket.flicker({
    targets: '#flicker'
 })[0]; // Reference the first item in the array right away.
 
@@ -107,7 +107,7 @@ Rocket.defaults.flicker.dots = false;
 See an advanced example below with options as per the above.
 
 ```javascript
-var myFlicker = Rocket.flicker({
+const myFlicker = Rocket.flicker({
    targets: '.flicker-example',
    animation: 'transitionfade',
    autoFlick: false,
