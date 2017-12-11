@@ -1,0 +1,62 @@
+/**
+@author Chris Humboldt
+**/
+
+@mixin mod-flicker() {
+	.mod-flicker {
+		@include position(relative, left 0);
+		@include overflow(hidden);
+		@include background-colour($grey-blue-light);
+	}
+   .mod-flicker-inner {
+      @include position(relative);
+      @include spacing-no();
+      @include flex-display();
+      @include size(100%, 600px);
+      @include list-style(none);
+      @include align-items(center);
+      transform: translate3d(0%, 0px, 0px);
+      -webkit-transform: translate3d(0%, 0px, 0px);
+   }
+   .mod-flicker-inner li {
+      @include flex(1, 0, 100%);
+      @include align-items(center);
+      @include justify-content(center);
+      @include padding($space-medium);
+      @include height(100%);
+      @include flex-display();
+      @include flex-direction(column);
+
+      @include breakpoint($bp-large) {
+         @include padding-h(100px);
+      }
+   }
+   .mod-flicker-title,
+   .mod-flicker-text {
+      @include text-align(center);
+   }
+   .mod-flicker-title {
+      @include padding-no();
+      @include text-align(center);
+      @include text-line-height(40px);
+      @include font-size(28px);
+
+      @include breakpoint(large){
+         @include text-line-height(60px);
+         @include text-size(44px);
+      }
+   }
+   .mod-flicker-text {
+      @include padding(5px);
+      @include text-align(center);
+      @include text-colour(fade-out($white, 0.2));
+      @include text-line-height(24px);
+      @include text-size(16px);
+      @include text-weight(300);
+   }
+   .mod-flicker-title span, .mod-flicker-text span {
+      @include padding-h(18px);
+      @include padding-v(12px);
+      @include background-colour(fade-out($black, 0.4));
+   }
+}

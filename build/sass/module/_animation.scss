@@ -1,0 +1,68 @@
+/**
+@author Chris Humboldt
+**/
+
+// Animation variables
+$transform-slide-duration: 0.2s;
+$transform-slide-duration-large: 0.6s;
+$transform-slide-easing: ease-out;
+$transition-slide-duration: 0.2s;
+$transition-slide-duration-large: 0.6s;
+$transition-slide-easing: ease-in-out;
+$transition-fade-duration: 0.8s;
+$transition-fade-easing: linear;
+
+// Animations
+@mixin mod-flicker-animations() {
+   // Transform slide
+   .mod-flicker._animation-transformslide .mod-flicker-inner {
+      -webkit-perspective: 1000;
+      -webkit-backface-visibility: hidden;
+      transform: translate3d(0%, 0px, 0px);
+      -webkit-transform: translate3d(0%, 0px, 0px);
+      -webkit-transition: -webkit-transform $transform-slide-duration $transform-slide-easing;
+      -moz-transition: -moz-transform $transform-slide-duration $transform-slide-easing;
+      transition: transform $transform-slide-duration $transform-slide-easing;
+
+      @include breakpoint($bp-large) {
+         -webkit-transition: -webkit-transform $transform-slide-duration-large $transform-slide-easing;
+         -moz-transition: -moz-transform $transform-slide-duration-large $transform-slide-easing;
+         transition: transform $transform-slide-duration-large $transform-slide-easing;
+      }
+   }
+
+   // Transition slide
+   .mod-flicker._animation-transitionslide .mod-flicker-inner {
+      @include position(relative, left 0%);
+      @include animate(left, $transition-slide-duration);
+
+      @include breakpoint($bp-large) {
+         @include animate(left, $transition-slide-duration-large);
+      }
+   }
+
+   // Scroller slide
+   .mod-flicker._animation-scrollerslide {
+      @include padding-b(0px);
+      @include overflow(auto);
+   }
+   .mod-flicker._animation-scrollerslide .mod-flicker-inner {
+      @include position(auto);
+   }
+
+   // Transition fade
+   .mod-flicker._animation-transitionfade .mod-flicker-inner {
+      @include position(relative);
+   }
+   .mod-flicker._animation-transitionfade li {
+      @include float(none);
+      @include position(absolute, top 0 left 0 bottom 0 right 0);
+      @include transparency(0);
+      @include level(1);
+      @include animate(opacity, $transition-fade-duration);
+   }
+   .mod-flicker._animation-transitionfade li.is-active {
+      @include transparency(1);
+      @include level(2);
+   }
+}

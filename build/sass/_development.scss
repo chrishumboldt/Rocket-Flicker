@@ -6,10 +6,10 @@ $font-face-rocket-flicker: "icon-font-rocket-flicker" !default;
 
 @import "../../node_modules/rocket-propel/build/sass/import";
 
-@import "part/setup";
-@import "part/animation";
-@import "part/arrow";
-@import "part/dot";
-@import "part/flicker";
+@import "module/setup";
+@import "module/animation";
+@import "module/arrow";
+@import "module/dot";
+@import "module/flicker";
 
 @import "css/execute";
