@@ -36,15 +36,15 @@ Start by including the necessary files.
 See the setup of the HTML and Javascript call below.
 
 ```html
-<div class="rocket-flicker">
+<div class="mod-flicker">
    <ul>
       <li data-background="image-url.jpg">
-         <div class="flick-title">Example Heading</div>
-         <div class="flick-sub-text">Sub Text</div>
+         <div class="mod-flicker-title">Example Heading</div>
+         <div class="mod-flicker-text">Sub Text</div>
       </li>
       <li data-background="image-url.jpg">
-         <div class="flick-title">Example Heading</div>
-         <div class="flick-sub-text">Sub Text</div>
+         <div class="mod-flicker-title">Example Heading</div>
+         <div class="mod-flicker-text">Sub Text</div>
       </li>
    </ul>
 </div>
@@ -64,7 +64,6 @@ var flickers = Rocket.flicker();
 for (var i = 0, len = flickers.length; i < len; i++) {
    console.log(flickers[i].flicker);
    flickers[i].move(3); // Move this flicker to position 3
-   flickers[i].options(); // View the flicker options
    flickers[i].start(); // Start the auto flicker
    flickers[i].stop(); // Stop the auto flicker
 }
@@ -74,7 +73,7 @@ Alternatively if you know the target is unique you can reference the flicker rig
 
 ```javascript
 var myFlicker = Rocket.flicker({
-   target: '#flicker'
+   targets: '#flicker'
 })[0]; // Reference the first item in the array right away.
 
 myFlicker.stop();
@@ -85,7 +84,7 @@ See the different options you have available on initialization.
 
 Name | Default | Options | Description
 ---- | ---- | ---- | ----
-`target` | `.rocket-flicker` | | Set the flicker target elements.
+`targets` | `.rocket-flicker` | | Set the flicker target elements.
 `animation` | `transformslide` | `transformslide` `transitionfade` `transitionslide` | Choose the animation type you want.
 `arrows` | `true` | `true` `false` | Arrows are used to navigate back and forth between the flicks.
 `arrowsConstraint` | `false` | `true` `false` | When you get to the end of the flicks pressing the next arrow will navigate you to the beginning again should you have a false constraint. The same applies to the previous arrow.
@@ -93,6 +92,7 @@ Name | Default | Options | Description
 `autoFlickDelay` | `10` | | Set the delay (in seconds) between each auto flick.
 `dotAlignment` | `center` | `center` `left` `right` | Set the horizontal alignment of the dot navigation.
 `dots` | `true` | `true` `false` | Dot navigation is used to indicate and navigate between the flicks.
+`pauseOnHover` | `false` | `true` `false` | Pause / Stop the `autoFlick` on hover. Restart it again when the mouse leaves.
 `position` | `1` | | Set the starting flick.
 
 #### Defaults
@@ -108,7 +108,7 @@ See an advanced example below with options as per the above.
 
 ```javascript
 var myFlicker = Rocket.flicker({
-   target: '.flicker-example',
+   targets: '.flicker-example',
    animation: 'transitionfade',
    autoFlick: false,
    dotAlignment: 'right'

@@ -1,6 +1,6 @@
 {
    "name": "rocket-flicker",
-   "version": "4.4.1",
+   "version": "5.0.0",
    "description": "A module that lets you flick through content.",
    "repository": {
       "type": "git",
@@ -8,7 +8,6 @@
    },
    "keywords": [
       "Rocket",
-      "Part",
       "Module",
       "Flicker",
       "Slider",
@@ -26,10 +25,10 @@
       "npm": "^3.0.0"
    },
    "dependencies": {
-      "rocket-tools": "^1.14.3"
+      "rocket-tools": "^1.16.0"
    },
    "devDependencies": {
-      "rocket-propel": "^3.0.0",
+      "rocket-propel": "^3.1.1",
       "rocket-demo": "^2.0.0"
    }
 }

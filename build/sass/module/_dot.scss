@@ -1,0 +1,49 @@
+/**
+@author Chris Humboldt
+**/
+
+$dot-size: 14px !default;
+
+@mixin mod-flicker-dots {
+   .mod-flicker-dots {
+      @include position(absolute, bottom 15px);
+      @include width(100%);
+      @include text-align(center);
+      @include level(100);
+   }
+   // .mod-flicker-dots._left, .mod-flicker-dots._left ul {
+   //    @include text-align(left);
+   // }
+   // .mod-flicker-dots._right, .mod-flicker-dots._right ul {
+   //    @include text-align(right);
+   // }
+
+   .mod-flicker-dots ul {
+      @include text-align(center);
+      @include list-style(none);
+      @include padding-h(30px);
+      @include padding-v(0px);
+   }
+   .mod-flicker-dots ul li {
+      @include display(inline-block);
+      @include float(none)
+   }
+
+   // Single dot
+   .mod-flicker-dot {
+      @include square($dot-size);
+      @include margin-h(6px);
+      @include background-colour(fade-out($white, 0.7));
+      @include border-radius(50%);
+      @include animate(background-color);
+   }
+
+   // Dot states
+   .rocket-no-touch .mod-flicker-dot:hover {
+      @include cursor(pointer);
+      @include background-colour(fade-out($white, 0.4));
+   }
+   .mod-flicker-dot.is-active {
+      @include background-colour($white);
+   }
+}
