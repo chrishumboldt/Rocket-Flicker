@@ -3,7 +3,7 @@ A module that lets you flick through content.
 
 * [Getting Started](#getting-started)
 * [Basic Example](#basic-example)
-* [Initialization](#initialization)
+* [Initialisation](#initialisation)
    * [Options](#options)
    * [Defaults](#defaults)
 * [Advanced Example](#advanced-example)
@@ -54,8 +54,8 @@ Rocket.flicker();
 </script>
 ```
 
-## Initialization
-Each initialization will return an array of module objects (An array will always be returned even if the target is an id). This includes the flicker element itself as well as relevant methods. For example:
+## Initialisation
+Each initialisation will return an array of module objects (An array will always be returned even if the target is an id). This includes the flicker element itself as well as relevant methods. For example:
 
 ```Javascript
 const flickers = Rocket.flicker();
@@ -73,7 +73,7 @@ Alternatively if you know the target is unique you can reference the flicker rig
 
 ```javascript
 const myFlicker = Rocket.flicker({
-   targets: '#flicker'
+   target: '#flicker'
 })[0]; // Reference the first item in the array right away.
 
 myFlicker.stop();
@@ -84,7 +84,7 @@ See the different options you have available on initialization.
 
 Name | Default | Options | Description
 ---- | ---- | ---- | ----
-`targets` | `.rocket-flicker` | | Set the flicker target elements.
+`target` | `.rocket-flicker` | | Set the flicker target elements.
 `animation` | `transformslide` | `transformslide` `transitionfade` `transitionslide` | Choose the animation type you want.
 `arrows` | `true` | `true` `false` | Arrows are used to navigate back and forth between the flicks.
 `arrowsConstraint` | `false` | `true` `false` | When you get to the end of the flicks pressing the next arrow will navigate you to the beginning again should you have a false constraint. The same applies to the previous arrow.
@@ -108,7 +108,7 @@ See an advanced example below with options as per the above.
 
 ```javascript
 const myFlicker = Rocket.flicker({
-   targets: '.flicker-example',
+   target: '.flicker-example',
    animation: 'transitionfade',
    autoFlick: false,
    dotAlignment: 'right'
