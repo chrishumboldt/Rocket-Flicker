@@ -140,7 +140,7 @@ GitHub <a href="https://github.com/chrishumboldt">github.com/chrishumboldt</a><b
 <a href="https://github.com/dsuket">dsuket</a>
 
 ## Copyright and License
-Copyright 2017 Rocket Project
+Copyright 2018 Rocket Project
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
