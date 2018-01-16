@@ -4,7 +4,7 @@
 
 // Set the defaults
 Rocket.defaults.flicker = {
-   targets: '.mod-flicker',
+   target: '.mod-flicker',
    animation: 'transformslide',
    arrows: true,
    arrowsConstraint: false,
@@ -18,7 +18,7 @@ Rocket.defaults.flicker = {
 
 // Module
 Rocket.flicker = ({
-   targets = Rocket.defaults.flicker.targets,
+   target = Rocket.defaults.flicker.target,
    animation = Rocket.defaults.flicker.animation,
    arrows = Rocket.defaults.flicker.arrows,
    arrowsConstraint = Rocket.defaults.flicker.arrowsConstraint,
@@ -183,7 +183,7 @@ Rocket.flicker = ({
    };
 
    function init() {
-      const flickers = Rocket.dom.select(targets);
+      const flickers = Rocket.dom.select(target);
       return (flickers.length > 0) ? flickers.map((item) => applyFlicker(item)) : flickers;
    };
 
