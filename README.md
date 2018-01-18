@@ -8,6 +8,7 @@ A module that lets you flick through content.
    * [Defaults](#defaults)
 * [Advanced Example](#advanced-example)
 * [Make It Touch Enabled](#make-it-touch-enabled)
+* [Rebuilding Files](#rebuilding-files)
 * [Flickerplate Deprecated](#flickerplate-deprecated)
 
 ## Getting Started
@@ -126,6 +127,21 @@ To make your flicker touch enabled, just included the Hammer library (Rocket Fli
    <script src="node_modules/rocket-flicker/js/flicker.min.js"></script>
 </body>
 ```
+
+## Rebuilding Files
+In order to rebuild production files you will first need to install the [Rocket Command Line Tool](https://github.com/chrishumboldt/Rocket-Command). To do so run the following npm command in your terminal. **NOTE** that this package is installed globally and can take a while as it has quite a few dependencies.
+
+```
+npm install rocket-command -g
+```
+
+Once installed navigate to the Rocket Flicker root and run the following command:
+
+```
+rocket build
+```
+
+The relevant minified CSS and JS will now be rebuilt.
 
 ## Flickerplate Deprecated
 The original library, Flickerplate, has been deprecated. The entire Webplate project is being refactored and rebranded with a new development philosophy. Flickerplate will be maintained only with bug fixes under the **flickerplate** branch.
