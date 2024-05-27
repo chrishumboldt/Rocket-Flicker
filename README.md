@@ -1,3 +1,5 @@
+# NO LONGER SUPPORTED
+
 # Rocket Flicker
 A module that lets you flick through content.
 
@@ -33,7 +35,7 @@ Start by including the necessary files.
 </body>
 ```
 
-## Basic Example
+## Basic Examplechrishumboldt/Rocket-Form
 See the setup of the HTML and Javascript call below.
 
 ```html
@@ -149,7 +151,6 @@ The original library, Flickerplate, has been deprecated. The entire Webplate pro
 ## Author
 Created and maintained by Chris Humboldt<br>
 Website: <a href="http://chrishumboldt.com/">chrishumboldt.com</a><br>
-Twitter: <a href="https://twitter.com/chrishumboldt">twitter.com/chrishumboldt</a><br>
 GitHub <a href="https://github.com/chrishumboldt">github.com/chrishumboldt</a><br>
 
 ## Contributors
